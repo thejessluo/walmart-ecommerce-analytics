@@ -1,0 +1,16 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "8a99d243a7e098376e28",
+  "position": {
+    "x": 383.34782575304257,
+    "y": 274.96919550208651,
+    "z": 11000,
+    "height": 101.92817879529464,
+    "width": 214.90951005835137,
+    "tabOrder": 14000
+  },
+  "visualGroup": {
+    "displayName": "MSRP Lost/Gained",
+    "groupMode": "ScaleMode"
+  }
+}

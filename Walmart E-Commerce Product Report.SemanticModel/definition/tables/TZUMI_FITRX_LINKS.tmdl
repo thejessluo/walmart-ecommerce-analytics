@@ -1,0 +1,44 @@
+table TZUMI_FITRX_LINKS
+	lineageTag: a5493842-c94c-4618-a5c2-323cd90389dd
+
+	column SKU
+		dataType: string
+		lineageTag: 90aa5a29-b5d4-44be-a9fc-d23c9e4f9fa3
+		summarizeBy: none
+		sourceColumn: SKU
+
+		annotation SummarizationSetBy = Automatic
+
+	column MSRP
+		dataType: double
+		lineageTag: 5e7c1f4e-1e15-4ce3-afcd-c61e0df066b3
+		summarizeBy: sum
+		sourceColumn: MSRP
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TZUMI_WEBSITE_LINK
+		dataType: string
+		lineageTag: 5ae69a9f-b729-441b-ae13-72df6f240e2c
+		summarizeBy: none
+		sourceColumn: TZUMI_WEBSITE_LINK
+
+		annotation SummarizationSetBy = Automatic
+
+	partition TZUMI_FITRX_LINKS = m
+		mode: import
+		source =
+				let
+				    Source = Snowflake.Databases("zo76507.west-europe.azure.snowflakecomputing.com","WH_XSMALL_83818"),
+				    DATAHAWK_WRITABLE_83818_Database = Source{[Name="DATAHAWK_WRITABLE_83818",Kind="Database"]}[Data],
+				    MISC_WALMART_DATA_Schema = DATAHAWK_WRITABLE_83818_Database{[Name="MISC_WALMART_DATA",Kind="Schema"]}[Data],
+				    TZUMI_FITRX_LINKS_Table = MISC_WALMART_DATA_Schema{[Name="TZUMI_FITRX_LINKS",Kind="Table"]}[Data]
+				in
+				    TZUMI_FITRX_LINKS_Table
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

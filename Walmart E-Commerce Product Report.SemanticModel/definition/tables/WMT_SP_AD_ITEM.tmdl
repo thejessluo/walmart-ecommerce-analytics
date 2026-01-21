@@ -1,0 +1,734 @@
+table WMT_SP_AD_ITEM
+	lineageTag: c3dd3481-8503-4494-bf53-0cb809f56bca
+
+	column ACCOUNT_KEY
+		dataType: string
+		lineageTag: b08a64db-1a8a-49c5-b8ea-f2abf81a46c0
+		summarizeBy: none
+		sourceColumn: ACCOUNT_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+	column SPONSORED_TYPE
+		dataType: string
+		lineageTag: e17d98e2-41e5-4ae5-a58f-440f1ddc509f
+		summarizeBy: none
+		sourceColumn: SPONSORED_TYPE
+
+		annotation SummarizationSetBy = Automatic
+
+	column MARKETPLACE_KEY
+		dataType: string
+		lineageTag: a80a35f6-0d94-454a-8130-8d79581938fb
+		summarizeBy: none
+		sourceColumn: MARKETPLACE_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+	column AD_GROUP_ID
+		dataType: double
+		lineageTag: 6b9cd4bb-b2b5-4816-832d-5593715cd610
+		summarizeBy: count
+		sourceColumn: AD_GROUP_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CAMPAIGN_ID
+		dataType: double
+		lineageTag: c3278040-9b1e-414a-a528-8212eb4170ed
+		summarizeBy: count
+		sourceColumn: CAMPAIGN_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ITEM_ID
+		dataType: double
+		lineageTag: 38b45753-0ff3-4a75-b892-6ba913aa83bc
+		summarizeBy: none
+		sourceColumn: ITEM_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ITEM_IMAGE
+		dataType: string
+		lineageTag: ce7ce2a3-505f-46b6-9941-f4b9f2daa33e
+		summarizeBy: none
+		sourceColumn: ITEM_IMAGE
+
+		annotation SummarizationSetBy = Automatic
+
+	column ITEM_NAME
+		dataType: string
+		lineageTag: 73cde351-5241-46f5-a303-c37611d4c5e4
+		summarizeBy: none
+		sourceColumn: ITEM_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column DATE
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 7a43e56c-848b-4243-afc5-32d9fb99727a
+		summarizeBy: none
+		sourceColumn: DATE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column DATE_DAY
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 4d372d67-bdab-4834-9ed3-bcc11562382c
+		summarizeBy: none
+		sourceColumn: DATE_DAY
+
+		variation Variation
+			isDefault
+			relationship: 76cdd13a-2174-4865-8035-dc9316bd7378
+			defaultHierarchy: LocalDateTable_bec6afe5-6e9c-4431-95e7-6f03aaa1eb1f.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column CURRENCY
+		dataType: string
+		lineageTag: aa12e27e-0ca8-455f-b4c1-414fe26d98e6
+		summarizeBy: none
+		sourceColumn: CURRENCY
+
+		annotation SummarizationSetBy = Automatic
+
+	column AD_SPEND
+		dataType: double
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: d88a6881-45c3-4efd-8b63-eb9e5ba42516
+		summarizeBy: sum
+		sourceColumn: AD_SPEND
+
+		annotation SummarizationSetBy = Automatic
+
+	column ADVERTISED_SKU_SALES_3D
+		dataType: double
+		lineageTag: 7fa07613-4163-4a98-98ed-2fa84d9958db
+		summarizeBy: sum
+		sourceColumn: ADVERTISED_SKU_SALES_3D
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ADVERTISED_SKU_SALES_14D
+		dataType: double
+		lineageTag: 8864cadd-8458-4e49-afa3-d2ffdb3fbb5e
+		summarizeBy: sum
+		sourceColumn: ADVERTISED_SKU_SALES_14D
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ADVERTISED_SKU_SALES_30D
+		dataType: double
+		lineageTag: e380d6ae-da27-4591-aed3-f71c3d56b1cd
+		summarizeBy: sum
+		sourceColumn: ADVERTISED_SKU_SALES_30D
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ADVERTISED_SKU_UNITS_3D
+		dataType: double
+		lineageTag: d49d2987-b496-489d-be66-8bfd87faca99
+		summarizeBy: sum
+		sourceColumn: ADVERTISED_SKU_UNITS_3D
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ADVERTISED_SKU_UNITS_14D
+		dataType: double
+		lineageTag: 06fb4bb7-6ad0-45b4-9d39-759fe3d6acf2
+		summarizeBy: sum
+		sourceColumn: ADVERTISED_SKU_UNITS_14D
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ADVERTISED_SKU_UNITS_30D
+		dataType: double
+		lineageTag: 5c590c4e-b6d7-4cc1-a3a5-b94dbefe74fb
+		summarizeBy: sum
+		sourceColumn: ADVERTISED_SKU_UNITS_30D
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ATTRIBUTED_ORDERS_3D
+		dataType: double
+		lineageTag: 3782160b-3ab8-4007-a178-953c125eb478
+		summarizeBy: sum
+		sourceColumn: ATTRIBUTED_ORDERS_3D
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ATTRIBUTED_ORDERS_14D
+		dataType: double
+		lineageTag: 5f962c62-50a6-483e-8f00-50e0bd136cbd
+		summarizeBy: sum
+		sourceColumn: ATTRIBUTED_ORDERS_14D
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ATTRIBUTED_ORDERS_30D
+		dataType: double
+		lineageTag: 656d3c37-4899-4140-adfe-166c4d9c65c8
+		summarizeBy: sum
+		sourceColumn: ATTRIBUTED_ORDERS_30D
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ATTRIBUTED_UNITS_3D
+		dataType: double
+		lineageTag: 4d989c3a-49aa-44ab-9311-754595ffa282
+		summarizeBy: sum
+		sourceColumn: ATTRIBUTED_UNITS_3D
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ATTRIBUTED_UNITS_14D
+		dataType: double
+		lineageTag: 2872b5f6-d031-4adb-a042-25397592813b
+		summarizeBy: sum
+		sourceColumn: ATTRIBUTED_UNITS_14D
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ATTRIBUTED_UNITS_30D
+		dataType: double
+		lineageTag: da03dec4-b701-43d3-bf06-b8daadfcf9ed
+		summarizeBy: sum
+		sourceColumn: ATTRIBUTED_UNITS_30D
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ATTRIBUTED_SALES_3D
+		dataType: double
+		lineageTag: 034911ed-2396-43f8-ba5a-5d7715d134c0
+		summarizeBy: sum
+		sourceColumn: ATTRIBUTED_SALES_3D
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ATTRIBUTED_SALES_14D
+		dataType: double
+		lineageTag: 09988b20-ae2d-430c-8f6c-0bcd6f052710
+		summarizeBy: sum
+		sourceColumn: ATTRIBUTED_SALES_14D
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ATTRIBUTED_SALES_30D
+		dataType: double
+		lineageTag: e4c99df8-18a0-4a0e-afe2-bc0b2d320966
+		summarizeBy: sum
+		sourceColumn: ATTRIBUTED_SALES_30D
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column BRAND_ATTRIBUTED_SALES_3D
+		dataType: double
+		lineageTag: d6b95b30-f203-476c-8c9d-3bf5d275017f
+		summarizeBy: sum
+		sourceColumn: BRAND_ATTRIBUTED_SALES_3D
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column BRAND_ATTRIBUTED_SALES_14D
+		dataType: double
+		lineageTag: 460678b5-2ea3-4bd7-a4fe-213cc55c3b55
+		summarizeBy: sum
+		sourceColumn: BRAND_ATTRIBUTED_SALES_14D
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column BRAND_ATTRIBUTED_SALES_30D
+		dataType: double
+		lineageTag: 23de25c1-5cf4-45d9-9865-e23337cdd6a1
+		summarizeBy: sum
+		sourceColumn: BRAND_ATTRIBUTED_SALES_30D
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DIRECT_ATTRIBUTED_SALES_3D
+		dataType: double
+		lineageTag: f31b46b3-461e-4ffb-90f7-e3bafc8e2b3d
+		summarizeBy: sum
+		sourceColumn: DIRECT_ATTRIBUTED_SALES_3D
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DIRECT_ATTRIBUTED_SALES_14D
+		dataType: double
+		lineageTag: 666a9aa1-48f7-4973-ada6-410f534a4e13
+		summarizeBy: sum
+		sourceColumn: DIRECT_ATTRIBUTED_SALES_14D
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DIRECT_ATTRIBUTED_SALES_30D
+		dataType: double
+		lineageTag: 6ec9bf26-76e8-4e22-9678-3ae238ef59c1
+		summarizeBy: sum
+		sourceColumn: DIRECT_ATTRIBUTED_SALES_30D
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column IN_STORE_ADVERTISED_SALES_3D
+		dataType: double
+		lineageTag: 7ef76051-9c29-4b06-b955-4713c0245378
+		summarizeBy: sum
+		sourceColumn: IN_STORE_ADVERTISED_SALES_3D
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column IN_STORE_ADVERTISED_SALES_14D
+		dataType: double
+		lineageTag: f03dc296-a7dc-4637-85f4-b795f3516ca5
+		summarizeBy: sum
+		sourceColumn: IN_STORE_ADVERTISED_SALES_14D
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column IN_STORE_ADVERTISED_SALES_30D
+		dataType: double
+		lineageTag: 0c6650e0-2982-434d-92ee-0ebe881b0f45
+		summarizeBy: sum
+		sourceColumn: IN_STORE_ADVERTISED_SALES_30D
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column IN_STORE_ATTRIBUTED_SALES_3D
+		dataType: double
+		lineageTag: 1f34b484-dcc0-473c-8a10-b1abe06dd079
+		summarizeBy: sum
+		sourceColumn: IN_STORE_ATTRIBUTED_SALES_3D
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column IN_STORE_ATTRIBUTED_SALES_14D
+		dataType: double
+		lineageTag: ef6029a6-e005-4c48-9c84-c49fd4800858
+		summarizeBy: sum
+		sourceColumn: IN_STORE_ATTRIBUTED_SALES_14D
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column IN_STORE_ATTRIBUTED_SALES_30D
+		dataType: double
+		lineageTag: 441b0c65-9a41-44a3-96c1-6f001decd47f
+		summarizeBy: sum
+		sourceColumn: IN_STORE_ATTRIBUTED_SALES_30D
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column IN_STORE_ORDERS_3D
+		dataType: double
+		lineageTag: 554b4501-3b77-4a1a-b1f4-f23b60d5fed8
+		summarizeBy: sum
+		sourceColumn: IN_STORE_ORDERS_3D
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column IN_STORE_ORDERS_14D
+		dataType: double
+		lineageTag: 7eaf9831-d65a-4fd2-a086-6081578bd09b
+		summarizeBy: sum
+		sourceColumn: IN_STORE_ORDERS_14D
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column IN_STORE_ORDERS_30D
+		dataType: double
+		lineageTag: ffb6095f-e656-4582-9fa3-6d5da53fdeb2
+		summarizeBy: sum
+		sourceColumn: IN_STORE_ORDERS_30D
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column IN_STORE_OTHER_SALES_3D
+		dataType: double
+		lineageTag: 73bf9dbe-5e17-41a0-a815-4c6be8a2404e
+		summarizeBy: sum
+		sourceColumn: IN_STORE_OTHER_SALES_3D
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column IN_STORE_OTHER_SALES_14D
+		dataType: double
+		lineageTag: fef3199b-2c26-408d-921c-115f228090cb
+		summarizeBy: sum
+		sourceColumn: IN_STORE_OTHER_SALES_14D
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column IN_STORE_OTHER_SALES_30D
+		dataType: double
+		lineageTag: 798df7e0-0ea3-46fb-be08-c617c8b36c99
+		summarizeBy: sum
+		sourceColumn: IN_STORE_OTHER_SALES_30D
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column IN_STORE_UNITS_SOLD_3D
+		dataType: double
+		lineageTag: d8cf1e03-189c-4c4f-960f-f9c69dcf413a
+		summarizeBy: sum
+		sourceColumn: IN_STORE_UNITS_SOLD_3D
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column IN_STORE_UNITS_SOLD_14D
+		dataType: double
+		lineageTag: 44bfb59b-9f3e-496f-82b4-7411c7845bdb
+		summarizeBy: sum
+		sourceColumn: IN_STORE_UNITS_SOLD_14D
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column IN_STORE_UNITS_SOLD_30D
+		dataType: double
+		lineageTag: f11bb54a-ecff-406f-b528-a5bc13dc9274
+		summarizeBy: sum
+		sourceColumn: IN_STORE_UNITS_SOLD_30D
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NTB_ORDERS_3D
+		dataType: double
+		lineageTag: 96e02245-3b0a-47cf-a1f1-81c1cc4c3382
+		summarizeBy: sum
+		sourceColumn: NTB_ORDERS_3D
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NTB_ORDERS_14D
+		dataType: double
+		lineageTag: 9c2197a8-b8fe-432e-9e8e-251ef6e6d8b4
+		summarizeBy: sum
+		sourceColumn: NTB_ORDERS_14D
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NTB_ORDERS_30D
+		dataType: double
+		lineageTag: 5bdcdffc-58f3-44fb-97f1-4eeb9f3422c0
+		summarizeBy: sum
+		sourceColumn: NTB_ORDERS_30D
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NTB_UNITS_3D
+		dataType: double
+		lineageTag: eb421899-ea1a-4953-a512-c849d2bab6ae
+		summarizeBy: sum
+		sourceColumn: NTB_UNITS_3D
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NTB_UNITS_14D
+		dataType: double
+		lineageTag: 6e6d193c-e3e3-44ec-b279-85784b3f5d14
+		summarizeBy: sum
+		sourceColumn: NTB_UNITS_14D
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NTB_UNITS_30D
+		dataType: double
+		lineageTag: ca655637-6f8a-4d7f-abe0-468af7e32b54
+		summarizeBy: sum
+		sourceColumn: NTB_UNITS_30D
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NTB_REVENUE_3D
+		dataType: double
+		lineageTag: 54316802-b1da-4c4c-bf7c-35c4a10a375b
+		summarizeBy: sum
+		sourceColumn: NTB_REVENUE_3D
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NTB_REVENUE_14D
+		dataType: double
+		lineageTag: 884a5502-904d-45cd-93f1-312e3c8d0266
+		summarizeBy: sum
+		sourceColumn: NTB_REVENUE_14D
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NTB_REVENUE_30D
+		dataType: double
+		lineageTag: 3b84c920-08e0-4952-84b2-8628672705fa
+		summarizeBy: sum
+		sourceColumn: NTB_REVENUE_30D
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NUM_ADS_CLICKS
+		dataType: double
+		lineageTag: e79d7e5d-47ae-4d31-a843-8ffc827615d3
+		summarizeBy: sum
+		sourceColumn: NUM_ADS_CLICKS
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column NUM_ADS_SHOWN
+		dataType: double
+		lineageTag: 7fe50449-1508-4867-9ccb-75ac7f634bf1
+		summarizeBy: sum
+		sourceColumn: NUM_ADS_SHOWN
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column OTHER_SKU_SALES_3D
+		dataType: double
+		lineageTag: 681570c2-6652-4c83-8a63-edaf0d9c99ff
+		summarizeBy: sum
+		sourceColumn: OTHER_SKU_SALES_3D
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column OTHER_SKU_SALES_14D
+		dataType: double
+		lineageTag: 12ecbb3d-f7b3-43ca-81f7-5426f30d8759
+		summarizeBy: sum
+		sourceColumn: OTHER_SKU_SALES_14D
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column OTHER_SKU_SALES_30D
+		dataType: double
+		lineageTag: 4d24aadb-a915-4b43-8bc6-2f206148343b
+		summarizeBy: sum
+		sourceColumn: OTHER_SKU_SALES_30D
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column OTHER_SKU_UNITS_3D
+		dataType: double
+		lineageTag: e0e41480-f902-4f87-abc6-68611fadc906
+		summarizeBy: sum
+		sourceColumn: OTHER_SKU_UNITS_3D
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column OTHER_SKU_UNITS_14D
+		dataType: double
+		lineageTag: 06328564-223c-4abc-b879-19732b8ff012
+		summarizeBy: sum
+		sourceColumn: OTHER_SKU_UNITS_14D
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column OTHER_SKU_UNITS_30D
+		dataType: double
+		lineageTag: 864c3c92-0cf7-4994-b703-9c911a520dcd
+		summarizeBy: sum
+		sourceColumn: OTHER_SKU_UNITS_30D
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column RELATED_ATTRIBUTED_SALES_3D
+		dataType: double
+		lineageTag: 7068ced6-ac0b-4693-a3ec-d6702a81e67c
+		summarizeBy: sum
+		sourceColumn: RELATED_ATTRIBUTED_SALES_3D
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column RELATED_ATTRIBUTED_SALES_14D
+		dataType: double
+		lineageTag: 873013a0-8e89-4fea-9462-2f9d3e4149dd
+		summarizeBy: sum
+		sourceColumn: RELATED_ATTRIBUTED_SALES_14D
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column RELATED_ATTRIBUTED_SALES_30D
+		dataType: double
+		lineageTag: 46636683-c66f-4d2a-9c25-950a963e1f0b
+		summarizeBy: sum
+		sourceColumn: RELATED_ATTRIBUTED_SALES_30D
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column _SYNC_TIME
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 102fdf81-819d-46e6-b130-c694ff167718
+		summarizeBy: none
+		sourceColumn: _SYNC_TIME
+
+		variation Variation
+			isDefault
+			relationship: 3ae59c27-f004-4b56-b92f-5714baad5c2d
+			defaultHierarchy: LocalDateTable_61c2081a-edb7-421d-8855-23b38127d592.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column UNIQUE_KEY
+		dataType: string
+		lineageTag: d518241f-3a80-4a01-884c-ecd17c11b513
+		summarizeBy: none
+		sourceColumn: UNIQUE_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+	column WORKSPACE_ID
+		dataType: double
+		lineageTag: 231b50af-109e-4f99-b3a8-0012a748c780
+		summarizeBy: count
+		sourceColumn: WORKSPACE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column EXTRACT_TIME
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 002efbf8-528f-4c5f-9294-3b961ab9594e
+		summarizeBy: none
+		sourceColumn: EXTRACT_TIME
+
+		variation Variation
+			isDefault
+			relationship: a59b5d8a-90d7-4595-9a2e-3fc7b15f998c
+			defaultHierarchy: LocalDateTable_cb925f50-a8c7-46ed-928d-a3881fb113c8.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition WMT_SP_AD_ITEM = m
+		mode: import
+		source =
+				let
+				    Source = Snowflake.Databases("mj13008.west-europe.azure.snowflakecomputing.com","WH_DATAHAWK_SHARE_83818_164940445"),
+				    DATAHAWK_SHARE_83818_Database = Source{[Name="DATAHAWK_SHARE_83818",Kind="Database"]}[Data],
+				    ADVERTISING_Schema = DATAHAWK_SHARE_83818_Database{[Name="ADVERTISING",Kind="Schema"]}[Data],
+				    WMT_SP_AD_ITEM_View = ADVERTISING_Schema{[Name="WMT_SP_AD_ITEM",Kind="View"]}[Data]
+				in
+				    WMT_SP_AD_ITEM_View
+

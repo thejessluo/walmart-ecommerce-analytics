@@ -1,0 +1,16 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "720b225a3275e2e15325",
+  "position": {
+    "x": 158.33333333333334,
+    "y": 273.91312210648152,
+    "z": 18000,
+    "height": 103.125,
+    "width": 214.58333333333334,
+    "tabOrder": 17000
+  },
+  "visualGroup": {
+    "displayName": "Prices Up/Down",
+    "groupMode": "ScaleMode"
+  }
+}

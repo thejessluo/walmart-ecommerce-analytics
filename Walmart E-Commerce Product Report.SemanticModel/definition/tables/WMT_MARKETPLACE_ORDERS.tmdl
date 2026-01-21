@@ -1,0 +1,500 @@
+table WMT_MARKETPLACE_ORDERS
+	lineageTag: c12d985c-9dcf-4c3c-b416-6bd7a1ea769c
+
+	column WORKSPACE_ID
+		dataType: double
+		lineageTag: 4c52b1b9-003d-4fe8-a465-e1ac60e4d5a3
+		summarizeBy: count
+		sourceColumn: WORKSPACE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ACCOUNT_KEY
+		dataType: string
+		lineageTag: c177e84d-7010-4171-8449-9607935ae196
+		summarizeBy: none
+		sourceColumn: ACCOUNT_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+	column MARKETPLACE_KEY
+		dataType: string
+		lineageTag: ff0a221a-23f1-4d68-a03a-d52bea906a27
+		summarizeBy: none
+		sourceColumn: MARKETPLACE_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+	column CUSTOMER_ORDER_ID
+		dataType: string
+		lineageTag: 3478351e-c49a-49be-a3cb-3e3330077a07
+		summarizeBy: none
+		sourceColumn: CUSTOMER_ORDER_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column PURCHASE_ORDER_ID
+		dataType: string
+		lineageTag: ca474b76-c2c4-49be-ad7c-64f18d4f7488
+		summarizeBy: none
+		sourceColumn: PURCHASE_ORDER_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ORDER_DATE
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: fabe0ceb-4d00-4319-bf01-af7d2058e1f5
+		summarizeBy: none
+		sourceColumn: ORDER_DATE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column ORDER_LOCAL_DATE
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 9cc8c07b-6017-4525-b67d-aba029472690
+		summarizeBy: none
+		sourceColumn: ORDER_LOCAL_DATE
+
+		variation Variation
+			isDefault
+			relationship: 58d5e4e1-0a56-400b-9a8a-14a6407046a5
+			defaultHierarchy: LocalDateTable_c3e2fa6f-101f-4abc-89f2-3752eb93e9f6.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column ORDER_TIME
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 9c30b6ab-e26f-4da6-8cd1-9d6bf43d4c93
+		summarizeBy: none
+		sourceColumn: ORDER_TIME
+
+		variation Variation
+			isDefault
+			relationship: 45fdd457-7ac7-4f29-8bb7-9b55cf9f7c04
+			defaultHierarchy: LocalDateTable_e4e918c2-0b4e-4500-88ef-34f93a947bb4.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column ORDER_LOCAL_TIME
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: cc4acb4a-746c-4e67-8be4-af84c7077a1a
+		summarizeBy: none
+		sourceColumn: ORDER_LOCAL_TIME
+
+		variation Variation
+			isDefault
+			relationship: ed87e52c-5228-4c4e-8c38-8b10072ac4c8
+			defaultHierarchy: LocalDateTable_8301f130-397d-411f-81b4-efb3f3f228ef.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column SKU
+		dataType: string
+		lineageTag: ddf8ea2b-150d-4783-9ad3-76ed2d52e757
+		summarizeBy: none
+		sourceColumn: SKU
+
+		annotation SummarizationSetBy = Automatic
+
+	column WPID
+		dataType: string
+		lineageTag: 91dae3ce-2924-46be-bbf6-55cd6f504e71
+		summarizeBy: none
+		sourceColumn: WPID
+
+		annotation SummarizationSetBy = Automatic
+
+	column PRODUCT_KEY
+		dataType: string
+		lineageTag: d8f2b78f-c142-4b0c-83bd-8265a25745db
+		summarizeBy: none
+		sourceColumn: PRODUCT_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+	column UPC
+		dataType: string
+		lineageTag: 28394946-c31f-4098-b8aa-7b7ce17a810c
+		summarizeBy: none
+		sourceColumn: UPC
+
+		annotation SummarizationSetBy = Automatic
+
+	column GTIN
+		dataType: string
+		lineageTag: c2c77b2a-6750-48ce-8433-236ad4a33b5a
+		summarizeBy: none
+		sourceColumn: GTIN
+
+		annotation SummarizationSetBy = Automatic
+
+	column PRODUCT_NAME
+		dataType: string
+		lineageTag: 6eb2da47-35f9-4786-9a5b-60cdfa91c384
+		summarizeBy: none
+		sourceColumn: PRODUCT_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column CURRENCY
+		dataType: string
+		lineageTag: a18ac0ec-a802-4eb5-93a7-3caae450cfb1
+		summarizeBy: none
+		sourceColumn: CURRENCY
+
+		annotation SummarizationSetBy = Automatic
+
+	column AMOUNT
+		dataType: double
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 888a8d83-9b9d-4ef4-a603-327aaa05e4a6
+		summarizeBy: sum
+		sourceColumn: AMOUNT
+
+		annotation SummarizationSetBy = Automatic
+
+	column QUANTITY
+		dataType: double
+		formatString: 0
+		lineageTag: 684607ae-b305-46f3-970f-9bbd68d5b62b
+		summarizeBy: sum
+		sourceColumn: QUANTITY
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column CHARGE_NAME
+		dataType: string
+		lineageTag: 5bf6419e-bdda-483e-87de-38eae490ab99
+		summarizeBy: none
+		sourceColumn: CHARGE_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column CHARGE_TYPE
+		dataType: string
+		lineageTag: 82b0e13a-b0d4-4759-b1f1-81357c11ad56
+		summarizeBy: none
+		sourceColumn: CHARGE_TYPE
+
+		annotation SummarizationSetBy = Automatic
+
+	column CHARGE_TAX
+		dataType: string
+		lineageTag: 6c34c7e7-938e-4cb6-ae00-d5bbcb327bab
+		summarizeBy: none
+		sourceColumn: CHARGE_TAX
+
+		annotation SummarizationSetBy = Automatic
+
+	column UNIT_OF_MEASUREMENT
+		dataType: string
+		lineageTag: b466a613-ca73-482b-93df-503a5715d6c3
+		summarizeBy: none
+		sourceColumn: UNIT_OF_MEASUREMENT
+
+		annotation SummarizationSetBy = Automatic
+
+	column STATUS
+		dataType: string
+		lineageTag: 69f706c5-aa90-458a-a7ee-7be4d659b12d
+		summarizeBy: none
+		sourceColumn: STATUS
+
+		annotation SummarizationSetBy = Automatic
+
+	column STATUS_QUANTITY
+		dataType: double
+		lineageTag: 0782e5fe-bcd5-4f7b-8765-fccdafff3220
+		summarizeBy: sum
+		sourceColumn: STATUS_QUANTITY
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column STATUS_UNIT_OF_MEASUREMENT
+		dataType: string
+		lineageTag: 082aa13b-6ebe-453a-af65-1bd94901ccb4
+		summarizeBy: none
+		sourceColumn: STATUS_UNIT_OF_MEASUREMENT
+
+		annotation SummarizationSetBy = Automatic
+
+	column CUSTOMER_EMAIL_ID
+		dataType: string
+		lineageTag: e86d29f1-6ad1-43e4-a200-c6a711903b23
+		summarizeBy: none
+		sourceColumn: CUSTOMER_EMAIL_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column SHIP_NODE_TYPE
+		dataType: string
+		lineageTag: 141004db-c116-4b65-af0f-b1e04490ce47
+		summarizeBy: none
+		sourceColumn: SHIP_NODE_TYPE
+
+		annotation SummarizationSetBy = Automatic
+
+	column SHIPPING_PHONE
+		dataType: string
+		lineageTag: 6c039b5a-76f4-4fc7-9986-ddfe5d6b599e
+		summarizeBy: none
+		sourceColumn: SHIPPING_PHONE
+
+		annotation SummarizationSetBy = Automatic
+
+	column ADDRESS_1
+		dataType: string
+		lineageTag: 0e4a7754-fe18-41d4-a3f2-5e051dd82f7e
+		summarizeBy: none
+		sourceColumn: ADDRESS_1
+
+		annotation SummarizationSetBy = Automatic
+
+	column ADDRESS_2
+		dataType: string
+		lineageTag: cf596492-d5c0-48e9-857d-3359e32eff73
+		summarizeBy: none
+		sourceColumn: ADDRESS_2
+
+		annotation SummarizationSetBy = Automatic
+
+	column CITY
+		dataType: string
+		lineageTag: 28ce917c-6ea9-4872-86c7-d5a58c755121
+		summarizeBy: none
+		sourceColumn: CITY
+
+		annotation SummarizationSetBy = Automatic
+
+	column STATE
+		dataType: string
+		lineageTag: c879aba4-9a38-4b32-b6d5-0938e2421d0e
+		summarizeBy: none
+		sourceColumn: STATE
+
+		annotation SummarizationSetBy = Automatic
+
+	column POSTAL_CODE
+		dataType: string
+		lineageTag: c0d3baed-e297-42ec-9b59-e9d0564ccd6c
+		summarizeBy: none
+		sourceColumn: POSTAL_CODE
+
+		annotation SummarizationSetBy = Automatic
+
+	column COUNTRY
+		dataType: string
+		lineageTag: 40fc59c2-f7ab-44f6-bef7-29010d0f2642
+		summarizeBy: none
+		sourceColumn: COUNTRY
+
+		annotation SummarizationSetBy = Automatic
+
+	column ESTIMATED_DELIVERY_TIME
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 43de89a6-22d2-4561-a694-2c8613c70693
+		summarizeBy: none
+		sourceColumn: ESTIMATED_DELIVERY_TIME
+
+		variation Variation
+			isDefault
+			relationship: cbb1175e-d2b7-48e0-90d2-ab2415f40faa
+			defaultHierarchy: LocalDateTable_bb04df67-5a6a-4204-9b07-860c2cc1fda5.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column ESTIMATED_SHIP_TIME
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: a46c732e-1edf-4139-bf38-b9c98d5e2ac5
+		summarizeBy: none
+		sourceColumn: ESTIMATED_SHIP_TIME
+
+		variation Variation
+			isDefault
+			relationship: 5c96ef18-db29-4937-9009-91fc84756754
+			defaultHierarchy: LocalDateTable_749f5d51-44b7-4af2-b0bc-f2dafbe11a06.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column SHIPPING_METHOD_CODE
+		dataType: string
+		lineageTag: b37d27f4-a06c-47ed-8079-2449b8759726
+		summarizeBy: none
+		sourceColumn: SHIPPING_METHOD_CODE
+
+		annotation SummarizationSetBy = Automatic
+
+	column TRACKING_NUMBER
+		dataType: string
+		lineageTag: 03f6b60d-7ca6-473e-8fe1-0599441fa32c
+		summarizeBy: none
+		sourceColumn: TRACKING_NUMBER
+
+		annotation SummarizationSetBy = Automatic
+
+	column TRACKING_URL
+		dataType: string
+		lineageTag: 44adc406-b621-463c-9e9d-c002c447f9d3
+		summarizeBy: none
+		sourceColumn: TRACKING_URL
+
+		annotation SummarizationSetBy = Automatic
+
+	column FULFILLMENT_OPTION
+		dataType: string
+		lineageTag: 65f003fc-aa26-404c-9bd3-8599beb5382d
+		summarizeBy: none
+		sourceColumn: FULFILLMENT_OPTION
+
+		annotation SummarizationSetBy = Automatic
+
+	column PICK_UP_BY
+		dataType: string
+		lineageTag: 7ed8367b-37e0-46d2-a340-c8dd0ee4bd39
+		summarizeBy: none
+		sourceColumn: PICK_UP_BY
+
+		annotation SummarizationSetBy = Automatic
+
+	column PICK_UP_DATE_TIME
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 18932a5c-0f9c-4ff8-9dd4-0d79bc733f91
+		summarizeBy: none
+		sourceColumn: PICK_UP_DATE_TIME
+
+		variation Variation
+			isDefault
+			relationship: 906b2aea-d389-4ca5-973e-7111b317298e
+			defaultHierarchy: LocalDateTable_e168cd9d-4af9-41c4-bccf-930bef674874.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column SHIP_METHOD
+		dataType: string
+		lineageTag: 3eda2878-34e1-4d2d-a04c-3b0c26747eb8
+		summarizeBy: none
+		sourceColumn: SHIP_METHOD
+
+		annotation SummarizationSetBy = Automatic
+
+	column SHIPPING_PROGRAM_TYPE
+		dataType: string
+		lineageTag: 36021c1b-8491-4a0a-a31a-92eb3af7a5f6
+		summarizeBy: none
+		sourceColumn: SHIPPING_PROGRAM_TYPE
+
+		annotation SummarizationSetBy = Automatic
+
+	column CANCELLATION_REASON
+		dataType: string
+		lineageTag: be97bfbd-7e8c-4e11-b930-d8814e2abd4e
+		summarizeBy: none
+		sourceColumn: CANCELLATION_REASON
+
+		annotation SummarizationSetBy = Automatic
+
+	column RETURN_CENTER_ADDRESS
+		dataType: string
+		lineageTag: c98abf39-5edc-4e59-8082-cf4f38858997
+		summarizeBy: none
+		sourceColumn: RETURN_CENTER_ADDRESS
+
+		annotation SummarizationSetBy = Automatic
+
+	column SUB_SELLER_ID
+		dataType: string
+		lineageTag: f00a19cd-2ef7-4529-9b15-c734f17e0a5b
+		summarizeBy: none
+		sourceColumn: SUB_SELLER_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column _SYNC_TIME
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: b766f162-1eb7-429c-9d34-979be0b7f0a0
+		summarizeBy: none
+		sourceColumn: _SYNC_TIME
+
+		variation Variation
+			isDefault
+			relationship: e0eb049c-0146-448c-b578-933b9a43e11e
+			defaultHierarchy: LocalDateTable_999fa33c-24c0-45e8-9ec5-4c0e4f012e2f.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'SKU - NO SC'
+		dataType: string
+		lineageTag: ae5eb5eb-8039-454b-bd50-f2b0d6996d99
+		summarizeBy: none
+		sourceColumn: SKU - NO SC
+
+		annotation SummarizationSetBy = Automatic
+
+	column Multi_SKU_Order = ```
+			--for flagging any orders where CUSTOMER_ORDER_ID has multiple SKUs 
+			VAR ThisOrderID = WMT_MARKETPLACE_ORDERS[CUSTOMER_ORDER_ID]
+			VAR DistinctSKUCount =
+			    CALCULATE(
+			        DISTINCTCOUNT(WMT_MARKETPLACE_ORDERS[SKU]),
+			        ALLEXCEPT(WMT_MARKETPLACE_ORDERS, WMT_MARKETPLACE_ORDERS[CUSTOMER_ORDER_ID])
+			    )
+			RETURN
+			IF(DistinctSKUCount > 1, TRUE, FALSE)
+			
+			```
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: c8dd475c-9d68-4eee-8b9e-e5c69747fbc1
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Filter_Order_Flag = ```
+			--for flagging any orders where QUANTITY > 1 OR CUSTOMER_ORDER_ID has multiple SKUs 
+			IF(
+			    WMT_MARKETPLACE_ORDERS[QUANTITY] > 1 
+			    || WMT_MARKETPLACE_ORDERS[Multi_SKU_Order] = TRUE,
+			    TRUE,
+			    FALSE
+			)
+			
+			```
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: accc4304-ca31-4e52-800e-28926415dde1
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition WMT_MARKETPLACE_ORDERS = m
+		mode: import
+		source =
+				let
+				    Source = Snowflake.Databases("zo76507.west-europe.azure.snowflakecomputing.com","WH_XSMALL_83818"),
+				    DATAHAWK_SHARE_83818_Database = Source{[Name="DATAHAWK_SHARE_83818",Kind="Database"]}[Data],
+				    FINANCE_Schema = DATAHAWK_SHARE_83818_Database{[Name="FINANCE",Kind="Schema"]}[Data],
+				    WMT_MARKETPLACE_ORDERS_View = FINANCE_Schema{[Name="WMT_MARKETPLACE_ORDERS",Kind="View"]}[Data],
+				    #"Added Custom" = Table.AddColumn(WMT_MARKETPLACE_ORDERS_View, "SKU - NO SC", each Text.Replace(Text.Replace([SKU], "SC", ""), ".", ""))
+				in
+				    #"Added Custom"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

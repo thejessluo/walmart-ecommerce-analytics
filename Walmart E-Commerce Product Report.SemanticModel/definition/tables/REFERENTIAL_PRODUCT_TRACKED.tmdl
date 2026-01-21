@@ -1,0 +1,171 @@
+table REFERENTIAL_PRODUCT_TRACKED
+	lineageTag: 68964b32-340b-4b56-8c79-6c40614e3279
+
+	column MARKETPLACE_KEY
+		dataType: string
+		lineageTag: 602c0946-ef9f-4c76-a01f-602cf1ef4ae3
+		summarizeBy: none
+		sourceColumn: MARKETPLACE_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+	column PRODUCT_KEY
+		dataType: string
+		lineageTag: 34767863-aca5-42e8-93f2-07057d2f87a1
+		summarizeBy: none
+		sourceColumn: PRODUCT_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+	column CHANNEL_PRODUCT_ID
+		dataType: string
+		lineageTag: 08a59718-6ca5-4a10-b635-53d157800e77
+		summarizeBy: none
+		sourceColumn: CHANNEL_PRODUCT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column WORKSPACE_ID
+		dataType: double
+		lineageTag: 33763ff6-a13d-43f4-9ff1-11bc9724f440
+		summarizeBy: count
+		sourceColumn: WORKSPACE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PRODUCT_TRACKING_DATE
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: c9e6fc5d-c936-4a81-b375-0ab384bdc225
+		summarizeBy: none
+		sourceColumn: PRODUCT_TRACKING_DATE
+
+		variation Variation
+			isDefault
+			relationship: c2881537-05d6-40fe-a830-03ac94e85147
+			defaultHierarchy: LocalDateTable_0efb43d2-ddb0-4f32-b722-fb8fde0bff79.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column TRACKABLE
+		dataType: double
+		lineageTag: 92ef4c00-d4cd-403d-9d55-68f58bbdcfe6
+		summarizeBy: sum
+		sourceColumn: TRACKABLE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TRACKED_PRODUCTS_ONLY = IF(ISBLANK(REFERENTIAL_PRODUCT_TRACKED[TRACKABLE]),"Tracked Products Only","All Results")
+		lineageTag: 5e71d205-0971-4dad-a92f-ca7bad4613af
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column CURRENT_SNAPSHOT_TS
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: f1deaf59-2cac-402f-b56f-a58ad1ce4cb9
+		summarizeBy: none
+		sourceColumn: CURRENT_SNAPSHOT_TS
+
+		variation Variation
+			isDefault
+			relationship: f4b1621d-a3b8-4b70-9a57-629b09632f74
+			defaultHierarchy: LocalDateTable_8acc891c-a55f-4b23-a0f6-f90ee0894182.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column CURRENT_RECORD_TS
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 04d1d5bc-4021-4c7e-a273-479c84f0fdf6
+		summarizeBy: none
+		sourceColumn: CURRENT_RECORD_TS
+
+		variation Variation
+			isDefault
+			relationship: f7562854-55cb-4bc4-9a05-9798306db71b
+			defaultHierarchy: LocalDateTable_f58c4aae-d517-4ac3-997f-cd24cd04bcd1.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column PREVIOUS_SNAPSHOT_TS
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 402131be-fd79-4c5d-82e7-9278cf3425ab
+		summarizeBy: none
+		sourceColumn: PREVIOUS_SNAPSHOT_TS
+
+		variation Variation
+			isDefault
+			relationship: 10fc2c1c-6bfd-4aeb-aba9-ed2bb233e207
+			defaultHierarchy: LocalDateTable_b31ab50e-3aa2-4f1c-b9b1-e1789b19aac6.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column MIN_VERSION_DATE
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: cd6933b5-d60f-430b-b3dd-48cfbcb9c6da
+		summarizeBy: none
+		sourceColumn: MIN_VERSION_DATE
+
+		variation Variation
+			isDefault
+			relationship: 00746d05-8b2c-4251-b558-992d7a090318
+			defaultHierarchy: LocalDateTable_6d11c975-d694-4a17-bc9c-b8718ac3a0f7.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column MAX_VERSION_DATE
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 0b1cc4b8-a375-4cad-9df7-802ed9146c20
+		summarizeBy: none
+		sourceColumn: MAX_VERSION_DATE
+
+		variation Variation
+			isDefault
+			relationship: 61b3b6ee-8894-4bf4-a1cd-56006713ad54
+			defaultHierarchy: LocalDateTable_fd226758-9776-4961-9543-e995182be22f.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column FIRST_SNAPSHOT_TS
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 0e50c6b6-4956-4866-b4cb-48563535c349
+		summarizeBy: none
+		sourceColumn: FIRST_SNAPSHOT_TS
+
+		variation Variation
+			isDefault
+			relationship: 1ecd5f24-0b2b-433c-9165-ce485333171f
+			defaultHierarchy: LocalDateTable_b8378818-8241-4017-8f21-baf621e1e5d9.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition REFERENTIAL_PRODUCT_TRACKED-60b18227-9a73-40d3-97f3-330c62a8e60a = m
+		mode: import
+		queryGroup: Sources
+		source =
+				let
+				    Source = Snowflake.Databases(Server,Warehouse),
+				    Database = Source{[Name=Database,Kind="Database"]}[Data],
+				    REFERENTIAL_Schema = Database{[Name="REFERENTIAL",Kind="Schema"]}[Data],
+				    REFERENTIAL_PRODUCT_TRACKED_View = REFERENTIAL_Schema{[Name="REFERENTIAL_PRODUCT_TRACKED",Kind="View"]}[Data]
+				in
+				    REFERENTIAL_PRODUCT_TRACKED_View
+
+	annotation PBI_ResultType = Table
+

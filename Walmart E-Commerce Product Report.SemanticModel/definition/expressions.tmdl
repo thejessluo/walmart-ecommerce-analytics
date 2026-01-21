@@ -1,0 +1,96 @@
+/// Replace the value in the "Current Value" field with the value provided in the Power BI destination you created beforehand on the DataHawk web app. (https://analytics.datahawk.co/app/destinations/databases)
+expression Database = "DATAHAWK_SHARE_83818" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: a1884899-f854-4579-8b58-7430d8509c64
+	queryGroup: Configuration
+
+	annotation PBI_ResultType = Text
+
+/// Replace the value in the "Current Value" field with the value provided in the Power BI destination you created beforehand on the DataHawk web app. (https://analytics.datahawk.co/app/destinations/databases)
+expression Warehouse = "WH_DATAHAWK_SHARE_83818_164940445" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: bab09e4d-c614-4007-8eb8-9f449c39bb2d
+	queryGroup: Configuration
+
+	annotation PBI_ResultType = Text
+
+/// Replace the value in the "Current Value" field with the value provided in the Power BI destination you created beforehand on the DataHawk web app. (https://analytics.datahawk.co/app/destinations/databases)
+expression Server = "mj13008.west-europe.azure.snowflakecomputing.com" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: 00e3a897-999e-48a1-b0b1-89d58ec4bab8
+	queryGroup: Configuration
+
+	annotation PBI_ResultType = Text
+
+/// Lookback history in number of days to be used for the data tables. Set at 14 days by default.
+expression 'Lookback History' = 250 meta [IsParameterQuery=true, Type="Number", IsParameterQueryRequired=true]
+	lineageTag: 53fefefc-ae7d-4e59-87d5-005949a11283
+	queryGroup: Configuration
+
+	annotation PBI_ResultType = Number
+
+expression FUNCTION_TEXT_TO_ASCII = ```
+		let
+		    Source = (textToConvert) =>
+		let 
+		    textBinary = Text.ToBinary  (textToConvert,              1251 ),
+		    textASCII  = Text.FromBinary(textBinary   , TextEncoding.Ascii)
+		in    
+		    textASCII
+		in
+		    Source
+		```
+	lineageTag: 962a3c63-ef89-4738-a6d9-b7444741a94c
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Function
+
+expression REPORT_PRODUCT_LATEST_VERSION = ```
+		let
+		    Source = Value.NativeQuery(
+		        Snowflake.Databases(
+		            Server,
+		            Warehouse
+		            )
+		            {[Name=Database]}[Data], 
+		            "SELECT *,ifnull(BRAND,BRAND_CATALOG) as BRAND_FINAL
+		            FROM REPORTS.REPORT_PRODUCT_LATEST_VERSION
+		            WHERE OBSERVATION_DATE >= CURRENT_DATE - "&Text.From(#"Lookback History"), null, [EnableFolding=true])
+		in
+		    Source
+		```
+	lineageTag: 9ee41b4b-600d-4b98-9102-73f3d119ee2e
+	queryGroup: 'Products Data'
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+/// Replace the value in the "Current Value" field with the value provided in the Power BI destination you created beforehand on the DataHawk web app. (https://analytics.datahawk.co/app/destinations/databases)
+expression 'Server (2)' = "mj13008.west-europe.azure.snowflakecomputing.com" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: 7be7229d-6379-4be5-b06d-92848ea0600b
+	queryGroup: Configuration
+
+	annotation PBI_ResultType = Text
+
+/// Replace the value in the "Current Value" field with the value provided in the Power BI destination you created beforehand on the DataHawk web app. (https://analytics.datahawk.co/app/destinations/databases)
+expression 'Warehouse (2)' = "WH_DATAHAWK_SHARE_83818_164940445" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: 28c6caed-1e0c-4a65-bd37-c802d20b1dad
+	queryGroup: Configuration
+
+	annotation PBI_ResultType = Text
+
+/// Replace the value in the "Current Value" field with the value provided in the Power BI destination you created beforehand on the DataHawk web app. (https://analytics.datahawk.co/app/destinations/databases)
+expression 'Database (2)' = "DATAHAWK_SHARE_83818" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: 2db3a45b-c56a-4e03-850a-38da7ace6b42
+	queryGroup: Configuration
+
+	annotation PBI_ResultType = Text
+
+/// Lookback history in number of days to be used for the data tables. Set at 14 days by default.
+expression 'Lookback History (2)' = 250 meta [IsParameterQuery=true, Type="Number", IsParameterQueryRequired=true]
+	lineageTag: 28fe33b0-eb13-46a8-ba27-9df81f5f02f5
+	queryGroup: Configuration
+
+	annotation PBI_ResultType = Number
+
+	annotation PBI_NavigationStepName = Navigation
+

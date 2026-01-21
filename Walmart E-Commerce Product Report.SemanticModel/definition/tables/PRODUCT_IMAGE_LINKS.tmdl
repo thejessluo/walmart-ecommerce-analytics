@@ -1,0 +1,135 @@
+table PRODUCT_IMAGE_LINKS
+	lineageTag: 44dd6ab4-c149-4702-af2a-8a34236ff708
+
+	column MARKETPLACE_KEY
+		dataType: string
+		lineageTag: c1c54b79-ade5-47a5-9680-ac19526fd39c
+		summarizeBy: none
+		sourceColumn: MARKETPLACE_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+	column PRODUCT_KEY
+		dataType: string
+		lineageTag: af2329ff-82a4-44af-9bad-bccd2fd22db0
+		summarizeBy: none
+		sourceColumn: PRODUCT_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+	column CHANNEL_PRODUCT_ID
+		dataType: string
+		lineageTag: 8a86a7cc-69c4-4d8b-9b6e-42e6161b0b22
+		summarizeBy: none
+		sourceColumn: CHANNEL_PRODUCT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column OBSERVATION_DATE
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: bcd61b4e-9852-4551-9146-9951d5a8c360
+		summarizeBy: none
+		sourceColumn: OBSERVATION_DATE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column OBSERVATION_TIME
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 593fc425-9b5e-4611-8abf-069552fef179
+		summarizeBy: none
+		sourceColumn: OBSERVATION_TIME
+
+		variation Variation
+			isDefault
+			relationship: 79900f06-9813-43a7-87d4-2c9e911b0de7
+			defaultHierarchy: LocalDateTable_137ed3c3-a7b9-4cad-854d-67414e56cdee.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column IMAGE_LINK_LARGE
+		dataType: string
+		lineageTag: c77b6c83-6b10-4776-9541-f6d0f5d04acb
+		summarizeBy: none
+		sourceColumn: IMAGE_LINK_LARGE
+
+		annotation SummarizationSetBy = Automatic
+
+	column IMAGE_LINK_THUMB
+		dataType: string
+		lineageTag: 18ef1353-52e7-4d49-b5c7-9831133d0cde
+		dataCategory: ImageUrl
+		summarizeBy: none
+		sourceColumn: IMAGE_LINK_THUMB
+
+		annotation SummarizationSetBy = Automatic
+
+	column IMAGE_NAME
+		dataType: string
+		lineageTag: a74dcf41-5d5a-41cc-abcd-833bb4e3fed0
+		summarizeBy: none
+		sourceColumn: IMAGE_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column SYNC_TIME
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 45b5c6ea-3550-4241-a9c9-5ea2f4d4b7a0
+		summarizeBy: none
+		sourceColumn: SYNC_TIME
+
+		variation Variation
+			isDefault
+			relationship: f2284826-ce63-4889-8a73-c0995dcae3be
+			defaultHierarchy: LocalDateTable_66aa4c7b-237d-4285-8f86-4bc1f1e9f082.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column WORKSPACE_ID
+		dataType: double
+		lineageTag: 480f1542-c7e2-4516-982a-cbb1928e31b6
+		summarizeBy: count
+		sourceColumn: WORKSPACE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column _SYNC_TIME
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 66fd4e93-b6a1-49d7-a5fe-34b70e53ca67
+		summarizeBy: none
+		sourceColumn: _SYNC_TIME
+
+		variation Variation
+			isDefault
+			relationship: 0aa4b57d-e082-4a26-9ec6-558cc79c2e29
+			defaultHierarchy: LocalDateTable_adf1ee61-4099-4e38-a00c-cad9ea940e9c.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition PRODUCT_IMAGE_LINKS-77f1edfc-2078-41e9-84c5-329ebbcc7d4d = m
+		mode: import
+		queryGroup: 'Products Data'
+		source = ```
+				let
+				    Source = Value.NativeQuery(
+				        Snowflake.Databases(
+				            Server,
+				            Warehouse
+				            )
+				            {[Name=Database]}[Data], 
+				            "SELECT *
+				            FROM PRODUCT.PRODUCT_IMAGE_LINKS
+				            WHERE OBSERVATION_DATE >= CURRENT_DATE - "&Text.From(#"Lookback History"), null, [EnableFolding=true])
+				in
+				    Source
+				```
+
+	annotation PBI_ResultType = Exception
+

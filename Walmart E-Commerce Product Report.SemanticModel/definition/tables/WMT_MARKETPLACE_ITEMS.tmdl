@@ -1,0 +1,207 @@
+table WMT_MARKETPLACE_ITEMS
+	lineageTag: 198c9d0a-91db-4a3a-9ea5-064f33b6c321
+
+	column WORKSPACE_ID
+		dataType: double
+		lineageTag: 47c61ab4-d383-4d1f-913e-ff46d7678273
+		summarizeBy: count
+		sourceColumn: WORKSPACE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ACCOUNT_KEY
+		dataType: string
+		lineageTag: 76cb0ed6-34c2-42da-893c-4af6318fb892
+		summarizeBy: none
+		sourceColumn: ACCOUNT_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+	column MARKETPLACE_KEY
+		dataType: string
+		lineageTag: bc7ea8b6-b09f-4755-ac38-69aae74b666a
+		summarizeBy: none
+		sourceColumn: MARKETPLACE_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+	column MART
+		dataType: string
+		lineageTag: 46be7ca0-efb1-4bd9-bedc-60d3452632b5
+		summarizeBy: none
+		sourceColumn: MART
+
+		annotation SummarizationSetBy = Automatic
+
+	column PRODUCT_KEY
+		dataType: string
+		lineageTag: 611defb4-9f50-4f77-8f5c-84a7dd14be73
+		summarizeBy: none
+		sourceColumn: PRODUCT_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+	column WPID
+		dataType: string
+		lineageTag: 52915546-ee22-4ce4-8710-f4a7b05decf9
+		summarizeBy: none
+		sourceColumn: WPID
+
+		annotation SummarizationSetBy = Automatic
+
+	column SKU
+		dataType: string
+		lineageTag: 238f799f-0bf3-410a-ba6d-c7375ea84f35
+		summarizeBy: none
+		sourceColumn: SKU
+
+		annotation SummarizationSetBy = Automatic
+
+	column UPC
+		dataType: string
+		lineageTag: 03034677-9c63-4c77-b334-b677f653604a
+		summarizeBy: none
+		sourceColumn: UPC
+
+		annotation SummarizationSetBy = Automatic
+
+	column GTIN
+		dataType: string
+		lineageTag: a43b6747-8c3a-4cec-bbfe-c08a32c17068
+		summarizeBy: none
+		sourceColumn: GTIN
+
+		annotation SummarizationSetBy = Automatic
+
+	column PRODUCT_NAME
+		dataType: string
+		lineageTag: 48ee326b-2a0e-4ad4-8e5a-561978683dfe
+		summarizeBy: none
+		sourceColumn: PRODUCT_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column PRODUCT_TYPE
+		dataType: string
+		lineageTag: b7e3a2a4-fe8a-45d9-b4ed-68f067987337
+		summarizeBy: none
+		sourceColumn: PRODUCT_TYPE
+
+		annotation SummarizationSetBy = Automatic
+
+	column PRICE_AMOUNT
+		dataType: double
+		lineageTag: e8622b03-129d-435d-9f04-dfb8b066650b
+		summarizeBy: sum
+		sourceColumn: PRICE_AMOUNT
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PRICE_CURRENCY
+		dataType: string
+		lineageTag: d1f79b16-fcd0-43f2-82c7-0315dd5d3a40
+		summarizeBy: none
+		sourceColumn: PRICE_CURRENCY
+
+		annotation SummarizationSetBy = Automatic
+
+	column AVAILABILITY
+		dataType: string
+		lineageTag: be5d90ef-a2a9-40e7-aff3-94c09ff538cd
+		summarizeBy: none
+		sourceColumn: AVAILABILITY
+
+		annotation SummarizationSetBy = Automatic
+
+	column CONDITION
+		dataType: string
+		lineageTag: 75cfcdb8-1362-4a4e-bbc8-2d4ed13323d5
+		summarizeBy: none
+		sourceColumn: CONDITION
+
+		annotation SummarizationSetBy = Automatic
+
+	column IS_DUPLICATE
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 6e2b0641-331f-4bb6-82f1-b328bc270e80
+		summarizeBy: none
+		sourceColumn: IS_DUPLICATE
+
+		annotation SummarizationSetBy = Automatic
+
+	column LIFECYCLE_STATUS
+		dataType: string
+		lineageTag: 524ce9b7-86b1-43c0-ad94-5204e7d3e3e9
+		summarizeBy: none
+		sourceColumn: LIFECYCLE_STATUS
+
+		annotation SummarizationSetBy = Automatic
+
+	column PUBLISHED_STATUS
+		dataType: string
+		lineageTag: cdca55f0-d1af-4867-842c-4d18948e589c
+		summarizeBy: none
+		sourceColumn: PUBLISHED_STATUS
+
+		annotation SummarizationSetBy = Automatic
+
+	column SHELF
+		dataType: string
+		lineageTag: e847bb8c-1384-49d5-8a0e-489dabadae13
+		summarizeBy: none
+		sourceColumn: SHELF
+
+		annotation SummarizationSetBy = Automatic
+
+	column UNPUBLISHED_REASONS
+		dataType: string
+		lineageTag: 97bab5a2-ddf1-4c76-9d84-3e2d9ea442da
+		summarizeBy: none
+		sourceColumn: UNPUBLISHED_REASONS
+
+		annotation SummarizationSetBy = Automatic
+
+	column RECORD_TS
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: b93fdc62-3abb-4d50-93b1-250ee7c53b33
+		summarizeBy: none
+		sourceColumn: RECORD_TS
+
+		variation Variation
+			isDefault
+			relationship: fb0e6f8e-0623-4496-8d79-b9c05091ce03
+			defaultHierarchy: LocalDateTable_084f870e-96c1-409b-8d53-b9a3e612b14a.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column _SYNC_TIME
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 03c04d0d-105f-4a16-ae37-3ba02cd978e8
+		summarizeBy: none
+		sourceColumn: _SYNC_TIME
+
+		variation Variation
+			isDefault
+			relationship: d08cb4c4-1f9d-4906-acd3-6c70968e6f14
+			defaultHierarchy: LocalDateTable_00fc0ba7-94b4-400a-b771-8aae5f0935ed.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition WMT_MARKETPLACE_ITEMS = m
+		mode: import
+		source =
+				let
+				    Source = Snowflake.Databases("zo76507.west-europe.azure.snowflakecomputing.com","WH_XSMALL_83818"),
+				    DATAHAWK_SHARE_83818_Database = Source{[Name="DATAHAWK_SHARE_83818",Kind="Database"]}[Data],
+				    FINANCE_Schema = DATAHAWK_SHARE_83818_Database{[Name="FINANCE",Kind="Schema"]}[Data],
+				    WMT_MARKETPLACE_ITEMS_View = FINANCE_Schema{[Name="WMT_MARKETPLACE_ITEMS",Kind="View"]}[Data]
+				in
+				    WMT_MARKETPLACE_ITEMS_View
+

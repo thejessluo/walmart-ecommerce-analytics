@@ -1,0 +1,600 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "02f977dc8d4293a85cf4",
+  "position": {
+    "x": 181.25,
+    "y": 65,
+    "z": 0,
+    "height": 655,
+    "width": 1098.75,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "PRODUCT_DETAILED"
+                    }
+                  },
+                  "Property": "OBSERVATION_DATE"
+                }
+              },
+              "queryRef": "PRODUCT_DETAILED.OBSERVATION_DATE",
+              "nativeQueryRef": "Date",
+              "displayName": "Date"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Product IDs to SKUs"
+                    }
+                  },
+                  "Property": "SKU"
+                }
+              },
+              "queryRef": "Product IDs to SKUs.SKU",
+              "nativeQueryRef": "SKU"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DIM_PRODUCTS_1"
+                    }
+                  },
+                  "Property": "CHANNEL_PRODUCT_ID"
+                }
+              },
+              "queryRef": "DIM_PRODUCTS_1.CHANNEL_PRODUCT_ID",
+              "nativeQueryRef": "Product ID",
+              "displayName": "Product ID"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DIM_PRODUCTS_1"
+                    }
+                  },
+                  "Property": "Jess_IMAGE_LARGE_MAIN"
+                }
+              },
+              "queryRef": "DIM_PRODUCTS_1.Jess_IMAGE_LARGE_MAIN",
+              "nativeQueryRef": "Image",
+              "displayName": "Image"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DIM_PRODUCTS_1"
+                    }
+                  },
+                  "Property": "NAME"
+                }
+              },
+              "queryRef": "DIM_PRODUCTS_1.NAME",
+              "nativeQueryRef": "CURRENT ITEM TITLE",
+              "displayName": "CURRENT ITEM TITLE"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "PRODUCT_DETAILED"
+                    }
+                  },
+                  "Property": "RESULT_TITLE_PREVIOUS_DAY"
+                }
+              },
+              "queryRef": "PRODUCT_DETAILED.RESULT_TITLE_PREVIOUS_DAY",
+              "nativeQueryRef": "Previous Item Title",
+              "displayName": "Previous Item Title"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "PRODUCT_DETAILED"
+                    }
+                  },
+                  "Property": "DESCRIPTION_TEXT"
+                }
+              },
+              "queryRef": "PRODUCT_DETAILED.DESCRIPTION_TEXT",
+              "nativeQueryRef": "CURRENT DESCRIPTION",
+              "displayName": "CURRENT DESCRIPTION"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "PRODUCT_DETAILED"
+                    }
+                  },
+                  "Property": "Jess_RESULT_DESCRIPTION_D1"
+                }
+              },
+              "queryRef": "PRODUCT_DETAILED.Jess_RESULT_DESCRIPTION_D1",
+              "nativeQueryRef": "Previous Description",
+              "displayName": "Previous Description"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "PRODUCT_DETAILED"
+                    }
+                  },
+                  "Property": "BULLET_POINTS"
+                }
+              },
+              "queryRef": "PRODUCT_DETAILED.BULLET_POINTS",
+              "nativeQueryRef": "CURRENT BULLETS",
+              "displayName": "CURRENT BULLETS"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "PRODUCT_DETAILED"
+                    }
+                  },
+                  "Property": "Jess_RESULT_BULLETS_D1"
+                }
+              },
+              "queryRef": "PRODUCT_DETAILED.Jess_RESULT_BULLETS_D1",
+              "nativeQueryRef": "Previous Bullets",
+              "displayName": "Previous Bullets"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "PRODUCT_DETAILED"
+                    }
+                  },
+                  "Property": "IMAGE_COUNT"
+                }
+              },
+              "queryRef": "PRODUCT_DETAILED.IMAGE_COUNT",
+              "nativeQueryRef": "CURRENT IMAGE COUNT",
+              "displayName": "CURRENT IMAGE COUNT"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "PRODUCT_DETAILED"
+                    }
+                  },
+                  "Property": "Jess_RESULT_IMAGE_COUNT_D1"
+                }
+              },
+              "queryRef": "PRODUCT_DETAILED.Jess_RESULT_IMAGE_COUNT_D1",
+              "nativeQueryRef": "Previous Image Count",
+              "displayName": "Previous Image Count"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "178.0203854800849D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "DIM_PRODUCTS_1.NAME"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "565.7551327849222D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "PRODUCT_DETAILED.DESCRIPTION_TEXT"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "404.96362528099615D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "PRODUCT_DETAILED.BULLET_POINTS"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "572.6198861628341D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "PRODUCT_DETAILED.Jess_RESULT_DESCRIPTION_PREVIOUS_DAY"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "404.71993357129634D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "PRODUCT_DETAILED.Jess_RESULT_BULLETS_D1"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "124.79125312393549D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(PRODUCT_DETAILED.Jess_RESULT_IMAGE_COUNT_D1)"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "89.01849813260637D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "DIM_PRODUCTS_1.Jess_IMAGE_LARGE_MAIN"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "565.2427716644283D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "PRODUCT_DETAILED.Jess_RESULT_DESCRIPTION_D1"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "178.3122756765612D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "PRODUCT_DETAILED.RESULT_TITLE_PREVIOUS_DAY"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "46.25D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Product IDs to SKUs.SKU"
+          }
+        }
+      ],
+      "grid": [
+        {
+          "properties": {
+            "gridHorizontalColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 1,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "gridVertical": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "gridVerticalColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": -0.2
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "values": [
+        {
+          "properties": {
+            "webURL": {
+              "expr": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Product IDs to SKUs"
+                        }
+                      },
+                      "Property": "Link"
+                    }
+                  },
+                  "Function": 3
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 1
+                }
+              }
+            ],
+            "metadata": "DIM_PRODUCTS_1.CHANNEL_PRODUCT_ID"
+          }
+        },
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "10D"
+                }
+              }
+            },
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'wf_standard-font, helvetica, arial, sans-serif'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnHeaders": [
+        {
+          "properties": {
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#9E8FFF'"
+                    }
+                  }
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "11D"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'wf_standard-font, helvetica, arial, sans-serif'"
+                }
+              }
+            },
+            "italic": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnFormatting": [
+        {
+          "properties": {
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#EBEBFF'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "DIM_PRODUCTS_1.NAME"
+          }
+        },
+        {
+          "properties": {
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#EBEBFF'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "PRODUCT_DETAILED.DESCRIPTION_TEXT"
+          }
+        },
+        {
+          "properties": {
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#EBEBFF'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "PRODUCT_DETAILED.BULLET_POINTS"
+          }
+        },
+        {
+          "properties": {
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#EBEBFF'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "PRODUCT_DETAILED.IMAGE_COUNT"
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "radius": {
+              "expr": {
+                "Literal": {
+                  "Value": "15D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

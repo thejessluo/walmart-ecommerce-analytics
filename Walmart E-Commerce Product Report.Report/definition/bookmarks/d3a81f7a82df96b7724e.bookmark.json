@@ -1,0 +1,1204 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmark/1.4.0/schema.json",
+  "displayName": "MSRP - Closed Filters",
+  "name": "d3a81f7a82df96b7724e",
+  "options": {
+    "applyOnlyToTargetVisuals": true,
+    "targetVisualNames": [
+      "b99e6c90398790a32fa9",
+      "a0eeeaefeab1d8a3f304",
+      "497c88086ec92eee54a4",
+      "f626a936b825262458f0",
+      "2b8fe7b0a4f64b03cdd8",
+      "805d16e1d85148280dee",
+      "089bd3872300ef75bee0",
+      "2637cdf450adfd3efe46",
+      "194a18d6e652d523853c",
+      "f274df4963e58ee2d5de",
+      "28b5e5de39bfe1afd3e6",
+      "5902a0fbca23041ec305",
+      "04170b732cffc5338f88",
+      "a5f3fe5c6113541e0df9",
+      "f5863c13e39edb7aad01",
+      "d1c98d0d18d4b580fb23",
+      "6136b8581386afe81d3a",
+      "75c4a23894e8594b3ceb"
+    ],
+    "suppressData": true
+  },
+  "explorationState": {
+    "version": "1.3",
+    "activeSection": "0493fdb8dd6f0a50fa09",
+    "filters": {
+      "byExpr": [
+        {
+          "name": "Filter7124297b7790d50d94c0",
+          "type": "Categorical",
+          "filter": {
+            "Version": 2,
+            "From": [
+              {
+                "Name": "d",
+                "Entity": "DIM_PRODUCTS_1",
+                "Type": 0
+              }
+            ],
+            "Where": [
+              {
+                "Condition": {
+                  "In": {
+                    "Expressions": [
+                      {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Source": "d"
+                            }
+                          },
+                          "Property": "CHECK_TRACKED"
+                        }
+                      }
+                    ],
+                    "Values": [
+                      [
+                        {
+                          "Literal": {
+                            "Value": "'Tracked Products'"
+                          }
+                        }
+                      ]
+                    ]
+                  }
+                }
+              }
+            ]
+          },
+          "expression": {
+            "Column": {
+              "Expression": {
+                "SourceRef": {
+                  "Entity": "DIM_PRODUCTS_1"
+                }
+              },
+              "Property": "CHECK_TRACKED"
+            }
+          },
+          "howCreated": 1
+        },
+        {
+          "name": "09783a1594508c6020ee",
+          "type": "Advanced",
+          "filter": {
+            "Version": 2,
+            "From": [
+              {
+                "Name": "m",
+                "Entity": "Mainstays Links",
+                "Type": 0
+              }
+            ],
+            "Where": [
+              {
+                "Condition": {
+                  "Not": {
+                    "Expression": {
+                      "Contains": {
+                        "Left": {
+                          "Column": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Source": "m"
+                              }
+                            },
+                            "Property": "Studio Z Only"
+                          }
+                        },
+                        "Right": {
+                          "Literal": {
+                            "Value": "'TRUE'"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          "expression": {
+            "Column": {
+              "Expression": {
+                "SourceRef": {
+                  "Entity": "Mainstays Links"
+                }
+              },
+              "Property": "Studio Z Only"
+            }
+          },
+          "howCreated": 1
+        }
+      ]
+    },
+    "sections": {
+      "0493fdb8dd6f0a50fa09": {
+        "visualContainers": {
+          "e339a829c37842a4bfb9": {
+            "singleVisual": {
+              "visualType": "textbox",
+              "objects": {}
+            }
+          },
+          "a851fdcb1ef7180aa1ff": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "3319a3b706a936804727",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "DIM_PRODUCTS_1"
+                        }
+                      },
+                      "Property": "CHANNEL_PRODUCT_ID"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "d1c1da85b0380dbc5a83",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "DIM_PRODUCTS_1"
+                        }
+                      },
+                      "Property": "NAME"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "823d99a80500ca6352d0",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "DIM_PRODUCTS_1"
+                        }
+                      },
+                      "Property": "Jess_IMAGE_LARGE_MAIN"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "0fc39a42503344a1050d",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Product IDs to SKUs"
+                        }
+                      },
+                      "Property": "SKU"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "ddfc6ec13a000a308b1c",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "PRODUCT_DETAILED"
+                        }
+                      },
+                      "Property": "MEASURE_CURRENT_PRICE"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "11522b2b83e2108ce4c2",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "PRODUCT_DETAILED"
+                        }
+                      },
+                      "Property": "MEASURE_CURRENT_MSRP"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "e1196eff590137738c20",
+                  "type": "Advanced",
+                  "expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "PRODUCT_DETAILED"
+                            }
+                          },
+                          "Property": "LIST_PRICE"
+                        }
+                      },
+                      "Function": 4
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "9eaafbaa080210b6eca4",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "PRODUCT_DETAILED"
+                        }
+                      },
+                      "Property": "MEASURE_PREVIOUS_PRICE"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "5ad83ac2c342063e9e22",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "PRODUCT_DETAILED"
+                        }
+                      },
+                      "Property": "MEASURE_PREVIOUS_MSRP"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "4bd0e7d40955d4304a06",
+                  "type": "Advanced",
+                  "expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "PRODUCT_DETAILED"
+                            }
+                          },
+                          "Property": "LIST_PRICE"
+                        }
+                      },
+                      "Function": 3
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "a22dd39062b0cbdab0ce",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "PRODUCT_DETAILED"
+                        }
+                      },
+                      "Property": "MEASURES_Average MSRP"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "823274d2bb09860008e2",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "PRODUCT_DETAILED"
+                        }
+                      },
+                      "Property": "MEASURE_PRICE_DIFFERENCE"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "tableEx",
+              "objects": {}
+            }
+          },
+          "2b8fe7b0a4f64b03cdd8": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "75ea2f4ac362ec0aa719",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Product IDs to SKUs"
+                        }
+                      },
+                      "Property": "3P"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Basic'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Product IDs to SKUs"
+                        }
+                      },
+                      "Property": "3P"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "805d16e1d85148280dee": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "0716958d4baa2aa9dd09",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Product IDs to SKUs"
+                        }
+                      },
+                      "Property": "Mod/Relevant SKU"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Basic'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Product IDs to SKUs"
+                        }
+                      },
+                      "Property": "Mod/Relevant SKU"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "089bd3872300ef75bee0": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "a4bb96901d9ea97a691c",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "PRODUCT_DETAILED"
+                        }
+                      },
+                      "Property": "JESS_CHECK_CREATION_DATE_RECENT"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Basic'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "PRODUCT_DETAILED"
+                        }
+                      },
+                      "Property": "JESS_CHECK_CREATION_DATE_RECENT"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "2637cdf450adfd3efe46": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "7528378fddc7e236e7ea",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "PRODUCT_DETAILED"
+                        }
+                      },
+                      "Property": "OBSERVATION_DATE"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "general": [
+                    {
+                      "properties": {
+                        "filter": {
+                          "filter": {
+                            "Version": 2,
+                            "From": [
+                              {
+                                "Name": "p",
+                                "Entity": "PRODUCT_DETAILED",
+                                "Type": 0
+                              }
+                            ],
+                            "Where": [
+                              {
+                                "Condition": {
+                                  "Between": {
+                                    "Expression": {
+                                      "Column": {
+                                        "Expression": {
+                                          "SourceRef": {
+                                            "Source": "p"
+                                          }
+                                        },
+                                        "Property": "OBSERVATION_DATE"
+                                      }
+                                    },
+                                    "LowerBound": {
+                                      "DateSpan": {
+                                        "Expression": {
+                                          "DateAdd": {
+                                            "Expression": {
+                                              "DateAdd": {
+                                                "Expression": {
+                                                  "Now": {}
+                                                },
+                                                "Amount": 1,
+                                                "TimeUnit": 0
+                                              }
+                                            },
+                                            "Amount": -2,
+                                            "TimeUnit": 0
+                                          }
+                                        },
+                                        "TimeUnit": 0
+                                      }
+                                    },
+                                    "UpperBound": {
+                                      "DateSpan": {
+                                        "Expression": {
+                                          "Now": {}
+                                        },
+                                        "TimeUnit": 0
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "data": [
+                    {
+                      "properties": {
+                        "relativeRange": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Last'"
+                            }
+                          }
+                        },
+                        "relativePeriod": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Days'"
+                            }
+                          }
+                        },
+                        "relativeDuration": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "2D"
+                            }
+                          }
+                        },
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Relative'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "dateRange": [
+                    {
+                      "properties": {
+                        "includeToday": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "true"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "orderBy": [
+                {
+                  "Direction": 1,
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "PRODUCT_DETAILED"
+                        }
+                      },
+                      "Property": "OBSERVATION_DATE"
+                    }
+                  }
+                }
+              ],
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "PRODUCT_DETAILED"
+                        }
+                      },
+                      "Property": "OBSERVATION_DATE"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "194a18d6e652d523853c": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "5902a0fbca23041ec305": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "Filterf7e4c135dc5203c260c4",
+                  "type": "Categorical",
+                  "filter": {
+                    "Version": 2,
+                    "From": [
+                      {
+                        "Name": "d",
+                        "Entity": "DIM_PRODUCTS_1",
+                        "Type": 0
+                      }
+                    ],
+                    "Where": [
+                      {
+                        "Condition": {
+                          "In": {
+                            "Expressions": [
+                              {
+                                "Column": {
+                                  "Expression": {
+                                    "SourceRef": {
+                                      "Source": "d"
+                                    }
+                                  },
+                                  "Property": "CHECK_TRACKED"
+                                }
+                              }
+                            ],
+                            "Values": [
+                              [
+                                {
+                                  "Literal": {
+                                    "Value": "'Tracked Products'"
+                                  }
+                                }
+                              ]
+                            ]
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "DIM_PRODUCTS_1"
+                        }
+                      },
+                      "Property": "CHECK_TRACKED"
+                    }
+                  },
+                  "howCreated": 1
+                },
+                {
+                  "name": "Filter5c3b68b4bbf22c35424a",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "DIM_PRODUCTS_1"
+                        }
+                      },
+                      "Property": "CHANNEL_PRODUCT_ID"
+                    }
+                  },
+                  "howCreated": 1
+                },
+                {
+                  "name": "4f0124a41210e3e60842",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Product IDs to SKUs"
+                        }
+                      },
+                      "Property": "SKU"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "startDate": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "datetime'2022-11-01T00:00:00'"
+                            }
+                          }
+                        },
+                        "endDate": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "datetime'2023-01-19T00:00:00'"
+                            }
+                          }
+                        },
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Product IDs to SKUs"
+                        }
+                      },
+                      "Property": "SKU"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "04170b732cffc5338f88": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "Filterf7e4c135dc5203c260c4",
+                  "type": "Categorical",
+                  "filter": {
+                    "Version": 2,
+                    "From": [
+                      {
+                        "Name": "d",
+                        "Entity": "DIM_PRODUCTS_1",
+                        "Type": 0
+                      }
+                    ],
+                    "Where": [
+                      {
+                        "Condition": {
+                          "In": {
+                            "Expressions": [
+                              {
+                                "Column": {
+                                  "Expression": {
+                                    "SourceRef": {
+                                      "Source": "d"
+                                    }
+                                  },
+                                  "Property": "CHECK_TRACKED"
+                                }
+                              }
+                            ],
+                            "Values": [
+                              [
+                                {
+                                  "Literal": {
+                                    "Value": "'Tracked Products'"
+                                  }
+                                }
+                              ]
+                            ]
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "DIM_PRODUCTS_1"
+                        }
+                      },
+                      "Property": "CHECK_TRACKED"
+                    }
+                  },
+                  "howCreated": 1
+                },
+                {
+                  "name": "Filter5c3b68b4bbf22c35424a",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "DIM_PRODUCTS_1"
+                        }
+                      },
+                      "Property": "CHANNEL_PRODUCT_ID"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "startDate": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "datetime'2022-11-01T00:00:00'"
+                            }
+                          }
+                        },
+                        "endDate": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "datetime'2023-01-19T00:00:00'"
+                            }
+                          }
+                        },
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "DIM_PRODUCTS_1"
+                        }
+                      },
+                      "Property": "CHANNEL_PRODUCT_ID"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "a5f3fe5c6113541e0df9": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "Filterf7e4c135dc5203c260c4",
+                  "type": "Categorical",
+                  "filter": {
+                    "Version": 2,
+                    "From": [
+                      {
+                        "Name": "d",
+                        "Entity": "DIM_PRODUCTS_1",
+                        "Type": 0
+                      }
+                    ],
+                    "Where": [
+                      {
+                        "Condition": {
+                          "In": {
+                            "Expressions": [
+                              {
+                                "Column": {
+                                  "Expression": {
+                                    "SourceRef": {
+                                      "Source": "d"
+                                    }
+                                  },
+                                  "Property": "CHECK_TRACKED"
+                                }
+                              }
+                            ],
+                            "Values": [
+                              [
+                                {
+                                  "Literal": {
+                                    "Value": "'Tracked Products'"
+                                  }
+                                }
+                              ]
+                            ]
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "DIM_PRODUCTS_1"
+                        }
+                      },
+                      "Property": "CHECK_TRACKED"
+                    }
+                  },
+                  "howCreated": 1
+                },
+                {
+                  "name": "Filter5c3b68b4bbf22c35424a",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "DIM_PRODUCTS_1"
+                        }
+                      },
+                      "Property": "CHANNEL_PRODUCT_ID"
+                    }
+                  },
+                  "howCreated": 1
+                },
+                {
+                  "name": "b681d69cc2aacb01d5c9",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "DIM_PRODUCTS_1"
+                        }
+                      },
+                      "Property": "NAME"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "slicer",
+              "objects": {
+                "merge": {
+                  "data": [
+                    {
+                      "properties": {
+                        "startDate": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "datetime'2022-11-01T00:00:00'"
+                            }
+                          }
+                        },
+                        "endDate": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "datetime'2023-01-19T00:00:00'"
+                            }
+                          }
+                        },
+                        "mode": {
+                          "expr": {
+                            "Literal": {
+                              "Value": "'Dropdown'"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "activeProjections": {
+                "Values": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "DIM_PRODUCTS_1"
+                        }
+                      },
+                      "Property": "NAME"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "f5863c13e39edb7aad01": {
+            "singleVisual": {
+              "visualType": "shape",
+              "objects": {}
+            }
+          },
+          "75c4a23894e8594b3ceb": {
+            "singleVisual": {
+              "visualType": "shape",
+              "objects": {}
+            }
+          },
+          "497c88086ec92eee54a4": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "f626a936b825262458f0": {
+            "singleVisual": {
+              "visualType": "shape",
+              "objects": {}
+            }
+          },
+          "a2425bc451f5f4740ffa": {
+            "singleVisual": {
+              "visualType": "image",
+              "objects": {}
+            }
+          },
+          "fe76acb7f31c0a47d1d4": {
+            "singleVisual": {
+              "visualType": "image",
+              "objects": {}
+            }
+          },
+          "8f713129f2dd583009ea": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "b8b87e000b8a98a4b04c",
+                  "type": "Advanced",
+                  "expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "PRODUCT_DETAILED"
+                            }
+                          },
+                          "Property": "OBSERVATION_DATE"
+                        }
+                      },
+                      "Function": 3
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {}
+            }
+          },
+          "afea6ae5e220e864cb54": {
+            "singleVisual": {
+              "visualType": "image",
+              "objects": {}
+            }
+          },
+          "b7edf357f58cfea770e1": {
+            "singleVisual": {
+              "visualType": "shape",
+              "objects": {}
+            }
+          }
+        },
+        "visualContainerGroups": {
+          "a0eeeaefeab1d8a3f304": {
+            "isHidden": true,
+            "children": {
+              "28b5e5de39bfe1afd3e6": {
+                "isHidden": false
+              }
+            }
+          },
+          "b99e6c90398790a32fa9": {
+            "isHidden": false
+          },
+          "4805bc212aa77596c9ec": {
+            "isHidden": false
+          }
+        }
+      }
+    },
+    "objects": {
+      "merge": {
+        "outspacePane": [
+          {
+            "properties": {
+              "expanded": {
+                "expr": {
+                  "Literal": {
+                    "Value": "false"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

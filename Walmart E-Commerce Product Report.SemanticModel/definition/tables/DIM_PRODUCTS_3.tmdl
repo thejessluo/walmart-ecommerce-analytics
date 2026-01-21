@@ -1,0 +1,104 @@
+table DIM_PRODUCTS_3
+	isHidden
+	lineageTag: c2031c47-47ab-4801-aa14-3da3301b12aa
+
+	column PRODUCT_KEY
+		dataType: string
+		isHidden
+		lineageTag: 4a20ba90-cfc8-451c-921a-1b72043106c9
+		summarizeBy: none
+		sourceColumn: PRODUCT_KEY
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column CHANNEL_PRODUCT_ID
+		dataType: string
+		isHidden
+		lineageTag: 90e9c3d9-ca19-4bd5-a9c6-cc8c226c8c48
+		summarizeBy: none
+		sourceColumn: CHANNEL_PRODUCT_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column GROUP_CHANNEL_PRODUCT_ID
+		dataType: string
+		isHidden
+		lineageTag: 7fd817ff-e4bc-4bc7-8dce-83c7c4ed10c6
+		summarizeBy: none
+		sourceColumn: GROUP_CHANNEL_PRODUCT_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column NAME
+		dataType: string
+		isHidden
+		lineageTag: 6d6c79f8-3699-4da1-8c84-43f88ec08be0
+		summarizeBy: none
+		sourceColumn: NAME
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column BRAND_FINAL
+		dataType: string
+		isHidden
+		lineageTag: 6ed61594-479e-4639-9275-9c5a74dbdec0
+		summarizeBy: none
+		sourceColumn: BRAND_FINAL
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column MARKETPLACE_KEY
+		dataType: string
+		lineageTag: 0c1b32d2-1193-4137-9e5e-42736d01480c
+		summarizeBy: none
+		sourceColumn: MARKETPLACE_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+	column CHANNEL_PRODUCT_ID_MARKETPLACE_KEY
+		dataType: string
+		lineageTag: ee3635dd-d13e-4ffb-9b19-141aea991df9
+		summarizeBy: none
+		sourceColumn: CHANNEL_PRODUCT_ID_MARKETPLACE_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DIM_PRODUCTS_3 = m
+		mode: import
+		source = ```
+				let
+				    Source = Value.NativeQuery(
+				        Snowflake.Databases(
+				            Server,
+				            Warehouse
+				        ) {[Name=Database]}[Data], 
+				        "SELECT 
+				            PRODUCT_KEY,
+				            MAX(CHANNEL_PRODUCT_ID) AS CHANNEL_PRODUCT_ID,
+				            MAX(GROUP_CHANNEL_PRODUCT_ID) AS GROUP_CHANNEL_PRODUCT_ID,
+				            MAX(MARKETPLACE_KEY) AS MARKETPLACE_KEY,
+				            MAX(NAME) AS NAME,
+				            MAX(IFNULL(BRAND, BRAND_CATALOG)) AS BRAND_FINAL,
+				            MAX(CONCAT(CHANNEL_PRODUCT_ID, '', MARKETPLACE_KEY)) AS CHANNEL_PRODUCT_ID_MARKETPLACE_KEY
+				        FROM REPORTS.REPORT_PRODUCT_LATEST_VERSION
+				        WHERE OBSERVATION_DATE >= CURRENT_DATE - "& Text.From(#"Lookback History") &"
+				        GROUP BY PRODUCT_KEY"
+				    )
+				in
+				    Source
+				```
+
+	changedProperty = IsHidden
+
+	annotation PBI_ResultType = Table
+

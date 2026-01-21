@@ -1,0 +1,16 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "c60fe01ab8480a2d700a",
+  "position": {
+    "x": 546.41041077984869,
+    "y": 362.21032817815541,
+    "z": 5000,
+    "height": 259.86922499279558,
+    "width": 330.79881458161822,
+    "tabOrder": 15000
+  },
+  "visualGroup": {
+    "displayName": "RATINGS PIE CHART",
+    "groupMode": "ScaleMode"
+  }
+}

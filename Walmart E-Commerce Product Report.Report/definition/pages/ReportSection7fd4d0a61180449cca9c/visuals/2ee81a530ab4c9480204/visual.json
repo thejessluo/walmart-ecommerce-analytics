@@ -1,0 +1,16 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "2ee81a530ab4c9480204",
+  "position": {
+    "x": 145.98741941120136,
+    "y": 46.997658719700588,
+    "z": 1000,
+    "height": 637.37373737373741,
+    "width": 36.1834320141927,
+    "tabOrder": 2000
+  },
+  "visualGroup": {
+    "displayName": "COLLAPSED FILTERS",
+    "groupMode": "ScaleMode"
+  }
+}

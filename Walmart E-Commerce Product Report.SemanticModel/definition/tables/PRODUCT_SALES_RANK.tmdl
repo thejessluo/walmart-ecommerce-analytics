@@ -1,0 +1,249 @@
+table PRODUCT_SALES_RANK
+	lineageTag: c4d3dbc7-0588-429b-becf-2e1ce67fc181
+
+	measure RESULT_AVG_BSR = CALCULATE(AVERAGE(PRODUCT_SALES_RANK[RANK]))
+		formatString: #,0
+		lineageTag: 490354d0-3fa3-42c8-aa5a-82e00e577493
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure RESULT_MIN_BSR = CALCULATE(MIN(PRODUCT_SALES_RANK[RANK]))
+		formatString: #,0
+		lineageTag: 7687f821-b96c-4047-b283-785f5e5fc4b3
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure RESULT_MAX_BSR = CALCULATE(MAX(PRODUCT_SALES_RANK[RANK]))
+		formatString: #,0
+		lineageTag: 8f5c2474-4e38-4c23-9105-ddea81db2ba8
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure RESULT_COUNT_CATEGORIES = CALCULATE(DISTINCTCOUNT(PRODUCT_SALES_RANK[BROWSE_NODE_ID]))
+		formatString: #,0
+		lineageTag: 9c6f6ae2-2d93-491e-8577-55314377271b
+
+	column MARKETPLACE_KEY
+		dataType: string
+		lineageTag: f599c489-1984-4623-a3ec-ea730193e50b
+		summarizeBy: none
+		sourceColumn: MARKETPLACE_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+	column BROWSE_NODE_ID
+		dataType: string
+		lineageTag: 9676c3b5-25b1-4123-93aa-b24e804cf188
+		summarizeBy: none
+		sourceColumn: BROWSE_NODE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column BROWSE_NODE_NAME
+		dataType: string
+		lineageTag: 952f106c-5f02-4ab4-aecd-9126a9df4800
+		summarizeBy: none
+		sourceColumn: BROWSE_NODE_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column MIN_NODE_LEVEL
+		dataType: double
+		formatString: 0
+		lineageTag: 9ff3d62c-62a0-4148-918c-6fc8183c5522
+		summarizeBy: sum
+		sourceColumn: MIN_NODE_LEVEL
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column OBSERVATION_DATE
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 3b9816e4-5f2b-4442-8845-2ae4b277a16d
+		summarizeBy: none
+		sourceColumn: OBSERVATION_DATE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column OBSERVATION_TIME
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 1952b8cc-f476-4e07-af25-e7cf16a50dc3
+		summarizeBy: none
+		sourceColumn: OBSERVATION_TIME
+
+		variation Variation
+			isDefault
+			relationship: ca8c65e5-f12e-4e3b-9946-dca2b8d4f254
+			defaultHierarchy: LocalDateTable_248486e6-f246-4bc3-be1e-c7115f960256.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column PRODUCT_KEY
+		dataType: string
+		lineageTag: d3a4e00c-4689-48bf-8870-7e9059970128
+		summarizeBy: none
+		sourceColumn: PRODUCT_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+	column CHANNEL_PRODUCT_ID
+		dataType: string
+		lineageTag: 4f26375c-16da-4b37-a1c3-99c56cbd613f
+		summarizeBy: none
+		sourceColumn: CHANNEL_PRODUCT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column RANK
+		dataType: double
+		formatString: #,0
+		lineageTag: 38ee0150-4a91-4801-a8f5-762f64cc8186
+		summarizeBy: sum
+		sourceColumn: RANK
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column NAME
+		dataType: string
+		lineageTag: a466d81d-9749-476c-9c69-1fde3f2bacce
+		summarizeBy: none
+		sourceColumn: NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column PRICE
+		dataType: double
+		lineageTag: bd20904d-da25-4c27-85cb-cdbe75a829b0
+		summarizeBy: sum
+		sourceColumn: PRICE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column RATING
+		dataType: double
+		lineageTag: 73481e89-ab6b-43dd-9c30-c3c39f98f65d
+		summarizeBy: sum
+		sourceColumn: RATING
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column RATING_COUNT
+		dataType: double
+		lineageTag: d222fc5c-a52e-4327-b110-168091212645
+		summarizeBy: sum
+		sourceColumn: RATING_COUNT
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PICTURE_URL
+		dataType: string
+		lineageTag: fc9a1338-0d37-4c21-bf84-ebb091b36aa4
+		summarizeBy: none
+		sourceColumn: PICTURE_URL
+
+		annotation SummarizationSetBy = Automatic
+
+	column IS_MEMBERSHIP_PROGRAM
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 4b896f59-072f-434c-9bae-cfcb33cd8fa0
+		summarizeBy: none
+		sourceColumn: IS_MEMBERSHIP_PROGRAM
+
+		annotation SummarizationSetBy = Automatic
+
+	column SYNC_TIME
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 4a8d5499-d376-4645-a131-fb761236a081
+		summarizeBy: none
+		sourceColumn: SYNC_TIME
+
+		variation Variation
+			isDefault
+			relationship: 244c529d-427e-4706-a0e0-a14c20a1dd64
+			defaultHierarchy: LocalDateTable_d26188c5-93e6-4909-8f84-80c5e590f926.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column WORKSPACE_ID
+		dataType: double
+		lineageTag: f8bc56d5-6027-47f2-a3d4-067cea5b4c7e
+		summarizeBy: count
+		sourceColumn: WORKSPACE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column _SYNC_TIME
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 3ad7a247-0227-4277-9fc7-0a9d48bfd48c
+		summarizeBy: none
+		sourceColumn: _SYNC_TIME
+
+		variation Variation
+			isDefault
+			relationship: 3e9bee04-edac-4eae-a130-ae156136c691
+			defaultHierarchy: LocalDateTable_ba62b0b8-d640-48bf-bed5-f63ff13faa6d.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column GROUP_CHANNEL_PRODUCT_ID
+		dataType: string
+		lineageTag: 80226960-09fd-4200-864f-fac7fd0abb97
+		summarizeBy: none
+		sourceColumn: GROUP_CHANNEL_PRODUCT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column OBSERVED_CHANNEL_PRODUCT_ID
+		dataType: string
+		lineageTag: d0efeff9-62d4-4b59-87dd-4eabe4cfbdc5
+		summarizeBy: none
+		sourceColumn: OBSERVED_CHANNEL_PRODUCT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column OBSERVED_PRODUCT_KEY
+		dataType: string
+		lineageTag: f5e9e463-4927-43b8-989c-cb3417a41c83
+		summarizeBy: none
+		sourceColumn: OBSERVED_PRODUCT_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+	partition PRODUCT_SALES_RANK-89e87ba0-3bd9-47ad-827d-9f37cd77d97b = m
+		mode: import
+		queryGroup: 'Products Data'
+		source = ```
+				let
+				    Source = Value.NativeQuery(
+				        Snowflake.Databases(
+				            Server,
+				            Warehouse
+				            )
+				            {[Name=Database]}[Data], 
+				            "SELECT *
+				            FROM PRODUCT.PRODUCT_SALES_RANK
+				            WHERE OBSERVATION_DATE >= CURRENT_DATE - "&Text.From(#"Lookback History"), null, [EnableFolding=true])
+				in
+				    Source
+				```
+
+	annotation PBI_ResultType = Table
+

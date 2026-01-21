@@ -1,0 +1,146 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "69b813929c2e26d608c1",
+  "position": {
+    "x": 242.3045267489712,
+    "y": 0,
+    "z": 0,
+    "height": 719.53909465020581,
+    "width": 1028.2139917695474,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DIM_PRODUCTS_1"
+                    }
+                  },
+                  "Property": "CHANNEL_PRODUCT_ID"
+                }
+              },
+              "queryRef": "DIM_PRODUCTS_1.CHANNEL_PRODUCT_ID",
+              "nativeQueryRef": "CHANNEL_PRODUCT_ID"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Product IDs to SKUs"
+                    }
+                  },
+                  "Property": "SKU"
+                }
+              },
+              "queryRef": "Product IDs to SKUs.SKU",
+              "nativeQueryRef": "SKU"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DIM_PRODUCTS_1"
+                    }
+                  },
+                  "Property": "NAME"
+                }
+              },
+              "queryRef": "DIM_PRODUCTS_1.NAME",
+              "nativeQueryRef": "NAME"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Product IDs to SKUs"
+                    }
+                  },
+                  "Property": "3P Label"
+                }
+              },
+              "queryRef": "Product IDs to SKUs.3P Label",
+              "nativeQueryRef": "1P / 3P",
+              "displayName": "1P / 3P"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Product IDs to SKUs"
+                    }
+                  },
+                  "Property": "Link"
+                }
+              },
+              "queryRef": "Product IDs to SKUs.Link",
+              "nativeQueryRef": "Link"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "395.440329218107D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "DIM_PRODUCTS_1.NAME"
+          }
+        }
+      ],
+      "values": [
+        {
+          "properties": {
+            "webURL": {
+              "expr": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Product IDs to SKUs"
+                        }
+                      },
+                      "Property": "Link"
+                    }
+                  },
+                  "Function": 3
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 1
+                }
+              }
+            ],
+            "metadata": "DIM_PRODUCTS_1.CHANNEL_PRODUCT_ID"
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,0 +1,720 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "a851fdcb1ef7180aa1ff",
+  "position": {
+    "x": 208.31608654750707,
+    "y": 62.615239887111947,
+    "z": 0,
+    "height": 657.46001881467544,
+    "width": 1051.2135465663218,
+    "tabOrder": 1000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Product IDs to SKUs"
+                    }
+                  },
+                  "Property": "SKU"
+                }
+              },
+              "queryRef": "Product IDs to SKUs.SKU",
+              "nativeQueryRef": "SKU"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DIM_PRODUCTS_1"
+                    }
+                  },
+                  "Property": "CHANNEL_PRODUCT_ID"
+                }
+              },
+              "queryRef": "DIM_PRODUCTS_1.CHANNEL_PRODUCT_ID",
+              "nativeQueryRef": "Product ID",
+              "displayName": "Product ID"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DIM_PRODUCTS_1"
+                    }
+                  },
+                  "Property": "Jess_IMAGE_LARGE_MAIN"
+                }
+              },
+              "queryRef": "DIM_PRODUCTS_1.Jess_IMAGE_LARGE_MAIN",
+              "nativeQueryRef": "Image",
+              "displayName": "Image"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DIM_PRODUCTS_1"
+                    }
+                  },
+                  "Property": "NAME"
+                }
+              },
+              "queryRef": "DIM_PRODUCTS_1.NAME",
+              "nativeQueryRef": "Item Title",
+              "displayName": "Item Title"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "PRODUCT_DETAILED"
+                    }
+                  },
+                  "Property": "MEASURE_CURRENT_PRICE"
+                }
+              },
+              "queryRef": "PRODUCT_DETAILED.LAST_PRICE",
+              "nativeQueryRef": "CURRENT PRICE",
+              "displayName": "CURRENT PRICE"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "PRODUCT_DETAILED"
+                    }
+                  },
+                  "Property": "MEASURE_CURRENT_MSRP"
+                }
+              },
+              "queryRef": "PRODUCT_DETAILED.LAST_MSRP",
+              "nativeQueryRef": "CURRENT MSRP",
+              "displayName": "CURRENT MSRP"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "PRODUCT_DETAILED"
+                        }
+                      },
+                      "Property": "LIST_PRICE"
+                    }
+                  },
+                  "Function": 4
+                }
+              },
+              "queryRef": "Sum(PRODUCT_DETAILED.LIST_PRICE)",
+              "nativeQueryRef": "Max MSRP",
+              "displayName": "Max MSRP"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "PRODUCT_DETAILED"
+                        }
+                      },
+                      "Property": "LIST_PRICE"
+                    }
+                  },
+                  "Function": 3
+                }
+              },
+              "queryRef": "Sum(PRODUCT_DETAILED.LIST_PRICE)1",
+              "nativeQueryRef": "Min MSRP",
+              "displayName": "Min MSRP"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "PRODUCT_DETAILED"
+                    }
+                  },
+                  "Property": "MEASURES_Average MSRP"
+                }
+              },
+              "queryRef": "PRODUCT_DETAILED.Average of LIST_PRICE average per CHANNEL_PRODUCT_ID 2",
+              "nativeQueryRef": "Avg MSRP",
+              "displayName": "Avg MSRP"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "PRODUCT_DETAILED"
+                    }
+                  },
+                  "Property": "DaysWithMSRP%"
+                }
+              },
+              "queryRef": "PRODUCT_DETAILED.DaysWithMSRP%",
+              "nativeQueryRef": "% Days with MSRP",
+              "displayName": "% Days with MSRP"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "TZUMI_FITRX_LINKS"
+                        }
+                      },
+                      "Property": "MSRP"
+                    }
+                  },
+                  "Function": 3
+                }
+              },
+              "queryRef": "Sum(TZUMI_FITRX_LINKS.REGULAR_PRICE)",
+              "nativeQueryRef": "Tzumi.com MSRP",
+              "displayName": "Tzumi.com MSRP"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "PRODUCT_DETAILED"
+                    }
+                  },
+                  "Property": "MSRP Deltas"
+                }
+              },
+              "queryRef": "PRODUCT_DETAILED.MSRP Deltas",
+              "nativeQueryRef": "MSRP Δ",
+              "displayName": "MSRP Δ"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "TZUMI_FITRX_LINKS"
+                        }
+                      },
+                      "Property": "TZUMI_WEBSITE_LINK"
+                    }
+                  },
+                  "Function": 3
+                }
+              },
+              "queryRef": "TZUMI_FITRX_LINKS.TZUMI_WEBSITE_LINK",
+              "nativeQueryRef": "First TZUMI_WEBSITE_LINK"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "PRODUCT_DETAILED"
+                  }
+                },
+                "Property": "MEASURE_CURRENT_MSRP"
+              }
+            },
+            "direction": "Descending"
+          }
+        ]
+      }
+    },
+    "objects": {
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "236.4073360144507D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "DIM_PRODUCTS_1.NAME"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "95D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "DIM_PRODUCTS_1.CHANNEL_PRODUCT_ID"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "59.96992216036477D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Product IDs to SKUs.SKU"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "84D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "DIM_PRODUCTS_1.Jess_IMAGE_LARGE_MAIN"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "72.91753993722728D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "PRODUCT_DETAILED.LAST_PRICE"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "72.36126650003298D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "PRODUCT_DETAILED.LAST_MSRP"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "60.93025210421712D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(PRODUCT_DETAILED.LIST_PRICE)"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "59.749985493386056D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(PRODUCT_DETAILED.LIST_PRICE)1"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "61.00000859649349D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "PRODUCT_DETAILED.Average of LIST_PRICE average per CHANNEL_PRODUCT_ID 2"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "75.14018691588785D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "PRODUCT_DETAILED.DaysWithMSRP%"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "79.25165488239993D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(TZUMI_FITRX_LINKS.REGULAR_PRICE)"
+          }
+        }
+      ],
+      "grid": [
+        {
+          "properties": {
+            "gridHorizontal": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "gridVertical": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "gridHorizontalColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 1,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "values": [
+        {
+          "properties": {
+            "webURL": {
+              "expr": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Product IDs to SKUs"
+                        }
+                      },
+                      "Property": "Link"
+                    }
+                  },
+                  "Function": 3
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 1
+                }
+              }
+            ],
+            "metadata": "DIM_PRODUCTS_1.CHANNEL_PRODUCT_ID"
+          }
+        },
+        {
+          "properties": {
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'wf_standard-font, helvetica, arial, sans-serif'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "11D"
+                }
+              }
+            }
+          }
+        },
+        {
+          "properties": {},
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 1
+                }
+              }
+            ],
+            "metadata": "PRODUCT_DETAILED.LAST_MSRP"
+          }
+        },
+        {
+          "properties": {
+            "webURL": {
+              "expr": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Product IDs to SKUs"
+                        }
+                      },
+                      "Property": "Link"
+                    }
+                  },
+                  "Function": 3
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 1
+                }
+              }
+            ],
+            "metadata": "PRODUCT_DETAILED.LAST_PRICE"
+          }
+        },
+        {
+          "properties": {
+            "webURL": {
+              "expr": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "TZUMI_FITRX_LINKS"
+                        }
+                      },
+                      "Property": "TZUMI_WEBSITE_LINK"
+                    }
+                  },
+                  "Function": 3
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 1
+                }
+              }
+            ],
+            "metadata": "Sum(TZUMI_FITRX_LINKS.REGULAR_PRICE)"
+          }
+        }
+      ],
+      "columnHeaders": [
+        {
+          "properties": {
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#EDB2FF'"
+                    }
+                  }
+                }
+              }
+            },
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'wf_standard-font, helvetica, arial, sans-serif'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "11D"
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnFormatting": [
+        {
+          "properties": {
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#FFC4D7'"
+                    }
+                  }
+                }
+              }
+            },
+            "styleHeader": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "styleValues": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "PRODUCT_DETAILED.LAST_PRICE"
+          }
+        },
+        {
+          "properties": {
+            "backColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#F8E6FF'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "PRODUCT_DETAILED.LAST_MSRP"
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "stylePreset": [
+        {
+          "properties": {
+            "name": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Default'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "radius": {
+              "expr": {
+                "Literal": {
+                  "Value": "15D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

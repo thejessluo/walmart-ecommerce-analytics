@@ -1,0 +1,89 @@
+table REFERENTIAL_PROJECT_PRODUCTS
+	lineageTag: 94fc1fba-3e3a-411f-a58d-506da56c37e1
+
+	column PROJECT_NAME
+		dataType: string
+		lineageTag: f707bea5-bdeb-4044-bd49-5cf400bf6f08
+		summarizeBy: none
+		sourceColumn: PROJECT_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column MARKETPLACE_KEY
+		dataType: string
+		lineageTag: fb1fd060-0fd6-4b50-bae6-6d170c558dc6
+		summarizeBy: none
+		sourceColumn: MARKETPLACE_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+	column KEYWORD_KEY
+		dataType: string
+		lineageTag: 448387f9-2eb2-4fe7-ad2a-74fe58890085
+		summarizeBy: none
+		sourceColumn: KEYWORD_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+	column KEYWORD
+		dataType: string
+		lineageTag: 3805ee98-d030-4e14-9057-1159b67e253a
+		summarizeBy: none
+		sourceColumn: KEYWORD
+
+		annotation SummarizationSetBy = Automatic
+
+	column PRODUCT_KEY
+		dataType: string
+		lineageTag: e3985017-1331-4360-b49c-a853b6baca54
+		summarizeBy: none
+		sourceColumn: PRODUCT_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+	column CHANNEL_PRODUCT_ID
+		dataType: string
+		lineageTag: ab679e69-3a64-41a8-8dc2-543c05aa436f
+		summarizeBy: none
+		sourceColumn: CHANNEL_PRODUCT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column CREATION_DATE
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 7cced03f-7de2-4ebb-b9dc-b7605b72570a
+		summarizeBy: none
+		sourceColumn: CREATION_DATE
+
+		variation Variation
+			isDefault
+			relationship: 4fd2a06f-ea40-4045-bdb1-77e717d79b89
+			defaultHierarchy: LocalDateTable_77294c82-a507-41f4-b44f-d2a04b457b26.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column WORKSPACE_ID
+		dataType: double
+		lineageTag: 03ae6c0a-8353-4004-97fd-2fd99b5c5b11
+		summarizeBy: count
+		sourceColumn: WORKSPACE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition REFERENTIAL_PROJECT_PRODUCTS-a22ca72c-555b-4f6a-9c9c-f1a42ebab052 = m
+		mode: import
+		queryGroup: Sources
+		source =
+				let
+				    Source = Snowflake.Databases(Server,Warehouse),
+				    Database = Source{[Name=Database,Kind="Database"]}[Data],
+				    REFERENTIAL_Schema = Database{[Name="REFERENTIAL",Kind="Schema"]}[Data],
+				    REFERENTIAL_PROJECT_View = REFERENTIAL_Schema{[Name="REFERENTIAL_PROJECT",Kind="View"]}[Data]
+				in
+				    REFERENTIAL_PROJECT_View
+
+	annotation PBI_ResultType = Table
+

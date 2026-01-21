@@ -1,0 +1,43 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "8ccbc54306b638e819ad",
+  "position": {
+    "x": 590.00006340935249,
+    "y": 601.95797688046036,
+    "z": 4000,
+    "height": 117.5,
+    "width": 265,
+    "tabOrder": 12000
+  },
+  "visualGroup": {
+    "displayName": "AVG PRODUCT RATING",
+    "groupMode": "ScaleMode",
+    "objects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 4,
+                      "Percent": 0.6
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "50dbf90870ce6edd15a5",
+  "position": {
+    "x": 1055.2084409933236,
+    "y": 273.91243033225334,
+    "z": 8000,
+    "height": 103.816911370907,
+    "width": 215.2653687980989,
+    "tabOrder": 5000
+  },
+  "visualGroup": {
+    "displayName": "Buy Box Lost",
+    "groupMode": "ScaleMode"
+  }
+}

@@ -1,0 +1,117 @@
+table PRODUCT_BADGES
+	lineageTag: b78a2cff-23d7-45f9-93a7-1d38a03fb65b
+
+	column MARKETPLACE_KEY
+		dataType: string
+		lineageTag: 998e851d-e713-4a85-b143-8431e7a5f5ba
+		summarizeBy: none
+		sourceColumn: MARKETPLACE_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+	column PRODUCT_KEY
+		dataType: string
+		lineageTag: df08bd2a-f2e9-4668-befd-ce5f7b377a41
+		summarizeBy: none
+		sourceColumn: PRODUCT_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+	column CHANNEL_PRODUCT_ID
+		dataType: string
+		lineageTag: c1720b35-0d77-4581-a832-ba0da6883a7a
+		summarizeBy: none
+		sourceColumn: CHANNEL_PRODUCT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column OBSERVATION_DATE
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 6ddc9801-9a90-4b51-a6a6-b84882bad3e1
+		summarizeBy: none
+		sourceColumn: OBSERVATION_DATE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column OBSERVATION_TIME
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 1056e76b-d70b-4f24-9abf-9b6e3a268063
+		summarizeBy: none
+		sourceColumn: OBSERVATION_TIME
+
+		variation Variation
+			isDefault
+			relationship: 81837dc8-ad94-4b67-b3ea-c8cfa36dd8ed
+			defaultHierarchy: LocalDateTable_9cf0bef3-fd90-4ce3-8fc4-45859d2a037e.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column BADGE_TYPE
+		dataType: string
+		lineageTag: ffbb891d-ade1-441a-936f-2c93c3e0eaba
+		summarizeBy: none
+		sourceColumn: BADGE_TYPE
+
+		annotation SummarizationSetBy = Automatic
+
+	column BADGE_NAME
+		dataType: string
+		lineageTag: 3208f697-865b-4fb8-a07f-c28fed67f234
+		summarizeBy: none
+		sourceColumn: BADGE_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column SYNC_TIME
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 840ec4bd-e254-4f5d-87c1-e78e297b2aff
+		summarizeBy: none
+		sourceColumn: SYNC_TIME
+
+		variation Variation
+			isDefault
+			relationship: 7073a348-6acb-4c2b-9b42-318c2f1bc810
+			defaultHierarchy: LocalDateTable_741c737c-7372-4c6d-b825-ab960e0c5220.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column _SYNC_TIME
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 6d505147-b96c-4d8f-a624-95c45ee93d05
+		summarizeBy: none
+		sourceColumn: _SYNC_TIME
+
+		variation Variation
+			isDefault
+			relationship: 22dbe756-4fad-4fcb-8465-88b94091993f
+			defaultHierarchy: LocalDateTable_e083d038-99b3-441a-8c86-22a15fe7f24f.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column WORKSPACE_ID
+		dataType: double
+		lineageTag: c015f519-22cc-4e82-9516-d356de385323
+		summarizeBy: count
+		sourceColumn: WORKSPACE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition PRODUCT_BADGES = m
+		mode: import
+		source =
+				let
+				    Source = Snowflake.Databases("zo76507.west-europe.azure.snowflakecomputing.com","WH_XSMALL_83818"),
+				    DATAHAWK_SHARE_83818_Database = Source{[Name="DATAHAWK_SHARE_83818",Kind="Database"]}[Data],
+				    PRODUCT_Schema = DATAHAWK_SHARE_83818_Database{[Name="PRODUCT",Kind="Schema"]}[Data],
+				    PRODUCT_BADGES_View = PRODUCT_Schema{[Name="PRODUCT_BADGES",Kind="View"]}[Data]
+				in
+				    PRODUCT_BADGES_View
+

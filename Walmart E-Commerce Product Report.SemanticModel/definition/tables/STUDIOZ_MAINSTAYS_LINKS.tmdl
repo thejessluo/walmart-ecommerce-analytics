@@ -1,0 +1,80 @@
+table STUDIOZ_MAINSTAYS_LINKS
+	lineageTag: 2700a409-77a5-43db-8370-d872201df909
+
+	column ITEM_ID
+		dataType: string
+		lineageTag: 24a2587f-cf28-4ff5-9e6f-41a9778a6a46
+		summarizeBy: none
+		sourceColumn: ITEM_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ITEM_TITLE
+		dataType: string
+		lineageTag: 01bc2485-c093-42a3-b17d-cb9f8596bc07
+		summarizeBy: none
+		sourceColumn: ITEM_TITLE
+
+		annotation SummarizationSetBy = Automatic
+
+	column LINK
+		dataType: string
+		lineageTag: 1b53786b-2e1c-4a79-8b3d-c0c69754d803
+		summarizeBy: none
+		sourceColumn: LINK
+
+		annotation SummarizationSetBy = Automatic
+
+	column CATEGORY
+		dataType: string
+		lineageTag: ba552401-e627-4013-a97c-1e0bba3035b1
+		summarizeBy: none
+		sourceColumn: CATEGORY
+
+		annotation SummarizationSetBy = Automatic
+
+	column SUPPLIER
+		dataType: string
+		lineageTag: 96281608-2ce6-46c1-a4fe-e31addbe16f9
+		summarizeBy: none
+		sourceColumn: SUPPLIER
+
+		annotation SummarizationSetBy = Automatic
+
+	column MAINSTAYS
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 6156f643-8214-474a-8159-2f76ea00cd41
+		summarizeBy: none
+		sourceColumn: MAINSTAYS
+
+		annotation SummarizationSetBy = Automatic
+
+	column STUDIO_Z_ONLY
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: b4609cad-df53-4cc2-ab9f-d27de9b3b9e0
+		summarizeBy: none
+		sourceColumn: STUDIO_Z_ONLY
+
+		annotation SummarizationSetBy = Automatic
+
+	column STUDIO_Z_ONLY_TEST
+		dataType: string
+		lineageTag: caa4baea-aab9-4223-84db-2326f32d9007
+		summarizeBy: none
+		sourceColumn: STUDIO_Z_ONLY_TEST
+
+		annotation SummarizationSetBy = Automatic
+
+	partition STUDIOZ_MAINSTAYS_LINKS = m
+		mode: import
+		source =
+				let
+				    Source = Snowflake.Databases("zo76507.west-europe.azure.snowflakecomputing.com","WH_XSMALL_83818"),
+				    DATAHAWK_WRITABLE_83818_Database = Source{[Name="DATAHAWK_WRITABLE_83818",Kind="Database"]}[Data],
+				    MISC_WALMART_DATA_Schema = DATAHAWK_WRITABLE_83818_Database{[Name="MISC_WALMART_DATA",Kind="Schema"]}[Data],
+				    STUDIOZ_MAINSTAYS_LINKS_Table = MISC_WALMART_DATA_Schema{[Name="STUDIOZ_MAINSTAYS_LINKS",Kind="Table"]}[Data]
+				in
+				    STUDIOZ_MAINSTAYS_LINKS_Table
+

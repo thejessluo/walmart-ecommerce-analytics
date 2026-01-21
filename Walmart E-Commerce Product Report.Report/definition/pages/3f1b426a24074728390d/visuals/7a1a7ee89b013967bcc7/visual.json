@@ -1,0 +1,16 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "7a1a7ee89b013967bcc7",
+  "position": {
+    "x": 382.75433968126936,
+    "y": 139.44026607052641,
+    "z": 12000,
+    "height": 136.86410429439556,
+    "width": 214.81197071887291,
+    "tabOrder": 6000
+  },
+  "visualGroup": {
+    "displayName": "MSRP Changes",
+    "groupMode": "ScaleMode"
+  }
+}

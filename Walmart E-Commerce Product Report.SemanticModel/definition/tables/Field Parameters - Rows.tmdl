@@ -1,0 +1,55 @@
+table 'Field Parameters - Rows'
+	lineageTag: 01aaa7a5-0943-4899-a49e-ace59b6ece38
+
+	column Parameter
+		lineageTag: d65a69c7-ba38-47a1-a42c-da7cbdbf4a69
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Parameter Order'
+
+		relatedColumnDetails
+			groupByColumn: 'Parameter Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Parameter Fields'
+		isHidden
+		lineageTag: c63fc8fc-f620-4ef7-9f14-00c8c9dcf3da
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Parameter Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Parameter Order'
+		isHidden
+		formatString: 0
+		lineageTag: c60e49ed-4457-4832-91f6-99355b07321c
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Field Parameters - Rows' = calculated
+		mode: import
+		source = ```
+				{
+				    ("Market", NAMEOF(PRODUCT_DETAILED[MARKETPLACE_KEY]), 1),
+				    ("Seller", NAMEOF(PRODUCT_DETAILED[BUY_BOX_SELLER_NAME]), 2),
+				    ("Project", NAMEOF(REFERENTIAL_PROJECT_PRODUCTS[PROJECT_NAME]), 3),
+				    ("Tag", NAMEOF(REFERENTIAL_PRODUCT_TAG[TAG_NAME]), 4),
+				    ("Brand", NAMEOF('DIM_PRODUCTS_1'[BRAND_FINAL]), 5),
+				    ("Product ID", NAMEOF('DIM_PRODUCTS_1'[CHANNEL_PRODUCT_ID]), 6),
+				    ("Category", NAMEOF(PRODUCT_SALES_RANK[BROWSE_NODE_NAME]), 7), 
+				    ("Name", NAMEOF(DIM_PRODUCTS_1[NAME]), 8)
+				}
+				```
+
+	annotation PBI_Id = 9d62885586e9408fa847d4d25f60b702
+

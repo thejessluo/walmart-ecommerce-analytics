@@ -1,0 +1,2522 @@
+table PRODUCT_DETAILED
+	lineageTag: 23cb792b-9c10-444b-8cfe-158edf3e2b88
+
+	measure PRICE_FROM_YESTERDAY = CALCULATE(SUM(PRODUCT_DETAILED[PRICE]),DATEADD(PRODUCT_DETAILED[OBSERVATION_DATE],-1,DAY))
+		lineageTag: c2401cf4-5129-4611-9433-f21c70f9bc92
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure RESULT_PRICE_DX =
+			
+			VAR __product = SELECTEDVALUE(PRODUCT_DETAILED[CHANNEL_PRODUCT_ID])
+			return
+			CALCULATE( MAX(PRODUCT_DETAILED[PRICE]),
+			DATEADD(PRODUCT_DETAILED[OBSERVATION_DATE],-1,DAY), //Replace 1 with parameter
+			FILTER(ALL(PRODUCT_DETAILED),
+			PRODUCT_DETAILED[CHANNEL_PRODUCT_ID] = __product))
+		displayFolder: Measures/Columns - DataHawk
+		lineageTag: 9185f77e-c3d8-4fcc-bf8d-8c26ca10ea80
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure RESULT_BUYBOX_ENABLED_RATE = ```
+			
+			VAR __ENABLED_SCORE = CALCULATE(COUNT(PRODUCT_DETAILED[CHANNEL_PRODUCT_ID]), PRODUCT_DETAILED[BUY_BOX_ENABLED] = TRUE(),ALL(PRODUCT_DETAILED[BUY_BOX_SELLER_NAME]))
+			VAR __DAYS = 
+			CALCULATE( 
+			            COUNT(PRODUCT_DETAILED[CHANNEL_PRODUCT_ID]),
+			            ALL(PRODUCT_DETAILED[BUY_BOX_SELLER_NAME])
+			        )
+			return DIVIDE(__ENABLED_SCORE,__DAYS)
+			```
+		formatString: #,0%;-#,0%;#,0%
+		displayFolder: Measures/Columns - DataHawk
+		lineageTag: 18168afc-f52a-49ef-956a-31042962881b
+
+	measure RESULT_MAX_PRICE = CALCULATE(MAX(PRODUCT_DETAILED[PRICE]))
+		displayFolder: Measures/Columns - DataHawk
+		lineageTag: 54649e5f-67f9-4e2f-9e3f-c0be87300971
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure RESULT_MIN_PRICE = CALCULATE(MIN(PRODUCT_DETAILED[PRICE]))
+		displayFolder: Measures/Columns - DataHawk
+		lineageTag: 7b8903ac-216c-40df-a640-ff6d39f31a8c
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure RESULT_AVG_PRICE = CALCULATE(AVERAGE(PRODUCT_DETAILED[PRICE]))
+		displayFolder: Measures/Columns - DataHawk
+		lineageTag: fbda18aa-48e5-42fe-8f33-3e244215ef3d
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure RESULT_COUNT_PRODUCTS = CALCULATE(DISTINCTCOUNT(PRODUCT_DETAILED[CHANNEL_PRODUCT_ID]))
+		formatString: 0
+		displayFolder: Measures/Columns - DataHawk
+		lineageTag: 5669cd13-3068-4e36-8912-eaebec79e662
+
+	measure RESULT_COUNT_BRANDS = CALCULATE(DISTINCTCOUNT(PRODUCT_DETAILED[BRAND]))
+		formatString: 0
+		displayFolder: Measures/Columns - DataHawk
+		lineageTag: 2f851691-5ef6-4a99-a388-f7f67a8763be
+
+	measure RESULT_COUNT_PRICES = CALCULATE(DISTINCTCOUNT(PRODUCT_DETAILED[PRICE]))
+		formatString: 0
+		displayFolder: Measures/Columns - DataHawk
+		lineageTag: fc6bf8d2-1827-4d86-a41b-a09ab5df8431
+
+	measure RESULT_COUNT_WINNING_SELLERS = CALCULATE(DISTINCTCOUNT(PRODUCT_DETAILED[BUY_BOX_SELLER_NAME]))
+		formatString: 0
+		displayFolder: Measures/Columns - DataHawk
+		lineageTag: 498e7936-5485-4a1f-ad5f-875cb1fc53df
+
+	measure RESULT_BUYBOX_SHARE = ```
+			
+			VAR __VISIBILITY_SCORE = CALCULATE(COUNT(PRODUCT_DETAILED[BUY_BOX_SELLER_NAME]))
+			VAR __VISIBILITY_SCORE_ALL_SELECTED_PRODUCT = 
+			CALCULATE( 
+			            COUNT(PRODUCT_DETAILED[BUY_BOX_SELLER_NAME]),
+			            ALL(PRODUCT_DETAILED[CHANNEL_PRODUCT_ID]),
+			            ALL(PRODUCT_DETAILED[BUY_BOX_SELLER_NAME])
+			        )
+			return DIVIDE(__VISIBILITY_SCORE, __VISIBILITY_SCORE_ALL_SELECTED_PRODUCT) 
+			```
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: Measures/Columns - DataHawk
+		lineageTag: a86068c4-65b4-4ea7-961d-14a550573db7
+
+	measure RESULT_COUNT_COMPETING_SELLERS = CALCULATE(MAX(PRODUCT_DETAILED[NUMBER_OF_SELLERS]))
+		formatString: #,0
+		displayFolder: Measures/Columns - DataHawk
+		lineageTag: 8a02f039-3618-4164-b6de-930891ede479
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure RESULT_AVG_MONTHLY_UNITS = CALCULATE(AVERAGE(PRODUCT_DETAILED[ESTIMATED_MONTHLY_UNITS_SOLD]))
+		formatString: #,0
+		displayFolder: Measures/Columns - DataHawk
+		lineageTag: a112eec7-5413-48f5-aa7b-6d8f53cd2f0b
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure RESULT_AVG_MONTHLY_SALES = CALCULATE(AVERAGE(PRODUCT_DETAILED[ESTIMATED_MONTHLY_SALES]))
+		formatString: #,0
+		displayFolder: Measures/Columns - DataHawk
+		lineageTag: 1548f811-0560-4132-b042-2c5ca35fd7c8
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure RESULT_TOTAL_UNITS = SUM(PRODUCT_DETAILED[ESTIMATED_DAILY_UNITS_SOLD])
+		formatString: #,0
+		displayFolder: Measures/Columns - DataHawk
+		lineageTag: 2c76d18d-5502-434a-8fbd-73abea462013
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure RESULT_TOTAL_SALES = SUM(PRODUCT_DETAILED[ESTIMATED_DAILY_SALES])
+		formatString: #,0
+		displayFolder: Measures/Columns - DataHawk
+		lineageTag: bcf58635-b971-4bf2-982d-f5908c7174a4
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure RESULT_LATEST_SELLER = CALCULATE(LASTNONBLANK(PRODUCT_DETAILED[BUY_BOX_SELLER_NAME],[BUY_BOX_SELLER_NAME]))
+		displayFolder: Measures/Columns - DataHawk
+		lineageTag: 34ddbb06-abe5-40d7-a1a6-7285f085cc4c
+
+	measure RESULT_TOTAL_UNITS_SHARE = ```
+			
+			VAR __UNITS = [RESULT_TOTAL_UNITS]
+			VAR __TOTAL_UNITS = 
+			CALCULATE( 
+			            SUM(PRODUCT_DETAILED[ESTIMATED_DAILY_UNITS_SOLD]),
+			            ALL(PRODUCT_DETAILED[MARKETPLACE_KEY]),
+			            ALL(PRODUCT_DETAILED[CHANNEL_PRODUCT_ID]),
+			            ALL(PRODUCT_DETAILED[BRAND]),
+			            ALL(PRODUCT_DETAILED[BUY_BOX_SELLER_NAME])
+			        )
+			return MIN(1,DIVIDE(__UNITS, __TOTAL_UNITS))
+			```
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: Measures/Columns - DataHawk
+		lineageTag: 6c25270c-1d32-444a-9ea1-7aa73759f0bd
+
+	measure RESULT_TOTAL_SALES_SHARE = ```
+			
+			VAR __SELLER_SALES = [RESULT_TOTAL_SALES]
+			VAR __TOTAL_SALES = 
+			CALCULATE( 
+			            SUM(PRODUCT_DETAILED[ESTIMATED_DAILY_SALES]),
+			            ALL(PRODUCT_DETAILED[MARKETPLACE_KEY]),
+			            ALL(PRODUCT_DETAILED[CHANNEL_PRODUCT_ID]),
+			            ALL(PRODUCT_DETAILED[BRAND]),
+			            ALL(PRODUCT_DETAILED[BUY_BOX_SELLER_NAME])
+			        )
+			return MIN(1,DIVIDE(__SELLER_SALES, __TOTAL_SALES))
+			```
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: Measures/Columns - DataHawk
+		lineageTag: d7212e32-cb9f-4c63-a14f-1b50b7132d8c
+
+	measure RESULT_AVG_IMAGES = CALCULATE(AVERAGE(PRODUCT_DETAILED[IMAGE_COUNT]))
+		formatString: #,0.0
+		displayFolder: Measures/Columns - DataHawk
+		lineageTag: d0461106-ed4a-45d6-8f73-f164cc6815a9
+
+	measure RESULT_AVG_VIDEOS = CALCULATE(AVERAGE(PRODUCT_DETAILED[VIDEO_COUNT]))
+		displayFolder: Measures/Columns - DataHawk
+		lineageTag: 23ac5fa6-46e1-42eb-914f-4d26c6c370b1
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure RESULT_AVG_RATING = CALCULATE(AVERAGE(PRODUCT_DETAILED[RATING]))
+		displayFolder: Measures/Columns - DataHawk
+		lineageTag: 95df74fd-ecb3-4368-a9a2-b42641efb1dd
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure RESULT_COUNT_MARKETS = CALCULATE(DISTINCTCOUNT(PRODUCT_DETAILED[MARKETPLACE_KEY]))
+		formatString: 0
+		displayFolder: Measures/Columns - DataHawk
+		lineageTag: 0288f39b-54ad-4ede-ba73-210070d9a8a0
+
+	measure RESULT_AVG_RATINGS_COUNT = CALCULATE(AVERAGE(PRODUCT_DETAILED[RATING_COUNT]))
+		formatString: #,0
+		displayFolder: Measures/Columns - DataHawk
+		lineageTag: f3647dec-d063-4df7-b7b1-949078675089
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure RESULT_MAX_RATINGS_COUNT = CALCULATE(MAX(PRODUCT_DETAILED[RATING_COUNT]))
+		formatString: #,0
+		displayFolder: Measures/Columns - DataHawk
+		lineageTag: cd2137fc-5d21-46ab-8120-76017639ca47
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure RESULT_MIN_RATINGS_COUNT = CALCULATE(MIN(PRODUCT_DETAILED[RATING_COUNT]))
+		formatString: #,0
+		displayFolder: Measures/Columns - DataHawk
+		lineageTag: 09ff4da6-167b-4c2d-9d18-63722b56484b
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure RESULT_TOTAL_SALES_HIGH = SUM(PRODUCT_DETAILED[ESTIMATED_DAILY_SALES])*2
+		formatString: #,0
+		displayFolder: Measures/Columns - DataHawk
+		lineageTag: baf31236-9204-4247-b654-35644994a918
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure RESULT_TOTAL_SALES_SHARE_HIGH = ```
+			
+			VAR __SELLER_SALES = [RESULT_TOTAL_SALES_HIGH]
+			VAR __TOTAL_SALES = 
+			CALCULATE( 
+			            SUM(PRODUCT_DETAILED[ESTIMATED_DAILY_SALES]),
+			            ALL(PRODUCT_DETAILED[MARKETPLACE_KEY]),
+			            ALL(PRODUCT_DETAILED[CHANNEL_PRODUCT_ID]),
+			            ALL(PRODUCT_DETAILED[BRAND]),
+			            ALL(PRODUCT_DETAILED[BUY_BOX_SELLER_NAME])
+			        )*2
+			return MIN(1,DIVIDE(__SELLER_SALES, __TOTAL_SALES))
+			```
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: Measures/Columns - DataHawk
+		lineageTag: 0a922877-231d-46f4-9599-aa78eb30baed
+
+	measure RESULT_TOTAL_UNITS_HIGH = SUM(PRODUCT_DETAILED[ESTIMATED_DAILY_UNITS_SOLD])*2
+		formatString: #,0
+		displayFolder: Measures/Columns - DataHawk
+		lineageTag: 252b1674-ffc2-4a66-aa78-4b5ed954a188
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure RESULT_TOTAL_UNITS_SHARE_HIGH = ```
+			
+			VAR __UNITS = [RESULT_TOTAL_UNITS_HIGH]
+			VAR __TOTAL_UNITS = 
+			CALCULATE( 
+			            SUM(PRODUCT_DETAILED[ESTIMATED_DAILY_UNITS_SOLD]),
+			            ALL(PRODUCT_DETAILED[MARKETPLACE_KEY]),
+			            ALL(PRODUCT_DETAILED[CHANNEL_PRODUCT_ID]),
+			            ALL(PRODUCT_DETAILED[BRAND]),
+			            ALL(PRODUCT_DETAILED[BUY_BOX_SELLER_NAME])
+			        )*2
+			return MIN(1,DIVIDE(__UNITS, __TOTAL_UNITS))
+			```
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: Measures/Columns - DataHawk
+		lineageTag: 75efcb59-79ba-447c-bb1a-ab4c364a5f22
+
+	measure RESULT_AVG_LEAD_TIME = CALCULATE(AVERAGE(PRODUCT_DETAILED[LEAD_TIME]))
+		formatString: #,0
+		displayFolder: Measures/Columns - DataHawk
+		lineageTag: e1476259-6c07-4761-8c8b-cb6000f18ee8
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure RESULT_DAYS_BUYBOX_IS_ENABLED = CALCULATE(COUNT(PRODUCT_DETAILED[CHANNEL_PRODUCT_ID]), PRODUCT_DETAILED[BUY_BOX_ENABLED] = TRUE())
+		formatString: 0
+		displayFolder: Measures/Columns - DataHawk
+		lineageTag: 9ca6f248-bbbb-4e9d-81c4-b2e9c95ecb63
+
+	measure RESULT_DAYS_BUYBOX_IS_DISABLED = CALCULATE(COUNT(PRODUCT_DETAILED[CHANNEL_PRODUCT_ID]), PRODUCT_DETAILED[BUY_BOX_ENABLED] = FALSE())
+		formatString: 0
+		displayFolder: Measures/Columns - DataHawk
+		lineageTag: e10f5b54-b0f2-4cfd-8097-001c67882446
+
+	measure Jess_Count_OOS_True = SUM(PRODUCT_DETAILED[Jess_OOS_TrueFalse_#]) + 0
+		formatString: 0
+		displayFolder: Measures/Columns - Jess
+		lineageTag: 39b7683b-d1c2-4ea0-acc8-bd0932085d8d
+
+	measure Jess_BUY_BOX_NOT_OWNED =
+			
+			IF (
+			    NOT (
+			        OR (
+			            SELECTEDVALUE ( PRODUCT_DETAILED[BUY_BOX_SELLER_NAME] ) = "Walmart.com",
+			            SELECTEDVALUE ( PRODUCT_DETAILED[BUY_BOX_SELLER_NAME] ) = "Tzumi Electronics"
+			        )
+			    ),
+			    1,
+			    0
+			)
+		formatString: 0
+		displayFolder: Measures/Columns - Jess
+		lineageTag: 11d745b2-1a2d-4cc7-b8e7-a25bce6c6721
+
+	measure Jess_Count_RatingChange_True =
+			
+			SUMX(
+			    PRODUCT_DETAILED,
+			    IF (
+			        [Jess_CHECK_RATING_HAS_CHANGED_D1],
+			        1,
+			        0
+			    )
+			) + 0
+		formatString: 0
+		displayFolder: Measures/Columns - Jess
+		lineageTag: b330c891-bbf2-4867-9f0f-ed3f086e3eaf
+
+	measure 'Jess_Count_Below_4.1_Rating' =
+			
+			COUNTROWS(
+			    FILTER(
+			        PRODUCT_DETAILED,
+			        PRODUCT_DETAILED[RATING] < 4.1
+			    )
+			) + 0
+		formatString: 0
+		displayFolder: Measures/Columns - Jess
+		lineageTag: bc08e9ff-4243-4227-91b9-73e8c1580507
+
+	measure Jess_Count_PriceChange_True =
+			
+			SUMX(
+			    PRODUCT_DETAILED,
+			    IF (
+			        [Jess_CHECK_PRICE_HAS_CHANGED_D1],
+			        1,
+			        0
+			    )
+			) + 0
+		formatString: 0
+		displayFolder: Measures/Columns - Jess
+		lineageTag: 02be25ee-05c7-4165-9ff1-191e612fe004
+
+	measure Jess_Count_StockChange_True =
+			
+			SUMX(
+			    PRODUCT_DETAILED,
+			    IF (
+			        [Jess_CHECK_OOS_HAS_CHANGED_D1],
+			        1,
+			        0
+			    )
+			) + 0
+		formatString: 0
+		displayFolder: Measures/Columns - Jess
+		lineageTag: 43424496-fba3-4c39-8273-2ef8df43eb44
+
+	measure Jess_Count_BuyBox_Change_True =
+			
+			SUMX(
+			    PRODUCT_DETAILED,
+			    IF(
+			        [CHECK_BOX_SELLER_NAME_HAS_CHANGED],
+			        1,
+			        0
+			    )
+			) + 0
+		formatString: 0
+		displayFolder: Measures/Columns - Jess
+		lineageTag: 226f9db6-fdde-404d-b934-1be243da8dcc
+
+	measure Jess_Count_BuyBox_Not_Walmart/Tzumi = ```
+			
+			COUNTROWS(
+			    FILTER(
+			        PRODUCT_DETAILED,
+			        NOT(
+			            OR(
+			                PRODUCT_DETAILED[BUY_BOX_SELLER_NAME] = "Walmart.com",
+			                PRODUCT_DETAILED[BUY_BOX_SELLER_NAME] = "Tzumi Electronics"
+			            )
+			        )
+			    )
+			) + 0
+			
+			```
+		formatString: 0
+		displayFolder: Measures/Columns - Jess
+		lineageTag: 3c744ff7-7eee-4727-b86f-f80c3d5fda7d
+
+	measure Jess_Count_Items_Price_Dropped = ```
+			
+			COUNTROWS(
+			    FILTER(
+			        PRODUCT_DETAILED,
+			        PRODUCT_DETAILED[RESULT_PRICE_D1] > PRODUCT_DETAILED[PRICE]
+			    )
+			) + 0
+			
+			```
+		formatString: 0
+		displayFolder: Measures/Columns - Jess
+		lineageTag: 1973dab5-8a18-46b4-be11-6d3536ea845e
+
+	measure Jess_Count_Items_Price_Increased = ```
+			
+			COUNTROWS(
+			    FILTER(
+			        PRODUCT_DETAILED,
+			        PRODUCT_DETAILED[RESULT_PRICE_D1] < PRODUCT_DETAILED[PRICE]
+			    )
+			) + 0
+			
+			```
+		formatString: 0
+		displayFolder: Measures/Columns - Jess
+		lineageTag: e5ba1776-ed3a-427f-8a8c-80b9cb2a8116
+
+	measure Jess_Count_Items_Rating_Increased = ```
+			
+			COUNTROWS(
+			    FILTER(
+			        PRODUCT_DETAILED,
+			        PRODUCT_DETAILED[Jess_RESULT_RATING_D1] < PRODUCT_DETAILED[RATING]
+			    )
+			) + 0
+			
+			```
+		formatString: 0
+		displayFolder: Measures/Columns - Jess
+		lineageTag: b45e84d5-566c-44fe-abfd-02c665a0bb3b
+
+	measure Jess_Count_Items_Rating_Decreased = ```
+			
+			COUNTROWS(
+			    FILTER(
+			        PRODUCT_DETAILED,
+			        PRODUCT_DETAILED[Jess_RESULT_RATING_D1] > PRODUCT_DETAILED[RATING]
+			    )
+			) + 0
+			
+			```
+		formatString: 0
+		displayFolder: Measures/Columns - Jess
+		lineageTag: 3f6c2ddb-cb84-413e-a9b5-096cb3797dd8
+
+	measure Jess_Count_Items_WentOOS =
+			
+			CALCULATE(
+			    COUNTROWS(PRODUCT_DETAILED),
+			    PRODUCT_DETAILED[Jess_CHECK_OOS_HAS_CHANGED_D1] = TRUE(),
+			    PRODUCT_DETAILED[IS_OUT_OF_STOCK] = TRUE()
+			) + 0
+		formatString: 0
+		displayFolder: Measures/Columns - Jess
+		lineageTag: 63fb7144-1fb4-4849-ada2-ca4d8e38dbd8
+
+	measure Jess_Count_Items_WentInStock =
+			
+			CALCULATE(
+			    COUNTROWS(PRODUCT_DETAILED),
+			    PRODUCT_DETAILED[Jess_CHECK_OOS_HAS_CHANGED_D1] = TRUE(),
+			    PRODUCT_DETAILED[IS_OUT_OF_STOCK] = FALSE()
+			) + 0
+		formatString: 0
+		displayFolder: Measures/Columns - Jess
+		lineageTag: 836faa55-aeb7-4661-ba43-59edbca8a0e7
+
+	measure Jess_COUNT_MSRP_Change =
+			
+			COUNTROWS(
+			    FILTER(
+			        'PRODUCT_DETAILED',
+			        'PRODUCT_DETAILED'[LIST_PRICE] <> [Jess_RESULT_MSRP_D1]
+			    )
+			)
+			+ 0
+		formatString: 0
+		displayFolder: Measures/Columns - Jess
+		lineageTag: 6901ba92-1760-4cc8-aae9-916dd8c306f4
+
+	measure Jess_COUNT_MSRP_missing =
+			
+			COUNTROWS(
+			    FILTER(
+			        'PRODUCT_DETAILED',
+			        ISBLANK('PRODUCT_DETAILED'[LIST_PRICE])
+			    )
+			)
+			+ 0
+		formatString: 0
+		displayFolder: Measures/Columns - Jess
+		lineageTag: 34b5a872-0047-42df-b606-c921432452cd
+
+	measure Jess_COUNT_MSRP_exists =
+			
+			COUNTROWS(
+			    FILTER(
+			        'PRODUCT_DETAILED',
+			        NOT(ISBLANK('PRODUCT_DETAILED'[LIST_PRICE]))
+			    )
+			)
+			+ 0
+		formatString: 0
+		displayFolder: Measures/Columns - Jess
+		lineageTag: 17cf55c2-78ac-443a-b7d6-491cb4aff290
+
+	measure Jess_COUNT_MSRP_gained =
+			
+			COUNTROWS(
+			    FILTER(
+			        'PRODUCT_DETAILED',
+			        NOT(ISBLANK('PRODUCT_DETAILED'[LIST_PRICE])) &&
+			        ISBLANK([Jess_RESULT_MSRP_D1])
+			    )
+			)
+			+ 0
+		formatString: 0
+		displayFolder: Measures/Columns - Jess
+		lineageTag: fc4bb8f9-ddf1-4206-886a-ba0f954acf93
+
+	measure Jess_COUNT_MSRP_lost =
+			
+			COUNTROWS(
+			    FILTER(
+			        'PRODUCT_DETAILED',
+			        ISBLANK('PRODUCT_DETAILED'[LIST_PRICE]) &&
+			        NOT(ISBLANK([Jess_RESULT_MSRP_D1]))
+			    )
+			)
+			+ 0
+		formatString: 0
+		displayFolder: Measures/Columns - Jess
+		lineageTag: a7d2ba97-0e9e-45a3-b5ff-5b4fc1e4b1b4
+
+	measure Jess_Count_TitleChange_True =
+			
+			SUMX(
+			    PRODUCT_DETAILED,
+			    IF (
+			        [CHECK_TITLE_HAS_CHANGED],
+			        1,
+			        0
+			    )
+			) + 0
+		formatString: 0
+		displayFolder: Measures/Columns - Jess
+		lineageTag: 264aa954-f580-4763-bd27-e72b4425af49
+
+	measure Jess_Count_DescriptionChange_True =
+			
+			SUMX(
+			    PRODUCT_DETAILED,
+			    IF (
+			        [Jess_CHECK_DESCRIPTION_HAS_CHANGED_D1],
+			        1,
+			        0
+			    )
+			) + 0
+		formatString: 0
+		displayFolder: Measures/Columns - Jess
+		lineageTag: 24f0cc7b-fa82-4123-b027-7b422f6967cc
+
+	measure Jess_Count_BulletsChange_True =
+			
+			SUMX(
+			    PRODUCT_DETAILED,
+			    IF (
+			        [Jess_CHECK_BULLETS_HAS_CHANGED_D1],
+			        1,
+			        0
+			    )
+			) + 0
+		formatString: 0
+		displayFolder: Measures/Columns - Jess
+		lineageTag: 52717f2d-0b2a-468c-9011-819037698e69
+
+	measure Jess_Count_ImageCountChange_True =
+			
+			SUMX(
+			    PRODUCT_DETAILED,
+			    IF (
+			        [Jess_CHECK_IMAGE_COUNT_HAS_CHANGED_D1],
+			        1,
+			        0
+			    )
+			) + 0
+		formatString: 0
+		displayFolder: Measures/Columns - Jess
+		lineageTag: cb8b9d24-5468-44aa-b028-2728310e0c12
+
+	measure Jess_Count_COMBINEDCOPYCHANGE_True = ```
+			
+			SUMX(
+			    PRODUCT_DETAILED,
+			    IF([CHECK_TITLE_HAS_CHANGED], 1, 0) + 
+			    IF([Jess_CHECK_DESCRIPTION_HAS_CHANGED_D1], 1, 0) + 
+			    IF([Jess_CHECK_BULLETS_HAS_CHANGED_D1], 1, 0)
+			) + 0
+			
+			```
+		formatString: 0
+		displayFolder: Measures/Columns - Jess
+		lineageTag: a0b47d10-99ad-4a14-84ca-73038775d845
+
+	measure JESS_COUNT_RECENT_CREATION_TRUE =
+			
+			SUMX(
+			    PRODUCT_DETAILED,
+			    IF (
+			        [JESS_CHECK_CREATION_DATE_RECENT],
+			        1,
+			        0
+			    )
+			) + 0
+		formatString: 0
+		displayFolder: Measures/Columns - Jess
+		lineageTag: 714a5579-3dd2-4a18-b5b1-3fda3dffbff0
+
+	measure MEASURE_CURRENT_PRICE = ```
+			
+			VAR LatestDate = 
+			    MAX('DIM_DATES'[OBSERVATION_DATE])
+			RETURN
+			    CALCULATE(
+			        MAX('PRODUCT_DETAILED'[PRICE]),
+			        'DIM_DATES'[OBSERVATION_DATE] = LatestDate
+			    )
+			
+			```
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		displayFolder: Measures/Columns - Jess
+		lineageTag: 8284d79b-0d02-4e10-bf31-a8e617ccc308
+
+	measure MEASURE_CURRENT_MSRP = ```
+			
+			VAR LatestDate = 
+			    MAX('DIM_DATES'[OBSERVATION_DATE])
+			RETURN
+			    CALCULATE(
+			        MAX('PRODUCT_DETAILED'[LIST_PRICE]),
+			        'DIM_DATES'[OBSERVATION_DATE] = LatestDate
+			    )
+			
+			```
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		displayFolder: Measures/Columns - Jess
+		lineageTag: 4203a041-c883-498f-ac75-2a4363b1a555
+
+	measure MEASURE_PREVIOUS_PRICE = ```
+			
+			VAR LatestDate = MAX('DIM_DATES'[OBSERVATION_DATE])
+			VAR PreviousDate = 
+			    CALCULATE(
+			        MAX('DIM_DATES'[OBSERVATION_DATE]),
+			        'DIM_DATES'[OBSERVATION_DATE] < LatestDate
+			    )
+			RETURN
+			    CALCULATE(
+			        MAX('PRODUCT_DETAILED'[PRICE]),
+			        'DIM_DATES'[OBSERVATION_DATE] = PreviousDate
+			    )
+			
+			```
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		displayFolder: Measures/Columns - Jess
+		lineageTag: 32cbdfef-05b1-473f-b961-dc7cffd5b2aa
+
+	measure MEASURE_PREVIOUS_MSRP = ```
+			
+			VAR LatestDate = MAX('DIM_DATES'[OBSERVATION_DATE])
+			VAR PreviousDate = 
+			    CALCULATE(
+			        MAX('DIM_DATES'[OBSERVATION_DATE]),
+			        'DIM_DATES'[OBSERVATION_DATE] < LatestDate
+			    )
+			RETURN
+			    CALCULATE(
+			        MAX('PRODUCT_DETAILED'[LIST_PRICE]),
+			        'DIM_DATES'[OBSERVATION_DATE] = PreviousDate
+			    )
+			
+			```
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		displayFolder: Measures/Columns - Jess
+		lineageTag: 1f16e469-89b5-42e0-9715-375de82468aa
+
+	measure 'MEASURES_Average MSRP' =
+			
+			AVERAGE(PRODUCT_DETAILED[LIST_PRICE])
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		displayFolder: Measures/Columns - Jess
+		lineageTag: a6e822f9-1e00-4a46-9817-20ee448b28dc
+
+		extendedProperty MeasureTemplate =
+				{
+				  "version": 0,
+				  "daxTemplateName": "AveragePerCategory"
+				}
+
+		changedProperty = FormatString
+
+	measure MEASURE_PRICE_DIFFERENCE = PRODUCT_DETAILED[MEASURE_CURRENT_PRICE] - PRODUCT_DETAILED[MEASURE_PREVIOUS_PRICE]
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		displayFolder: Measures/Columns - Jess
+		lineageTag: 505f1bad-083c-4f28-a3f6-411036ee334c
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure MEASURE_MSRP_DIFFERENCE = PRODUCT_DETAILED[MEASURE_CURRENT_MSRP] - PRODUCT_DETAILED[MEASURE_PREVIOUS_MSRP]
+		displayFolder: Measures/Columns - Jess
+		lineageTag: 80ebcc84-1b81-4a79-9e93-ae69ac709a56
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure MEASURE_%_DAYS_MSRP =
+			
+			VAR TotalDays = COUNTROWS(ALL('DIM_DATES'))
+			VAR NonBlankDays = CALCULATE(
+			    COUNTROWS('DIM_DATES'),
+			    NOT(ISBLANK('PRODUCT_DETAILED'[LIST_PRICE]))
+			)
+			RETURN
+			    DIVIDE(NonBlankDays, TotalDays, 0)
+		displayFolder: Measures/Columns - Jess
+		lineageTag: 26b85e12-b14c-4c2e-a427-7723cbe92ace
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'MEASURE_Days with MSRP' = ```
+			
+			CALCULATE(
+			    COUNTROWS('DIM_DATES'),
+			    NOT(ISBLANK('PRODUCT_DETAILED'[LIST_PRICE])),
+			    TREATAS(VALUES('DIM_DATES'[OBSERVATION_DATE]), 'PRODUCT_DETAILED'[OBSERVATION_DATE])
+			)
+			
+			```
+		formatString: 0
+		displayFolder: Measures/Columns - Jess
+		lineageTag: 80577aa4-0343-438b-b030-41c18e0ac26f
+
+	measure CountDaysWithMSRP = ```
+			
+			CALCULATE(
+			    COUNTROWS('PRODUCT_DETAILED'),
+			    NOT(ISBLANK('PRODUCT_DETAILED'[LIST_PRICE]))
+			)
+			
+			```
+		formatString: 0
+		displayFolder: Measures/Columns - Jess
+		lineageTag: 273ffc56-3109-4534-addd-fc67b445c542
+
+	measure DaysWithMSRP% = ```
+			
+			DIVIDE(
+			    [CountDaysWithMSRP],
+			    COUNTROWS(ALLSELECTED(DIM_DATES[OBSERVATION_DATE])),
+			    0
+			)
+			
+			```
+		formatString: 0.0%;-0.0%;0.0%
+		displayFolder: Measures/Columns - Jess
+		lineageTag: b18ee140-9ebb-4b4e-9406-aac465410b29
+
+	measure 'MSRP Deltas' = ```
+			
+			VAR LatestDate = 
+			    MAX('DIM_DATES'[OBSERVATION_DATE])
+			
+			VAR MinWebsiteMSRP = 
+			    CALCULATE(
+			        MIN('TZUMI_FITRX_LINKS'[MSRP]),
+			        'DIM_DATES'[OBSERVATION_DATE] = LatestDate
+			    )
+			
+			VAR CurrentMSRP = 
+			    CALCULATE(
+			        MAX('PRODUCT_DETAILED'[LIST_PRICE]),
+			        'DIM_DATES'[OBSERVATION_DATE] = LatestDate
+			    )
+			    
+			RETURN
+			CurrentMSRP - MinWebsiteMSRP
+			```
+		displayFolder: Measures/Columns - Jess
+		lineageTag: ff83b374-171c-45b6-a40e-07fb28cb1d23
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure COUNT_OFFLINE_ITEMS =
+			
+			SUMX(
+			    PRODUCT_DETAILED,
+			    IF(
+			        [CHECK_Online],
+			        1,
+			        0
+			    )
+			) + 0
+		formatString: 0
+		displayFolder: Measures/Columns - Jess
+		lineageTag: 93f8aa07-3975-4fa7-a169-bdc6f53d11d6
+
+	measure COUNT_Badges = ```
+			
+			CALCULATE(
+			    DISTINCTCOUNT('product_badges'[badge_name])
+			)
+			
+			```
+		formatString: 0
+		displayFolder: Measures/Columns - Jess
+		lineageTag: 6de2be34-ea90-4cd3-bdf6-7a25541eb92b
+
+	measure Jess_OOS_TrueFalse_## = ```
+			
+			CALCULATE(
+			    COUNTROWS('product_detailed'),
+			    'product_detailed'[is_out_of_stock] = TRUE
+			)
+			
+			```
+		formatString: 0
+		displayFolder: Measures/Columns - Jess
+		lineageTag: d9a1a9e9-4071-4435-ada9-593ab35beb57
+
+	measure Jess_Buybox_Not_Walmart_Tzumi_Blank_# = ```
+			
+			CALCULATE(
+			    COUNTROWS('PRODUCT_DETAILED'),
+			    NOT (
+			        'PRODUCT_DETAILED'[BUY_BOX_SELLER_NAME] = "Walmart.com" ||
+			        'PRODUCT_DETAILED'[BUY_BOX_SELLER_NAME] = "Tzumi Electronics" ||
+			        'PRODUCT_DETAILED'[BUY_BOX_SELLER_NAME] = ""
+			    )
+			)
+			
+			```
+		formatString: 0
+		displayFolder: Measures/Columns - Jess
+		lineageTag: 3bc7065a-5525-467c-a023-8241242cd922
+
+	column MARKETPLACE_KEY
+		dataType: string
+		lineageTag: afd25c69-dedb-43c2-aa84-44ed187e1489
+		summarizeBy: none
+		sourceColumn: MARKETPLACE_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+	column PRODUCT_KEY
+		dataType: string
+		lineageTag: 88bb3c9d-4ec7-4e50-9a83-6be44b661222
+		summarizeBy: none
+		sourceColumn: PRODUCT_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+	column CHANNEL_PRODUCT_ID
+		dataType: string
+		lineageTag: 39ac7383-4e7c-4fe9-974e-4ad0590d9a03
+		summarizeBy: none
+		sourceColumn: CHANNEL_PRODUCT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column GROUP_CHANNEL_PRODUCT_ID
+		dataType: string
+		lineageTag: 583b491b-32f8-4c65-80d7-33adb6edf435
+		summarizeBy: none
+		sourceColumn: GROUP_CHANNEL_PRODUCT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column OBSERVATION_DATE
+		dataType: dateTime
+		formatString: mm/dd/yy
+		lineageTag: 7a9500dc-1ef1-4d2e-8dc7-0141fe56748d
+		summarizeBy: none
+		sourceColumn: OBSERVATION_DATE
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column OBSERVATION_TIME
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 6bbfe5c3-58c1-4410-bbbb-2eaab6fbf8d1
+		summarizeBy: none
+		sourceColumn: OBSERVATION_TIME
+
+		variation Variation
+			isDefault
+			relationship: 8f8062ac-00aa-41a4-8e7f-a1ac3effa68e
+			defaultHierarchy: LocalDateTable_fa24c9f1-8473-4c23-8697-178ba68a2a63.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column NAME
+		dataType: string
+		lineageTag: 529e5f39-d322-4a86-a1df-9fff222b5bf8
+		summarizeBy: none
+		sourceColumn: NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column BRAND
+		dataType: string
+		lineageTag: bb7bf221-370f-47bf-ba6e-e55634accf65
+		summarizeBy: none
+		sourceColumn: BRAND
+
+		annotation SummarizationSetBy = Automatic
+
+	column PRICE
+		dataType: double
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 644ed2a1-1819-41d5-8bf2-167102f5e9c7
+		summarizeBy: sum
+		sourceColumn: PRICE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column RATING
+		dataType: double
+		formatString: 0.0
+		lineageTag: d5854ae2-fe87-4487-af3f-7e883fa3a794
+		summarizeBy: sum
+		sourceColumn: RATING
+
+		annotation SummarizationSetBy = Automatic
+
+	column RATING_COUNT
+		dataType: double
+		formatString: #,0
+		lineageTag: 5df69915-e43d-4ee1-96ee-5818b68c6233
+		summarizeBy: sum
+		sourceColumn: RATING_COUNT
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column VARIATION_COUNT
+		dataType: double
+		lineageTag: 83082798-7267-4755-9d80-a1ed3300b1f0
+		summarizeBy: sum
+		sourceColumn: VARIATION_COUNT
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column BUY_BOX_ENABLED
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: c4b8775d-ccad-4be6-b9d1-0cbe252ff7d8
+		summarizeBy: none
+		sourceColumn: BUY_BOX_ENABLED
+
+		annotation SummarizationSetBy = Automatic
+
+	column NUMBER_OF_SELLERS
+		dataType: double
+		formatString: 0
+		lineageTag: ed4b46b5-b13f-45c5-adac-8b223fa499d1
+		summarizeBy: sum
+		sourceColumn: NUMBER_OF_SELLERS
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column BUY_BOX_SELLER_NAME
+		dataType: string
+		lineageTag: 6eb6edae-7fa3-4187-8057-860ecad5bb43
+		summarizeBy: none
+		sourceColumn: BUY_BOX_SELLER_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column BUY_BOX_SELECTABLE_QUANTITY
+		dataType: double
+		lineageTag: da4123d1-962f-4802-a997-dd9fe3ea30f5
+		summarizeBy: sum
+		sourceColumn: BUY_BOX_SELECTABLE_QUANTITY
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column IS_OUT_OF_STOCK
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 9a020575-b38e-4c28-97bf-6bfde7d2a2dc
+		summarizeBy: none
+		sourceColumn: IS_OUT_OF_STOCK
+
+		annotation SummarizationSetBy = Automatic
+
+	column IS_MEMBERSHIP_PROGRAM
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: f9cb417b-fc8d-479f-8bf8-60cc9ac816dd
+		summarizeBy: none
+		sourceColumn: IS_MEMBERSHIP_PROGRAM
+
+		annotation SummarizationSetBy = Automatic
+
+	column ESTIMATED_DAILY_UNITS_SOLD
+		dataType: double
+		lineageTag: e5f61b6e-a8b1-43d5-9430-bd8fe902ca01
+		summarizeBy: sum
+		sourceColumn: ESTIMATED_DAILY_UNITS_SOLD
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ESTIMATED_DAILY_SALES
+		dataType: double
+		lineageTag: 26d21de3-d61d-4725-b1cd-ac4392039c71
+		summarizeBy: sum
+		sourceColumn: ESTIMATED_DAILY_SALES
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ESTIMATED_MONTHLY_UNITS_SOLD
+		dataType: double
+		lineageTag: 13e83888-7ad3-4df5-a5de-e0883cdf64b0
+		summarizeBy: sum
+		sourceColumn: ESTIMATED_MONTHLY_UNITS_SOLD
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ESTIMATED_MONTHLY_SALES
+		dataType: double
+		formatString: #,0
+		lineageTag: e92572a8-f6f5-450d-b4d0-cc4e5dc29b11
+		summarizeBy: sum
+		sourceColumn: ESTIMATED_MONTHLY_SALES
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column DESCRIPTION_TEXT
+		dataType: string
+		lineageTag: db3fb734-4a86-4948-98a5-56a3ceb27886
+		summarizeBy: none
+		sourceColumn: DESCRIPTION_TEXT
+
+		annotation SummarizationSetBy = Automatic
+
+	column BULLET_POINTS
+		dataType: string
+		lineageTag: ac8f39e2-a782-4516-832e-b577ff23af74
+		summarizeBy: none
+		sourceColumn: BULLET_POINTS
+
+		annotation SummarizationSetBy = Automatic
+
+	column WITH_A_PLUS
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: c1ae2af2-ebd6-4872-8373-b2cc5b943416
+		summarizeBy: none
+		sourceColumn: WITH_A_PLUS
+
+		annotation SummarizationSetBy = Automatic
+
+	column IMAGE_COUNT
+		dataType: double
+		formatString: 0
+		lineageTag: 5d8cc4fb-2dce-4671-8b27-307109f6dde7
+		summarizeBy: sum
+		sourceColumn: IMAGE_COUNT
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column VIDEO_COUNT
+		dataType: double
+		formatString: 0.0
+		lineageTag: cd31f4c4-0aee-4ce4-a782-7c6e6b651fc6
+		summarizeBy: sum
+		sourceColumn: VIDEO_COUNT
+
+		annotation SummarizationSetBy = Automatic
+
+	column MEDIA_COUNT
+		dataType: double
+		lineageTag: 11691f29-802a-42f8-a039-4cb0f07e64c2
+		summarizeBy: sum
+		sourceColumn: MEDIA_COUNT
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PICTURE_URL
+		dataType: string
+		lineageTag: d3459df6-7fed-45c5-bb84-f9f86b21d686
+		summarizeBy: none
+		sourceColumn: PICTURE_URL
+
+		annotation SummarizationSetBy = Automatic
+
+	column ANSWERED_QUESTIONS_COUNT
+		dataType: double
+		lineageTag: 31368896-09eb-4c22-80cc-bcaff37f0174
+		summarizeBy: sum
+		sourceColumn: ANSWERED_QUESTIONS_COUNT
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DIMENSION_X
+		dataType: double
+		lineageTag: 0f045ea6-e3ac-4970-ba78-5af54927d2b9
+		summarizeBy: sum
+		sourceColumn: DIMENSION_X
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DIMENSION_Y
+		dataType: double
+		lineageTag: 6d8fbf3e-e5e9-411a-a2ee-3be85f384122
+		summarizeBy: sum
+		sourceColumn: DIMENSION_Y
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DIMENSION_Z
+		dataType: double
+		lineageTag: 91edc4d1-163c-4928-a535-ca8c41b4203f
+		summarizeBy: sum
+		sourceColumn: DIMENSION_Z
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column RATING_1_STARS_PERCENT
+		dataType: double
+		lineageTag: da078399-962f-439a-8de8-c7ea2bd80f49
+		summarizeBy: sum
+		sourceColumn: RATING_1_STARS_PERCENT
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column RATING_2_STARS_PERCENT
+		dataType: double
+		lineageTag: 66765884-f771-4d82-905c-5c873b15696b
+		summarizeBy: sum
+		sourceColumn: RATING_2_STARS_PERCENT
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column RATING_3_STARS_PERCENT
+		dataType: double
+		lineageTag: 721a1f2e-e5e5-4646-a87f-54e15597dd40
+		summarizeBy: sum
+		sourceColumn: RATING_3_STARS_PERCENT
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column RATING_4_STARS_PERCENT
+		dataType: double
+		lineageTag: 24b2130f-7109-4494-bb8a-08873f6b8079
+		summarizeBy: sum
+		sourceColumn: RATING_4_STARS_PERCENT
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column RATING_5_STARS_PERCENT
+		dataType: double
+		lineageTag: 516fd85d-a02f-44a5-ab2b-8d869ede1b33
+		summarizeBy: sum
+		sourceColumn: RATING_5_STARS_PERCENT
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column WEIGHT
+		dataType: double
+		lineageTag: 6915e94f-b407-4590-91d3-4d3c3e00322f
+		summarizeBy: sum
+		sourceColumn: WEIGHT
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CHANNEL_SELLER_ID
+		dataType: string
+		lineageTag: 1d039c8d-38ca-4954-86f6-05cc13432f62
+		summarizeBy: none
+		sourceColumn: CHANNEL_SELLER_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column CHANNEL_SELLER_URL
+		dataType: string
+		lineageTag: 198e52b9-1d55-454b-8efa-1055e983acba
+		summarizeBy: none
+		sourceColumn: CHANNEL_SELLER_URL
+
+		annotation SummarizationSetBy = Automatic
+
+	column SYNC_TIME
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: da01cf1f-733c-40af-8347-93136a217bb6
+		summarizeBy: none
+		sourceColumn: SYNC_TIME
+
+		variation Variation
+			isDefault
+			relationship: f450405d-28f3-40a9-871a-85abe079456c
+			defaultHierarchy: LocalDateTable_e4f12b39-07c1-4435-b49b-2b0efda2ef82.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column RESULT_PRICE_D1 =
+			
+			VAR __Current = PRODUCT_DETAILED[PRICE]
+			VAR __Previous = MAXX(FILTER(PRODUCT_DETAILED,PRODUCT_DETAILED[OBSERVATION_DATE]<EARLIER(PRODUCT_DETAILED[OBSERVATION_DATE]) && PRODUCT_DETAILED[CHANNEL_PRODUCT_ID] = EARLIER(PRODUCT_DETAILED[CHANNEL_PRODUCT_ID])),PRODUCT_DETAILED[OBSERVATION_DATE])
+			VAR __PreviousValue = MAXX(FILTER(PRODUCT_DETAILED,PRODUCT_DETAILED[OBSERVATION_DATE] = __Previous && PRODUCT_DETAILED[CHANNEL_PRODUCT_ID] = EARLIER(PRODUCT_DETAILED[CHANNEL_PRODUCT_ID])),PRODUCT_DETAILED[PRICE])
+			return __PreviousValue
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		displayFolder: Measures/Columns - DataHawk
+		lineageTag: 6caf00f2-a2e7-4ecb-b529-fdd6df33f115
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column RESULT_PRICE_D1% =
+			
+			VAR __Current = PRODUCT_DETAILED[PRICE]
+			VAR __Previous = MAXX(FILTER(PRODUCT_DETAILED,PRODUCT_DETAILED[OBSERVATION_DATE]<EARLIER(PRODUCT_DETAILED[OBSERVATION_DATE]) && PRODUCT_DETAILED[CHANNEL_PRODUCT_ID] = EARLIER(PRODUCT_DETAILED[CHANNEL_PRODUCT_ID])),PRODUCT_DETAILED[OBSERVATION_DATE])
+			VAR __PreviousValue = MAXX(FILTER(PRODUCT_DETAILED,PRODUCT_DETAILED[OBSERVATION_DATE] = __Previous && PRODUCT_DETAILED[CHANNEL_PRODUCT_ID] = EARLIER(PRODUCT_DETAILED[CHANNEL_PRODUCT_ID])),PRODUCT_DETAILED[PRICE])
+			return IF( __PreviousValue <>BLANK() , (__Current - __PreviousValue) / __Current )
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Measures/Columns - DataHawk
+		lineageTag: c4da38d6-85f3-4284-b305-13053d6aee71
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column RESULT_PRICE_D7 =
+			
+			VAR __Current = PRODUCT_DETAILED[PRICE]
+			VAR __PreviousDate = PRODUCT_DETAILED[OBSERVATION_DATE] - 7
+			VAR __PreviousValue = MAXX(FILTER(PRODUCT_DETAILED,PRODUCT_DETAILED[OBSERVATION_DATE] = __PreviousDate && PRODUCT_DETAILED[CHANNEL_PRODUCT_ID] = EARLIER(PRODUCT_DETAILED[CHANNEL_PRODUCT_ID])),PRODUCT_DETAILED[PRICE])
+			return __PreviousValue
+		displayFolder: Measures/Columns - DataHawk
+		lineageTag: 6f723df5-2e04-46c4-9478-390fce43f1b0
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column RESULT_PRICE_D7% =
+			
+			VAR __Current = PRODUCT_DETAILED[PRICE]
+			VAR __PreviousDate = PRODUCT_DETAILED[OBSERVATION_DATE] - 7
+			VAR __PreviousValue = MAXX(FILTER(PRODUCT_DETAILED,PRODUCT_DETAILED[OBSERVATION_DATE] = __PreviousDate && PRODUCT_DETAILED[CHANNEL_PRODUCT_ID] = EARLIER(PRODUCT_DETAILED[CHANNEL_PRODUCT_ID])),PRODUCT_DETAILED[PRICE])
+			return IF( __PreviousValue <>BLANK() , (__Current - __PreviousValue) / __Current )
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Measures/Columns - DataHawk
+		lineageTag: f88326a3-3da0-4987-a27a-db96c73d131f
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column RESULT_PRICE_D30 =
+			
+			VAR __Current = PRODUCT_DETAILED[PRICE]
+			VAR __PreviousDate = PRODUCT_DETAILED[OBSERVATION_DATE] - 30
+			VAR __PreviousValue = MAXX(FILTER(PRODUCT_DETAILED,PRODUCT_DETAILED[OBSERVATION_DATE] = __PreviousDate && PRODUCT_DETAILED[CHANNEL_PRODUCT_ID] = EARLIER(PRODUCT_DETAILED[CHANNEL_PRODUCT_ID])),PRODUCT_DETAILED[PRICE])
+			return __PreviousValue
+		displayFolder: Measures/Columns - DataHawk
+		lineageTag: 132b6f81-054d-4b7e-a002-d64c93b42d95
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column RESULT_PRICE_D30% =
+			
+			VAR __Current = PRODUCT_DETAILED[PRICE]
+			VAR __PreviousDate = PRODUCT_DETAILED[OBSERVATION_DATE] - 30
+			VAR __PreviousValue = MAXX(FILTER(PRODUCT_DETAILED,PRODUCT_DETAILED[OBSERVATION_DATE] = __PreviousDate && PRODUCT_DETAILED[CHANNEL_PRODUCT_ID] = EARLIER(PRODUCT_DETAILED[CHANNEL_PRODUCT_ID])),PRODUCT_DETAILED[PRICE])
+			return IF( __PreviousValue <>BLANK() , (__Current - __PreviousValue) / __Current )
+		formatString: 0.00%;-0.00%;0.00%
+		displayFolder: Measures/Columns - DataHawk
+		lineageTag: 370c88e1-549a-4425-81fb-e566058e9cd3
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column CHECK_BOX_SELLER_NAME_HAS_CHANGED =
+			
+			IF( PRODUCT_DETAILED[BUY_BOX_SELLER_NAME] = PRODUCT_DETAILED[RESULT_BOX_SELLER_NAME_PREVIOUS_DAY], FALSE(),TRUE())
+		displayFolder: Measures/Columns - DataHawk
+		lineageTag: 9668809b-247b-469d-acca-eed2bd1aa4ae
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column RESULT_BOX_SELLER_NAME_PREVIOUS_DAY = ```
+			
+			VAR __CurrentValue = PRODUCT_DETAILED[NAME]
+			VAR __Previous = MAXX(FILTER(PRODUCT_DETAILED,PRODUCT_DETAILED[OBSERVATION_DATE]<EARLIER(PRODUCT_DETAILED[OBSERVATION_DATE]) && PRODUCT_DETAILED[CHANNEL_PRODUCT_ID] = EARLIER(PRODUCT_DETAILED[CHANNEL_PRODUCT_ID])),PRODUCT_DETAILED[OBSERVATION_DATE])
+			VAR __PreviousValue = MAXX(FILTER(PRODUCT_DETAILED,PRODUCT_DETAILED[OBSERVATION_DATE] = __Previous && PRODUCT_DETAILED[CHANNEL_PRODUCT_ID] = EARLIER(PRODUCT_DETAILED[CHANNEL_PRODUCT_ID])),PRODUCT_DETAILED[BUY_BOX_SELLER_NAME])
+			return __PreviousValue 
+			```
+		displayFolder: Measures/Columns - DataHawk
+		lineageTag: 0abdb254-904f-4e63-92d2-08817cba7168
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column CHECK_PRICE_HAS_CHANGED = ```
+			
+			IF
+			( 
+			    PRODUCT_DETAILED[RESULT_PRICE_D7] <> BLANK() && PRODUCT_DETAILED[RESULT_PRICE_D30]=BLANK() && 
+			    PRODUCT_DETAILED[RESULT_PRICE_D1] = PRODUCT_DETAILED[PRICE] && 
+			    PRODUCT_DETAILED[RESULT_PRICE_D7] = PRODUCT_DETAILED[PRICE],
+			    FALSE(),
+			    IF
+			    (
+			        PRODUCT_DETAILED[RESULT_PRICE_D30] <> BLANK() &&
+			        PRODUCT_DETAILED[RESULT_PRICE_D1] = PRODUCT_DETAILED[PRICE] && 
+			        PRODUCT_DETAILED[RESULT_PRICE_D7] = PRODUCT_DETAILED[PRICE] && 
+			        PRODUCT_DETAILED[RESULT_PRICE_D30] = PRODUCT_DETAILED[PRICE], 
+			        FALSE(),
+			        IF
+			        (
+			        PRODUCT_DETAILED[RESULT_PRICE_D7] = BLANK() &&
+			        PRODUCT_DETAILED[RESULT_PRICE_D1] = PRODUCT_DETAILED[PRICE], 
+			        FALSE(),
+			        TRUE()
+			        )
+			    )
+			) 
+			```
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		displayFolder: Measures/Columns - DataHawk
+		lineageTag: a912f54b-e354-4dce-83db-01e5e2bc9a1a
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column CHECK_TITLE_HAS_CHANGED =
+			
+			IF( PRODUCT_DETAILED[NAME] = PRODUCT_DETAILED[RESULT_TITLE_PREVIOUS_DAY], FALSE(),TRUE())
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		displayFolder: Measures/Columns - DataHawk
+		lineageTag: e55fb1dd-6911-46f4-b4f6-c20b85965058
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column RESULT_TITLE_PREVIOUS_DAY = ```
+			
+			VAR __CurrentValue = PRODUCT_DETAILED[NAME]
+			VAR __Previous = MAXX(FILTER(PRODUCT_DETAILED,PRODUCT_DETAILED[OBSERVATION_DATE]<EARLIER(PRODUCT_DETAILED[OBSERVATION_DATE]) && PRODUCT_DETAILED[CHANNEL_PRODUCT_ID] = EARLIER(PRODUCT_DETAILED[CHANNEL_PRODUCT_ID])),PRODUCT_DETAILED[OBSERVATION_DATE])
+			VAR __PreviousValue = MAXX(FILTER(PRODUCT_DETAILED,PRODUCT_DETAILED[OBSERVATION_DATE] = __Previous && PRODUCT_DETAILED[CHANNEL_PRODUCT_ID] = EARLIER(PRODUCT_DETAILED[CHANNEL_PRODUCT_ID])),PRODUCT_DETAILED[NAME])
+			return __PreviousValue 
+			```
+		displayFolder: Measures/Columns - DataHawk
+		lineageTag: 46f946be-f7bb-41aa-b878-23c10b2c4058
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column NEAREST_DELIVERY_DATE
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 5d5184d9-46d0-4ec1-972b-ce76fc54278f
+		summarizeBy: none
+		sourceColumn: NEAREST_DELIVERY_DATE
+
+		variation Variation
+			isDefault
+			relationship: 8240a0f3-d5cf-4b2e-a704-1a38a757f8cc
+			defaultHierarchy: LocalDateTable_53f17dad-dbcf-46a1-91ea-1f0be663c4d6.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column LEAD_TIME = DATEDIFF([OBSERVATION_DATE],[NEAREST_DELIVERY_DATE],DAY)
+		formatString: 0
+		lineageTag: fffafbf7-8cf3-4d0c-80b1-014121896cc1
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column OBSERVED_CHANNEL_PRODUCT_ID
+		dataType: string
+		lineageTag: e7b17d1b-ddc2-464b-9c93-58f7040a2318
+		summarizeBy: none
+		sourceColumn: OBSERVED_CHANNEL_PRODUCT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column OBSERVED_PRODUCT_KEY
+		dataType: string
+		lineageTag: 85ab99a9-60d7-4b56-8d16-bd6e1b10b9e0
+		summarizeBy: none
+		sourceColumn: OBSERVED_PRODUCT_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+	column WORKSPACE_ID
+		dataType: double
+		lineageTag: 0de6ad75-5e0c-4a01-b106-34cdaeffa5e7
+		summarizeBy: count
+		sourceColumn: WORKSPACE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Jess_CHECK_PRICE_HAS_CHANGED_D1 = ```
+			
+			IF
+			( 
+			    PRODUCT_DETAILED[RESULT_PRICE_D1] = PRODUCT_DETAILED[PRICE],
+			    FALSE(),
+			    TRUE()
+			)
+			```
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		displayFolder: Measures/Columns - Jess
+		lineageTag: 604006ef-aaf1-4b88-aa4f-b4cb5f52a4aa
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Jess_RESULT_RATING_D1 =
+			
+			VAR __Current = PRODUCT_DETAILED[RATING]
+			VAR __Previous = MAXX(FILTER(PRODUCT_DETAILED,PRODUCT_DETAILED[OBSERVATION_DATE]<EARLIER(PRODUCT_DETAILED[OBSERVATION_DATE]) && PRODUCT_DETAILED[CHANNEL_PRODUCT_ID] = EARLIER(PRODUCT_DETAILED[CHANNEL_PRODUCT_ID])),PRODUCT_DETAILED[OBSERVATION_DATE])
+			VAR __PreviousValue = MAXX(FILTER(PRODUCT_DETAILED,PRODUCT_DETAILED[OBSERVATION_DATE] = __Previous && PRODUCT_DETAILED[CHANNEL_PRODUCT_ID] = EARLIER(PRODUCT_DETAILED[CHANNEL_PRODUCT_ID])),PRODUCT_DETAILED[RATING])
+			return __PreviousValue
+			//returns the ratings from D-1 aka 1 day prior
+		formatString: 0.0
+		displayFolder: Measures/Columns - Jess
+		lineageTag: 74e93c40-6411-452c-8cd0-96f8dc6f4d2f
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Jess_CHECK_RATING_HAS_CHANGED_D1 = ```
+			
+			IF
+			( 
+			    (PRODUCT_DETAILED[Jess_RESULT_RATING_D1] - PRODUCT_DETAILED[RATING] >= 0.09) ||
+			    (PRODUCT_DETAILED[RATING] - PRODUCT_DETAILED[Jess_RESULT_RATING_D1] >= 0.09),
+			    TRUE(),
+			    FALSE()
+			)
+			//checks whether the rating has changed by more than 0.1 (0.09) from D-1 in either direction. Returns true if it has, false otherwise. 
+			```
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		displayFolder: Measures/Columns - Jess
+		lineageTag: 95b8ea84-9f1d-4f3e-b098-dc3cb5b55e99
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Jess_RATING_DIFFERENCE = PRODUCT_DETAILED[RATING] - PRODUCT_DETAILED[Jess_RESULT_RATING_D1]
+		formatString: 0.0
+		displayFolder: Measures/Columns - Jess
+		lineageTag: e65455d0-2e41-44ab-8068-af38496b668f
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Jess_RESULT_OOS_D1 = ```
+			
+			VAR __CurrentDate = PRODUCT_DETAILED[OBSERVATION_DATE]
+			VAR __PreviousDate = __CurrentDate - 1
+			VAR __PreviousOutOfStock = 
+			    CALCULATE (
+			        VALUES(PRODUCT_DETAILED[IS_OUT_OF_STOCK]),
+			        FILTER (
+			            ALL(PRODUCT_DETAILED),
+			            PRODUCT_DETAILED[OBSERVATION_DATE] = __PreviousDate &&
+			            PRODUCT_DETAILED[CHANNEL_PRODUCT_ID] = EARLIER(PRODUCT_DETAILED[CHANNEL_PRODUCT_ID])
+			        )
+			    )
+			RETURN IF(ISBLANK(__PreviousOutOfStock), FALSE(), __PreviousOutOfStock)
+			//returns the IS_OUT_OF_STOCK value from D-1 aka the day prior
+			```
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		displayFolder: Measures/Columns - Jess
+		lineageTag: c279b356-1c8a-4c91-80e6-988dd2524cd1
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Jess_CHECK_OOS_HAS_CHANGED_D1 =
+			
+			IF(
+			    PRODUCT_DETAILED[IS_OUT_OF_STOCK] <> PRODUCT_DETAILED[Jess_RESULT_OOS_D1],
+			    TRUE(),
+			    FALSE()
+			)
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		displayFolder: Measures/Columns - Jess
+		lineageTag: aa645b8b-08ca-46a9-932e-4d0b0e6485bf
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Jess_RESULT_DESCRIPTION_D1 = ```
+			
+			VAR __CurrentValue = PRODUCT_DETAILED[DESCRIPTION_TEXT]
+			VAR __Previous = MAXX(FILTER(PRODUCT_DETAILED,PRODUCT_DETAILED[OBSERVATION_DATE]<EARLIER(PRODUCT_DETAILED[OBSERVATION_DATE]) && PRODUCT_DETAILED[CHANNEL_PRODUCT_ID] = EARLIER(PRODUCT_DETAILED[CHANNEL_PRODUCT_ID])),PRODUCT_DETAILED[OBSERVATION_DATE])
+			VAR __PreviousValue = MAXX(FILTER(PRODUCT_DETAILED,PRODUCT_DETAILED[OBSERVATION_DATE] = __Previous && PRODUCT_DETAILED[CHANNEL_PRODUCT_ID] = EARLIER(PRODUCT_DETAILED[CHANNEL_PRODUCT_ID])),PRODUCT_DETAILED[DESCRIPTION_TEXT])
+			return __PreviousValue 
+			```
+		displayFolder: Measures/Columns - Jess
+		lineageTag: f57ed437-d7a3-4af5-8ab6-6e60bddefc87
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Jess_RESULT_BULLETS_D1 = ```
+			
+			VAR __CurrentValue = PRODUCT_DETAILED[BULLET_POINTS]
+			VAR __Previous = MAXX(FILTER(PRODUCT_DETAILED,PRODUCT_DETAILED[OBSERVATION_DATE]<EARLIER(PRODUCT_DETAILED[OBSERVATION_DATE]) && PRODUCT_DETAILED[CHANNEL_PRODUCT_ID] = EARLIER(PRODUCT_DETAILED[CHANNEL_PRODUCT_ID])),PRODUCT_DETAILED[OBSERVATION_DATE])
+			VAR __PreviousValue = MAXX(FILTER(PRODUCT_DETAILED,PRODUCT_DETAILED[OBSERVATION_DATE] = __Previous && PRODUCT_DETAILED[CHANNEL_PRODUCT_ID] = EARLIER(PRODUCT_DETAILED[CHANNEL_PRODUCT_ID])),PRODUCT_DETAILED[BULLET_POINTS])
+			return __PreviousValue 
+			```
+		displayFolder: Measures/Columns - Jess
+		lineageTag: 08f44c9c-700d-450a-bd89-54c0b850ab49
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Jess_RESULT_IMAGE_COUNT_D1 = ```
+			
+			VAR __CurrentValue = PRODUCT_DETAILED[IMAGE_COUNT]
+			VAR __Previous = MAXX(FILTER(PRODUCT_DETAILED,PRODUCT_DETAILED[OBSERVATION_DATE]<EARLIER(PRODUCT_DETAILED[OBSERVATION_DATE]) && PRODUCT_DETAILED[CHANNEL_PRODUCT_ID] = EARLIER(PRODUCT_DETAILED[CHANNEL_PRODUCT_ID])),PRODUCT_DETAILED[OBSERVATION_DATE])
+			VAR __PreviousValue = MAXX(FILTER(PRODUCT_DETAILED,PRODUCT_DETAILED[OBSERVATION_DATE] = __Previous && PRODUCT_DETAILED[CHANNEL_PRODUCT_ID] = EARLIER(PRODUCT_DETAILED[CHANNEL_PRODUCT_ID])),PRODUCT_DETAILED[IMAGE_COUNT])
+			return __PreviousValue 
+			```
+		formatString: 0
+		displayFolder: Measures/Columns - Jess
+		lineageTag: 715d1b59-7318-4214-be07-72abd8881cf7
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column Jess_CHECK_BULLETS_HAS_CHANGED_D1 =
+			
+			
+			IF(
+			    PRODUCT_DETAILED[BULLET_POINTS] <> PRODUCT_DETAILED[Jess_RESULT_BULLETS_D1],
+			    TRUE(),
+			    FALSE()
+			)
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		displayFolder: Measures/Columns - Jess
+		lineageTag: 083a5200-eaa5-4332-b74d-e021a5e79f37
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Jess_CHECK_IMAGE_COUNT_HAS_CHANGED_D1 =
+			
+			
+			IF(
+			    PRODUCT_DETAILED[IMAGE_COUNT] <> PRODUCT_DETAILED[Jess_RESULT_IMAGE_COUNT_D1],
+			    TRUE(),
+			    FALSE()
+			)
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		displayFolder: Measures/Columns - Jess
+		lineageTag: 00217b19-ecb9-480f-9fca-7d3af5034705
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Jess_CHECK_DESCRIPTION_HAS_CHANGED_D1 =
+			
+			
+			IF(
+			    PRODUCT_DETAILED[DESCRIPTION_TEXT] <> PRODUCT_DETAILED[Jess_RESULT_DESCRIPTION_D1],
+			    TRUE(),
+			    FALSE()
+			)
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		displayFolder: Measures/Columns - Jess
+		lineageTag: 4f3294a5-cc4e-440e-a7f7-0a5e281ed1b2
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Jess_PRICE_DIFFERENCE = PRODUCT_DETAILED[PRICE] - PRODUCT_DETAILED[RESULT_PRICE_D1]
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		displayFolder: Measures/Columns - Jess
+		lineageTag: 472b2ba8-7d41-494a-bb70-65db7d41b44e
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column LIST_PRICE
+		dataType: double
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 9d11aefe-4fae-4236-a399-c6d64b1de879
+		summarizeBy: sum
+		sourceColumn: LIST_PRICE
+
+		annotation SummarizationSetBy = Automatic
+
+	column FULFILLMENT_DELIVERY_AVAILABLE
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 77aa3998-b121-4814-bcfa-5721ed7c823d
+		summarizeBy: none
+		sourceColumn: FULFILLMENT_DELIVERY_AVAILABLE
+
+		annotation SummarizationSetBy = Automatic
+
+	column FULFILLMENT_SHIPPING_AVAILABLE
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 3c152275-c14f-4ef5-a976-5ece4e3c228e
+		summarizeBy: none
+		sourceColumn: FULFILLMENT_SHIPPING_AVAILABLE
+
+		annotation SummarizationSetBy = Automatic
+
+	column FULFILLMENT_PICKUP_AVAILABLE
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 2d52a382-5aa5-428e-bf9c-aed1d20b1f7b
+		summarizeBy: none
+		sourceColumn: FULFILLMENT_PICKUP_AVAILABLE
+
+		annotation SummarizationSetBy = Automatic
+
+	column Jess_OOS_TrueFalse_# =
+			IF(product_detailed[is_out_of_stock] = TRUE(), 1, 0)
+			//formats the True/False values in the IS_OUT_OF_STOCK column as whole numbers (for the purpose of chart visualization)
+		formatString: 0
+		displayFolder: Measures/Columns - Jess
+		lineageTag: 6d99a5ea-a6c1-47fc-81f6-af8943627290
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Jess_RESULT_MSRP_D1 =
+			
+			VAR __Current = PRODUCT_DETAILED[LIST_PRICE]
+			VAR __Previous = MAXX(FILTER(PRODUCT_DETAILED,PRODUCT_DETAILED[OBSERVATION_DATE]<EARLIER(PRODUCT_DETAILED[OBSERVATION_DATE]) && PRODUCT_DETAILED[CHANNEL_PRODUCT_ID] = EARLIER(PRODUCT_DETAILED[CHANNEL_PRODUCT_ID])),PRODUCT_DETAILED[OBSERVATION_DATE])
+			VAR __PreviousValue = MAXX(FILTER(PRODUCT_DETAILED,PRODUCT_DETAILED[OBSERVATION_DATE] = __Previous && PRODUCT_DETAILED[CHANNEL_PRODUCT_ID] = EARLIER(PRODUCT_DETAILED[CHANNEL_PRODUCT_ID])),PRODUCT_DETAILED[LIST_PRICE])
+			return __PreviousValue
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		displayFolder: Measures/Columns - Jess
+		lineageTag: 1abdf725-a543-4ec3-b09b-4fa8917f99fa
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Jess_CHECK_MSRP_HAS_CHANGED_D1 = ```
+			
+			IF
+			( 
+			    PRODUCT_DETAILED[Jess_RESULT_MSRP_D1] = PRODUCT_DETAILED[LIST_PRICE],
+			    FALSE(),
+			    TRUE()
+			)
+			```
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		displayFolder: Measures/Columns - Jess
+		lineageTag: db77a960-6f10-4abf-8d56-c5def26849f0
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Jess_MSRP_DIFFERENCE = PRODUCT_DETAILED[LIST_PRICE] - PRODUCT_DETAILED[Jess_RESULT_MSRP_D1]
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		displayFolder: Measures/Columns - Jess
+		lineageTag: 6395d90a-73c7-459a-b1a2-6e9c3be36e10
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Jess_OOS_TrueFalse_Text =
+			IF(PRODUCT_DETAILED[IS_OUT_OF_STOCK], "True", "False")
+			//formats the True/False values in the IS_OUT_OF_STOCK column as text values (for the purpose of conditional formatting)
+		displayFolder: Measures/Columns - Jess
+		lineageTag: 6bda6c7e-51b6-46c7-a4c0-b234fd916a9c
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Jess_D1_OOS_TrueFalseText = IF(PRODUCT_DETAILED[Jess_RESULT_OOS_D1], "True", "False")
+		displayFolder: Measures/Columns - Jess
+		lineageTag: 10352ada-4f19-4f74-a753-61c9aa815e6b
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Jess_BuyBoxLost_# =
+			IF(
+			    PRODUCT_DETAILED[BUY_BOX_SELLER_NAME] = "Walmart.com" ||
+			    PRODUCT_DETAILED[BUY_BOX_SELLER_NAME] = "Tzumi Electronics" ||
+			    PRODUCT_DETAILED[BUY_BOX_SELLER_NAME] = "",
+			    0,
+			    1
+			)
+			//formats the text values in the BUY_BOX_SELLER_NAME column as whole numbers (for the purpose of chart visualization) - if Walmart.com or Tzumi Electronics is the seller name, return 0, else return 1. Aka shows what days we are not the buy box winner
+		formatString: 0
+		displayFolder: Measures/Columns - Jess
+		lineageTag: fcd48ab5-994f-48d7-82ab-23e880cb6103
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column Jess_RESULT_SHIPPING_D1 = ```
+			
+			VAR __CurrentDate = PRODUCT_DETAILED[OBSERVATION_DATE]
+			VAR __PreviousDate = __CurrentDate - 1
+			VAR __PreviousShipping = 
+			    CALCULATE (
+			        VALUES(PRODUCT_DETAILED[FULFILLMENT_SHIPPING_AVAILABLE]),
+			        FILTER (
+			            ALL(PRODUCT_DETAILED),
+			            PRODUCT_DETAILED[OBSERVATION_DATE] = __PreviousDate &&
+			            PRODUCT_DETAILED[CHANNEL_PRODUCT_ID] = EARLIER(PRODUCT_DETAILED[CHANNEL_PRODUCT_ID])
+			        )
+			    )
+			RETURN IF(ISBLANK(__PreviousShipping), FALSE(), __PreviousShipping)
+			//returns the IS_OUT_OF_STOCK value from D-1 aka the day prior
+			```
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		displayFolder: Measures/Columns - Jess
+		lineageTag: 23a5e780-fbf7-420b-9658-d133a0913a32
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Jess_Check_Price_Increased_D1 = ```
+			
+			IF(
+			    PRODUCT_DETAILED[RESULT_PRICE_D1] < PRODUCT_DETAILED[PRICE],
+			    TRUE(),
+			    FALSE()
+			)
+			
+			```
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		displayFolder: Measures/Columns - Jess
+		lineageTag: 125b2eea-b94c-4c5f-8f1f-2e80f71185a9
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Jess_Check_Price_Decreased_D1 = ```
+			
+			IF(
+			    PRODUCT_DETAILED[RESULT_PRICE_D1] > PRODUCT_DETAILED[PRICE],
+			    TRUE(),
+			    FALSE()
+			)
+			
+			```
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		displayFolder: Measures/Columns - Jess
+		lineageTag: dfcb85ba-4b1b-4ed0-90f9-95d39629978f
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Jess_Check_Rating_Decreased_D1 = ```
+			
+			IF(
+			    PRODUCT_DETAILED[Jess_RESULT_RATING_D1] > PRODUCT_DETAILED[RATING],
+			    TRUE(),
+			    FALSE()
+			)
+			
+			```
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		displayFolder: Measures/Columns - Jess
+		lineageTag: bd4f0dea-021f-40f1-b875-760dfe88e6a2
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Jess_Check_Rating_Increased_D1 = ```
+			
+			IF(
+			    PRODUCT_DETAILED[Jess_RESULT_RATING_D1] < PRODUCT_DETAILED[RATING],
+			    TRUE(),
+			    FALSE()
+			)
+			
+			```
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		displayFolder: Measures/Columns - Jess
+		lineageTag: 57636d0b-2b05-4e24-9ec3-49e63d3072b2
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column _SYNC_TIME
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 7a2abf56-7002-4f93-8459-2b39423eae06
+		summarizeBy: none
+		sourceColumn: _SYNC_TIME
+
+		variation Variation
+			isDefault
+			relationship: b3714b96-552d-4120-943a-90a60f17f364
+			defaultHierarchy: LocalDateTable_a7238397-f8fc-4773-be42-ed07d41a1e27.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Jess_CHECK_MSRP_lost = ```
+			
+			IF(
+			    ISBLANK('PRODUCT_DETAILED'[LIST_PRICE]) && NOT(ISBLANK([Jess_RESULT_MSRP_D1])),
+			    TRUE(),
+			    FALSE()
+			)
+			
+			```
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		displayFolder: Measures/Columns - Jess
+		lineageTag: 81c6fca6-74cc-4c9d-b73a-7e32fd9f8283
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Jess_CHECK_MSRP_gained = ```
+			
+			IF(
+			    NOT(ISBLANK('PRODUCT_DETAILED'[LIST_PRICE])) && ISBLANK([Jess_RESULT_MSRP_D1]),
+			    TRUE(),
+			    FALSE()
+			)
+			
+			```
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		displayFolder: Measures/Columns - Jess
+		lineageTag: c50d35af-1c19-4d7c-826a-5caf86f130ab
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Jess_CHECK_MSRP_missing = ```
+			
+			IF(
+			    (ISBLANK('PRODUCT_DETAILED'[LIST_PRICE])),
+			    TRUE(),
+			    FALSE()
+			)
+			
+			```
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		displayFolder: Measures/Columns - Jess
+		lineageTag: 4a660fd6-56ae-4af6-954c-baf3560e1103
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column FEATURES
+		dataType: string
+		lineageTag: 998ad1ae-0344-4c38-82eb-bff67b905699
+		summarizeBy: none
+		sourceColumn: FEATURES
+
+		annotation SummarizationSetBy = Automatic
+
+	column FEATURES_view_360 = ```
+			
+			IF(
+			    SEARCH("view_360", PRODUCT_DETAILED[FEATURES], 1, 0),
+			    1, 
+			    0
+			)
+			
+			```
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		displayFolder: JESS FEATURES FILTERS
+		lineageTag: da9edde6-2de2-4280-b3d7-da5959a1bb84
+		summarizeBy: none
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column FEATURES_videos = ```
+			
+			IF(
+			    SEARCH("videos", PRODUCT_DETAILED[FEATURES], 1, 0),
+			    1, 
+			    0
+			)
+			
+			```
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		displayFolder: JESS FEATURES FILTERS
+		lineageTag: 6cc4a2da-9ec4-4026-ae6e-0e9188d5067e
+		summarizeBy: none
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column FEATURES_interactive_video = ```
+			
+			IF(
+			    SEARCH("interactive_video", PRODUCT_DETAILED[FEATURES], 1, 0),
+			    1, 
+			    0
+			)
+			
+			```
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		displayFolder: JESS FEATURES FILTERS
+		lineageTag: e44e2870-3c03-4861-b97b-a5df193ebb3d
+		summarizeBy: none
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column FEATURES_view_3d = ```
+			
+			IF(
+			    SEARCH("view_3d", PRODUCT_DETAILED[FEATURES], 1, 0),
+			    1, 
+			    0
+			)
+			
+			```
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		displayFolder: JESS FEATURES FILTERS
+		lineageTag: bbeb1bc5-5ffb-4322-8556-b1d921348fa9
+		summarizeBy: none
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column FEATURES_highlights = ```
+			
+			IF(
+			    SEARCH("highlights", PRODUCT_DETAILED[FEATURES], 1, 0),
+			    1, 
+			    0
+			)
+			
+			```
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		displayFolder: JESS FEATURES FILTERS
+		lineageTag: 0b8834cf-8087-447d-9be3-eca862b0c00a
+		summarizeBy: none
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column FEATURES_related_search = ```
+			
+			IF(
+			    SEARCH("related_search", PRODUCT_DETAILED[FEATURES], 1, 0),
+			    1, 
+			    0
+			)
+			
+			```
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		displayFolder: JESS FEATURES FILTERS
+		lineageTag: 724f062b-5e74-46af-b8d0-77ee786bcfcd
+		summarizeBy: none
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column FEATURES_short_description = ```
+			
+			IF(
+			    SEARCH("short_description", PRODUCT_DETAILED[FEATURES], 1, 0),
+			    1, 
+			    0
+			)
+			
+			```
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		displayFolder: JESS FEATURES FILTERS
+		lineageTag: e1b8af7f-85ca-4938-bd0b-5ba67b32d2a0
+		summarizeBy: none
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column FEATURES_long_description = ```
+			
+			IF(
+			    SEARCH("long_description", PRODUCT_DETAILED[FEATURES], 1, 0),
+			    1, 
+			    0
+			)
+			
+			```
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		displayFolder: JESS FEATURES FILTERS
+		lineageTag: 777086bd-8e41-488f-8c87-8bdf621d8cdb
+		summarizeBy: none
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column FEATURES_specifications = ```
+			
+			IF(
+			    SEARCH("specifications", PRODUCT_DETAILED[FEATURES], 1, 0),
+			    1, 
+			    0
+			)
+			
+			```
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		displayFolder: JESS FEATURES FILTERS
+		lineageTag: 329297a3-d842-4e74-8793-c1b30f23da67
+		summarizeBy: none
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column FEATURES_warranty = ```
+			
+			IF(
+			    SEARCH("warranty", PRODUCT_DETAILED[FEATURES], 1, 0),
+			    1, 
+			    0
+			)
+			
+			```
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		displayFolder: JESS FEATURES FILTERS
+		lineageTag: 08106edf-c664-4f87-9947-fa6ec159c120
+		summarizeBy: none
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column FEATURES_warning = ```
+			
+			IF(
+			    SEARCH("warning", PRODUCT_DETAILED[FEATURES], 1, 0),
+			    1, 
+			    0
+			)
+			
+			```
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		displayFolder: JESS FEATURES FILTERS
+		lineageTag: d71a53e6-5d82-4b7a-b818-56de2f2cc7cb
+		summarizeBy: none
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column FEATURES_reviews = ```
+			
+			IF(
+			    SEARCH("reviews", PRODUCT_DETAILED[FEATURES], 1, 0),
+			    1, 
+			    0
+			)
+			```
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		displayFolder: JESS FEATURES FILTERS
+		lineageTag: 9a89b6c3-1d5f-48e9-b858-d5d7e6631731
+		summarizeBy: none
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column FEATURES_frequent_mentions = ```
+			
+			IF(
+			    SEARCH("frequent_mentions", PRODUCT_DETAILED[FEATURES], 1, 0),
+			    1, 
+			    0
+			)
+			```
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		displayFolder: JESS FEATURES FILTERS
+		lineageTag: cfe83278-a891-4d6f-a60b-045d4de7ef8a
+		summarizeBy: none
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column FEATURES_ingredients = ```
+			
+			IF(
+			    SEARCH("ingredients", PRODUCT_DETAILED[FEATURES], 1, 0),
+			    1, 
+			    0
+			)
+			```
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		displayFolder: JESS FEATURES FILTERS
+		lineageTag: dc992223-394a-4fe6-905b-9ea58a3f5698
+		summarizeBy: none
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column FEATURES_directions = ```
+			
+			IF(
+			    SEARCH("directions", PRODUCT_DETAILED[FEATURES], 1, 0),
+			    1, 
+			    0
+			)
+			```
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		displayFolder: JESS FEATURES FILTERS
+		lineageTag: 9c174f5b-c771-46c1-8887-fe448823a9ea
+		summarizeBy: none
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column FEATURES_indications = ```
+			
+			IF(
+			    SEARCH("indications", PRODUCT_DETAILED[FEATURES], 1, 0),
+			    1, 
+			    0
+			)
+			```
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		displayFolder: JESS FEATURES FILTERS
+		lineageTag: 72212eee-a5ac-4760-b16f-333611f5b739
+		summarizeBy: none
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column BUY_BOX_RAW_SELLER_NAME
+		dataType: string
+		lineageTag: b464fb62-3f5c-4b0c-81c5-cb66b4f39504
+		summarizeBy: none
+		sourceColumn: BUY_BOX_RAW_SELLER_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column CreationDate = ```
+			
+			CALCULATE(
+			    MIN('PRODUCT_DETAILED'[OBSERVATION_DATE]),
+			    ALLEXCEPT('PRODUCT_DETAILED', 'PRODUCT_DETAILED'[CHANNEL_PRODUCT_ID])
+			)
+			
+			```
+		formatString: Short Date
+		displayFolder: Measures/Columns - Jess
+		lineageTag: 85cd1464-cfcc-4d52-b7b2-5a829d78fd63
+		summarizeBy: none
+
+		variation Variation
+			isDefault
+			relationship: d801932e-bbbd-42aa-82f7-35f99186f339
+			defaultHierarchy: LocalDateTable_cd773011-0e48-414f-a1cc-dc0dca81af35.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column BUY_BOX_VENDOR_ENABLED
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: e0e1f2cc-9fd9-4229-914a-7da8e47fd689
+		summarizeBy: none
+		sourceColumn: BUY_BOX_VENDOR_ENABLED
+
+		annotation SummarizationSetBy = Automatic
+
+	column JESS_IS_OOS_TEXT = IF([IS_OUT_OF_STOCK] = TRUE(), "Out of Stock", "In Stock")
+		displayFolder: Measures/Columns - Jess
+		lineageTag: 32891858-6e9b-4909-9564-0aa506185718
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'JESS_IS_BELOW_4.1_TEXT' = ```
+			IF(
+			    PRODUCT_DETAILED[RATING] < 4.1, "< 4.1", 
+			    "> 4.1")
+			```
+		displayFolder: Measures/Columns - Jess
+		lineageTag: 2ddc63e7-5599-4817-8c2d-b4d24e5f53ce
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Jess_HAS_VIDEO_TEXT = ```
+			IF(
+			    PRODUCT_DETAILED[FEATURES_videos] = TRUE(), 
+			    "Has video", 
+			    "No video"
+			)
+			```
+		displayFolder: Measures/Columns - Jess
+		lineageTag: c10c8ada-ca56-4b87-9db1-33ae802cf427
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Jess_CHECK_COPY_CHANGE_D1 = ```
+			
+			OR(
+			    PRODUCT_DETAILED[BULLET_POINTS] <> PRODUCT_DETAILED[Jess_RESULT_BULLETS_D1],
+			    OR(
+			        PRODUCT_DETAILED[NAME] <> PRODUCT_DETAILED[RESULT_TITLE_PREVIOUS_DAY],
+			        PRODUCT_DETAILED[DESCRIPTION_TEXT] <> PRODUCT_DETAILED[Jess_RESULT_DESCRIPTION_D1]
+			    )
+			)
+			
+			```
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		displayFolder: Measures/Columns - Jess
+		lineageTag: 188006cf-fb93-4eed-80f6-d2fa90c7a096
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column FEATURES_TRIMMED
+		dataType: string
+		lineageTag: 66d2c362-3751-4160-8b7e-fd8214387c6e
+		summarizeBy: none
+		sourceColumn: FEATURES_TRIMMED
+
+		annotation SummarizationSetBy = Automatic
+
+	column Jess_CreationDate = ```
+			
+			CALCULATE(
+			    MIN('PRODUCT_DETAILED'[OBSERVATION_DATE]),
+			    ALLEXCEPT('PRODUCT_DETAILED', 'PRODUCT_DETAILED'[CHANNEL_PRODUCT_ID])
+			)
+			
+			```
+		formatString: General Date
+		displayFolder: Measures/Columns - Jess
+		lineageTag: 757b7fb3-1920-4043-aca1-699a6872d25b
+		summarizeBy: none
+
+		variation Variation
+			isDefault
+			relationship: f1c57e3f-0430-49b5-9ad7-5fe5f51a6aca
+			defaultHierarchy: LocalDateTable_b97c96f0-8695-42b7-b902-e629a6689da4.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column JESS_CHECK_CREATION_DATE_RECENT = ```
+			
+			IF(
+			    'PRODUCT_DETAILED'[Jess_CreationDate] >= TODAY() - 30 && 
+			    'PRODUCT_DETAILED'[Jess_CreationDate] <= TODAY(),
+			    1,
+			    0
+			)
+			
+			```
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		displayFolder: Measures/Columns - Jess
+		lineageTag: 294c7661-b93a-48a7-8bda-01f6ab806b61
+		summarizeBy: none
+
+		changedProperty = DataType
+
+		annotation SummarizationSetBy = Automatic
+
+	column JESS_HAS_MSRP_TEXT = ```
+			IF(
+			    ISBLANK('PRODUCT_DETAILED'[LIST_PRICE]), "Missing MSRP", 
+			    "Has MSRP")
+			```
+		displayFolder: Measures/Columns - Jess
+		lineageTag: 20b484c6-3b8d-4f4a-bc8e-b09249fd4993
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column BROWSE_CLASSIFICATION
+		dataType: string
+		lineageTag: 66e54acd-5708-4e15-ac0d-31b46b9358a2
+		summarizeBy: none
+		sourceColumn: BROWSE_CLASSIFICATION
+
+		annotation SummarizationSetBy = Automatic
+
+	column BROWSE_CLASSIFICATION_NODES
+		dataType: string
+		lineageTag: b964bb60-15d3-4189-90c8-428294f2bacb
+		summarizeBy: none
+		sourceColumn: BROWSE_CLASSIFICATION_NODES
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'MEASURE_Days with List Price' = ```
+			
+			CALCULATE(
+			    COUNTROWS('DIM_DATES'),
+			    NOT(ISBLANK('PRODUCT_DETAILED'[LIST_PRICE]))
+			)
+			
+			```
+		formatString: 0
+		displayFolder: Measures/Columns - Jess
+		lineageTag: 9b47f459-1113-4d97-807e-0f81031dae37
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column REDIRECTED_TO_FOREIGN_PRODUCT
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: d3c794cd-d1ec-4559-b128-b1aee510ca1d
+		summarizeBy: none
+		sourceColumn: REDIRECTED_TO_FOREIGN_PRODUCT
+
+		annotation SummarizationSetBy = Automatic
+
+	column WITH_A_PLUS_PREMIUM
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: ecb8a1c3-9d36-4527-b8ef-2f3c2863fb2b
+		summarizeBy: none
+		sourceColumn: WITH_A_PLUS_PREMIUM
+
+		annotation SummarizationSetBy = Automatic
+
+	column CHECK_HISTORICALLY_TRACKABLE = ```
+			
+			VAR __TRACKABLE = 
+			LOOKUPVALUE(
+			    REFERENTIAL_PRODUCT_TRACKED[TRACKABLE], 
+			    DIM_PRODUCTS_1[PRODUCT_KEY], 
+			    RELATED(REFERENTIAL_PRODUCT_TRACKED[PRODUCT_KEY])
+			)
+			RETURN
+			IF(
+			    __TRACKABLE = 1, 
+			    "Tracked Products", 
+			    IF(__TRACKABLE = 0, "Untracked Products", "Unknown")
+			)
+			```
+		displayFolder: Measures/Columns - Jess
+		lineageTag: fa33f78c-2ee8-4b71-8cba-152c362e526e
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column CHECK_Online = ```
+			
+			IF(
+			    MAXX(
+			        FILTER(
+			            'PRODUCT_DETAILED', 
+			            'PRODUCT_DETAILED'[CHANNEL_PRODUCT_ID] = EARLIER('PRODUCT_DETAILED'[CHANNEL_PRODUCT_ID])
+			        ), 
+			        'PRODUCT_DETAILED'[OBSERVATION_DATE]
+			    ) >= TODAY(),
+			    "TRUE",
+			    "FALSE"
+			)
+			
+			```
+		displayFolder: Measures/Columns - Jess
+		lineageTag: 07bd8069-42be-4232-8eb0-9f2aecd63cd8
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column CHECK_WalmartMSRPLowerThanTzumi = ```
+			
+			VAR LatestWalmartMSRP = 
+			    CALCULATE(
+			        MAX('PRODUCT_DETAILED'[LIST_PRICE]),
+			        ALLEXCEPT('PRODUCT_DETAILED', 'DIM_PRODUCTS_1'[CHANNEL_PRODUCT_ID])
+			    )
+			VAR SKU = 
+			    LOOKUPVALUE(
+			        'Product IDs to SKUs'[SKU],
+			        'Product IDs to SKUs'[Product ID],
+			        MAX('DIM_PRODUCTS_1'[CHANNEL_PRODUCT_ID])
+			    )
+			VAR TzumiMSRP = 
+			    LOOKUPVALUE(
+			        'Tzumi com & FitRx Links'[Regular price],
+			        'Tzumi com & FitRx Links'[SKU], 
+			        SKU
+			    )
+			RETURN 
+			    IF(NOT ISBLANK(TzumiMSRP) && LatestWalmartMSRP < TzumiMSRP, TRUE(), FALSE())
+			
+			```
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		displayFolder: Measures/Columns - Jess
+		lineageTag: 329a082e-1308-4dda-b664-335c2386b463
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column CHECK_WEBSITE_MSRP_SAME_CURRENT_MSRP = ```
+			
+			VAR LatestDate = 
+			    MAX('DIM_DATES'[OBSERVATION_DATE])  -- Find the latest date
+			VAR MinRegularPrice = 
+			    MIN('Tzumi com & FitRx Links'[Regular price])  -- Find the minimum regular price
+			VAR CurrentPrice = 
+			    CALCULATE(
+			        ('PRODUCT_DETAILED'[MEASURE_CURRENT_PRICE]),
+			        'DIM_DATES'[OBSERVATION_DATE] = LatestDate
+			    )
+			RETURN 
+			    IF(MinRegularPrice = CurrentPrice, TRUE(), FALSE())
+			
+			```
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		displayFolder: Measures/Columns - Jess
+		lineageTag: 5757d6fd-0b18-46c2-af12-618d1b77cf7c
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition PRODUCT_DETAILED-3ff2a14f-86b0-4014-8f95-41305e03b114 = m
+		mode: import
+		queryGroup: 'Products Data'
+		source = ```
+				let
+				    Source = Value.NativeQuery(
+				        Snowflake.Databases(
+				            Server,
+				            Warehouse
+				            )
+				            {[Name=Database]}[Data], 
+				            "SELECT *
+				            FROM PRODUCT.PRODUCT_DETAILED
+				            WHERE OBSERVATION_DATE >= CURRENT_DATE - "&Text.From(#"Lookback History")&
+				            "ORDER BY PRODUCT_KEY DESC, OBSERVATION_DATE DESC"
+				            , null, [EnableFolding=true]),
+				    #"Added Custom" = Table.AddColumn(Source, "FEATURES_TRIMMED", each Text.Middle([FEATURES], 2, Text.Length([FEATURES]) - 3))
+				in
+				    #"Added Custom"
+				```
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

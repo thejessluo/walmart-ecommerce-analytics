@@ -1,0 +1,35 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "271776d9c108ca684d60",
+  "position": {
+    "x": 13.402061855670103,
+    "y": 14.463917525773182,
+    "z": 4000,
+    "height": 52.577319587628864,
+    "width": 124.74226804123711,
+    "tabOrder": 5000
+  },
+  "visual": {
+    "visualType": "image",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "imageUrl": {
+              "expr": {
+                "ResourcePackageItem": {
+                  "PackageName": "RegisteredResources",
+                  "PackageType": 1,
+                  "ItemName": "tzumi_logo_WHITE6453563157014885.png"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "parentGroupName": "6f07428df1a6e1b61bd0",
+  "howCreated": "InsertVisualButton"
+}

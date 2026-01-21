@@ -1,0 +1,56 @@
+table ViewTime
+	isHidden
+	lineageTag: 62d8ca96-e281-4d2b-b989-3c8b9e764079
+
+	column EVENT
+		dataType: string
+		isHidden
+		isNullable: false
+		sourceProviderType: nvarchar(35)
+		lineageTag: 38ec610c-da84-4573-a744-1df91e48a3d6
+		summarizeBy: none
+		sourceColumn: EVENT
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column EVENT_TIME
+		dataType: dateTime
+		isHidden
+		isNullable: false
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: d7b9b172-184b-4de8-a3e2-a605c59e0d5a
+		summarizeBy: none
+		sourceColumn: EVENT_TIME
+
+		variation Variation
+			isDefault
+			relationship: 182a8497-13d5-412c-a774-9727bcdf2072
+			defaultHierarchy: LocalDateTable_d4c562c6-0270-4d0d-b3f1-793f52366006.'Date Hierarchy'
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition ViewTime = m
+		mode: import
+		source = ```
+				let 
+				    Source = Value.NativeQuery(Snowflake.Databases(Server,Warehouse){[Name=Database]}[Data],
+				"
+				select
+				    'View Product on Power BI' as event
+				    , current_timestamp as event_time   
+				"
+				, null, [EnableFolding=true]
+				)
+				in
+				    Source
+				```
+
+	changedProperty = IsHidden
+
+	annotation PBI_ResultType = Table
+

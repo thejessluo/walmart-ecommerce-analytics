@@ -1,0 +1,17 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "6c079435a3da40dce8e1",
+  "position": {
+    "x": 0,
+    "y": 0,
+    "z": 1000,
+    "height": 101.82211232345612,
+    "width": 105.43894508024229,
+    "tabOrder": 0
+  },
+  "visualGroup": {
+    "displayName": "Went In Stock",
+    "groupMode": "ScaleMode"
+  },
+  "parentGroupName": "eed4176bb9ee06db99a6"
+}

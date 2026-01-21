@@ -1,0 +1,437 @@
+table RAW_TRAFFIC_BY_ASIN
+	lineageTag: 1f871f7f-6475-4731-9a34-3c5a501ef179
+
+	measure RESULT_AVG_OWNED_BUY_BOX_PERCENTAGE = CALCULATE(AVERAGE(RAW_TRAFFIC_BY_ASIN[BUY_BOX_PERCENTAGE])/100)
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 3032c37a-7955-44d6-85cc-87b05b11e1a3
+
+	measure RESULT_TOTAL_SESSIONS = CALCULATE(SUM(RAW_TRAFFIC_BY_ASIN[SESSIONS]))
+		formatString: #,0
+		lineageTag: cf972f9e-e76c-4e58-a20f-eedeab698c80
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure RESULT_TOTAL_PAGEVIEWS = CALCULATE(SUM(RAW_TRAFFIC_BY_ASIN[PAGE_VIEWS]))
+		formatString: #,0
+		lineageTag: 0a5d1992-b439-4beb-9d25-81d885c2144c
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	measure RESULT_AVG_SESSION_PERCENTAGE = CALCULATE(AVERAGE(RAW_TRAFFIC_BY_ASIN[SESSION_PERCENTAGE])/100)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: aebd189d-a9da-4aea-963d-081e91ced63c
+
+	column SELLER_NAME
+		dataType: string
+		lineageTag: e27fe655-b7e7-44de-affb-c5497b65059b
+		summarizeBy: none
+		sourceColumn: SELLER_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column ACCOUNT_KEY
+		dataType: string
+		lineageTag: 986cd914-4fe1-47c4-8fab-c04173a32d82
+		summarizeBy: none
+		sourceColumn: ACCOUNT_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+	column REGION
+		dataType: double
+		lineageTag: a2081422-a9e6-4d44-8ec2-9cc2c86ecff1
+		summarizeBy: sum
+		sourceColumn: REGION
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column MARKETPLACE_KEY
+		dataType: string
+		lineageTag: d87c30ef-29d0-46f1-ab91-c116184b9b7b
+		summarizeBy: none
+		sourceColumn: MARKETPLACE_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+	column REPORT_DATE
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 092e66df-6709-407c-b0e0-bd588ebffdc2
+		summarizeBy: none
+		sourceColumn: REPORT_DATE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column PARENT_ASIN
+		dataType: string
+		lineageTag: f3f4dfdb-d60c-4af2-b9b6-de1d3a9b28c8
+		summarizeBy: none
+		sourceColumn: PARENT_ASIN
+
+		annotation SummarizationSetBy = Automatic
+
+	column ASIN
+		dataType: string
+		lineageTag: d08cd728-6e3a-495f-b9b7-97558905c837
+		summarizeBy: none
+		sourceColumn: ASIN
+
+		annotation SummarizationSetBy = Automatic
+
+	column BROWSER_PAGE_VIEWS
+		dataType: double
+		lineageTag: 42ac0e44-ad1f-4cfc-924f-1e276aa0afb5
+		summarizeBy: sum
+		sourceColumn: BROWSER_PAGE_VIEWS
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column BROWSER_PAGE_VIEWS_B2B
+		dataType: double
+		lineageTag: 9727e18a-fe19-413b-9fce-bbc8e76c307f
+		summarizeBy: sum
+		sourceColumn: BROWSER_PAGE_VIEWS_B2B
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column BROWSER_PAGE_VIEWS_PERCENTAGE
+		dataType: double
+		lineageTag: 461e4e47-553e-4d65-8ddf-34b82f57db89
+		summarizeBy: sum
+		sourceColumn: BROWSER_PAGE_VIEWS_PERCENTAGE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column BROWSER_PAGE_VIEWS_PERCENTAGE_B2B
+		dataType: double
+		lineageTag: effb9fcf-9024-4174-bab6-4c8fa1d3e9d9
+		summarizeBy: sum
+		sourceColumn: BROWSER_PAGE_VIEWS_PERCENTAGE_B2B
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column BROWSER_SESSION_PERCENTAGE
+		dataType: double
+		lineageTag: f8320ca8-332c-499c-b736-c07147b033c1
+		summarizeBy: sum
+		sourceColumn: BROWSER_SESSION_PERCENTAGE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column BROWSER_SESSION_PERCENTAGE_B2B
+		dataType: double
+		lineageTag: 86a4c2e5-799d-4724-b5f5-c299a3b4d658
+		summarizeBy: sum
+		sourceColumn: BROWSER_SESSION_PERCENTAGE_B2B
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column BROWSER_SESSIONS
+		dataType: double
+		lineageTag: 7e2f9fcd-0b8d-4cb1-9e35-6f2b104bc090
+		summarizeBy: sum
+		sourceColumn: BROWSER_SESSIONS
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column BROWSER_SESSIONS_B2B
+		dataType: double
+		lineageTag: e0172228-03f2-4f68-9870-4bf50d69a6fb
+		summarizeBy: sum
+		sourceColumn: BROWSER_SESSIONS_B2B
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column BUY_BOX_PERCENTAGE
+		dataType: double
+		lineageTag: b09c279b-7a5f-4f4f-9c01-77e59c14c8ad
+		summarizeBy: sum
+		sourceColumn: BUY_BOX_PERCENTAGE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column BUY_BOX_PERCENTAGE_B2B
+		dataType: double
+		lineageTag: 3f228494-175f-46ea-a281-8f6368baf1df
+		summarizeBy: sum
+		sourceColumn: BUY_BOX_PERCENTAGE_B2B
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column MOBILE_APP_PAGE_VIEWS
+		dataType: double
+		lineageTag: 49847d0b-0a52-42f2-b305-54a0a2c1f11d
+		summarizeBy: sum
+		sourceColumn: MOBILE_APP_PAGE_VIEWS
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column MOBILE_APP_PAGE_VIEWS_B2B
+		dataType: double
+		lineageTag: 8baad7f9-ff62-42db-ae94-bf6494dc1a42
+		summarizeBy: sum
+		sourceColumn: MOBILE_APP_PAGE_VIEWS_B2B
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column MOBILE_APP_PAGE_VIEWS_PERCENTAGE
+		dataType: double
+		lineageTag: 17edb489-3cb3-4914-a4e3-88063cc7e365
+		summarizeBy: sum
+		sourceColumn: MOBILE_APP_PAGE_VIEWS_PERCENTAGE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column MOBILE_APP_PAGE_VIEWS_PERCENTAGE_B2B
+		dataType: double
+		lineageTag: 35bbf537-2131-4568-b253-69e85b007f38
+		summarizeBy: sum
+		sourceColumn: MOBILE_APP_PAGE_VIEWS_PERCENTAGE_B2B
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column MOBILE_APP_SESSION_PERCENTAGE
+		dataType: double
+		lineageTag: 84571b21-4e90-4f7b-80b3-a939df5c06ce
+		summarizeBy: sum
+		sourceColumn: MOBILE_APP_SESSION_PERCENTAGE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column MOBILE_APP_SESSION_PERCENTAGE_B2B
+		dataType: double
+		lineageTag: bc1fd1e3-dd53-404a-a682-cb47e8fee703
+		summarizeBy: sum
+		sourceColumn: MOBILE_APP_SESSION_PERCENTAGE_B2B
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column MOBILE_APP_SESSIONS
+		dataType: double
+		lineageTag: 7e56f7db-be84-4642-97c9-2a5eff4f82da
+		summarizeBy: sum
+		sourceColumn: MOBILE_APP_SESSIONS
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column MOBILE_APP_SESSIONS_B2B
+		dataType: double
+		lineageTag: 76b469e5-7afb-4837-a764-7edd82da31be
+		summarizeBy: sum
+		sourceColumn: MOBILE_APP_SESSIONS_B2B
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PAGE_VIEWS
+		dataType: double
+		formatString: #,0
+		lineageTag: ebfa69d6-535f-47b3-8a89-fa2f7739a9bf
+		summarizeBy: sum
+		sourceColumn: PAGE_VIEWS
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column PAGE_VIEWS_B2B
+		dataType: double
+		lineageTag: c0a1f77f-7352-4556-a997-3bdc9949e0b4
+		summarizeBy: sum
+		sourceColumn: PAGE_VIEWS_B2B
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PAGE_VIEWS_PERCENTAGE
+		dataType: double
+		lineageTag: b62562bd-e745-4629-a660-f1026b78ae6c
+		summarizeBy: sum
+		sourceColumn: PAGE_VIEWS_PERCENTAGE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PAGE_VIEWS_PERCENTAGE_B2B
+		dataType: double
+		lineageTag: eb06d1ae-f289-4bb5-962e-a853a4fdf6b1
+		summarizeBy: sum
+		sourceColumn: PAGE_VIEWS_PERCENTAGE_B2B
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SESSION_PERCENTAGE
+		dataType: double
+		lineageTag: 9998907c-6952-4765-8864-17a0cf9d02ae
+		summarizeBy: sum
+		sourceColumn: SESSION_PERCENTAGE
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SESSION_PERCENTAGE_B2B
+		dataType: double
+		lineageTag: 14d59aa2-522b-4128-a022-9f923ae12a83
+		summarizeBy: sum
+		sourceColumn: SESSION_PERCENTAGE_B2B
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SESSIONS
+		dataType: double
+		formatString: #,0
+		lineageTag: a7cfbd20-2acb-4504-8535-28c0564f83e5
+		summarizeBy: sum
+		sourceColumn: SESSIONS
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDecimal":true}
+
+	column SESSIONS_B2B
+		dataType: double
+		lineageTag: ef3fb62f-aab1-41ae-aa1d-9536517d4972
+		summarizeBy: sum
+		sourceColumn: SESSIONS_B2B
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column SYNC_TIME
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 864de078-c124-427f-b9f0-a444a6001811
+		summarizeBy: none
+		sourceColumn: SYNC_TIME
+
+		variation Variation
+			isDefault
+			relationship: 66e0fb4e-4c57-4b52-a9ea-2a45d48c5ffa
+			defaultHierarchy: LocalDateTable_d160a3c6-823e-4b98-8f4a-c144e9578fd8.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column REGION_NAME
+		dataType: string
+		lineageTag: 743e7a5a-068f-450b-ba13-69c66d35d744
+		summarizeBy: none
+		sourceColumn: REGION_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column ASIN_MARKETPLACE_KEY
+		dataType: string
+		lineageTag: 29d19b0b-e069-4435-9be3-792eb4a90ebc
+		summarizeBy: none
+		sourceColumn: ASIN_MARKETPLACE_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+	column MARKETPLACE_SELLER_NAME
+		dataType: string
+		lineageTag: 3580d4e1-0ae9-451c-b7e0-54469e9261a9
+		summarizeBy: none
+		sourceColumn: MARKETPLACE_SELLER_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column REGION_SELLER_NAME
+		dataType: string
+		lineageTag: e0cb81a2-3646-41b9-9c06-89ceb74a90f3
+		summarizeBy: none
+		sourceColumn: REGION_SELLER_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column WORKSPACE_ID
+		dataType: double
+		lineageTag: 34cec6e2-3cbf-4bc7-b682-c6b124684003
+		summarizeBy: count
+		sourceColumn: WORKSPACE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column _SYNC_TIME
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 3c2f07c1-1b5f-4097-9e69-511b1de5e002
+		summarizeBy: none
+		sourceColumn: _SYNC_TIME
+
+		variation Variation
+			isDefault
+			relationship: 0044be77-6cfd-48f3-a71e-01ea7f019842
+			defaultHierarchy: LocalDateTable_07512fcf-1bdb-415b-9e6a-7ed1d703d63f.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition RAW_TRAFFIC_BY_ASIN = m
+		mode: import
+		queryGroup: 'Products Data'
+		source = ```
+				let
+				    Source = Value.NativeQuery(
+				        Snowflake.Databases(
+				            Server,
+				            Warehouse
+				            )
+				            {[Name=Database]}[Data], 
+				            "SELECT *
+				            FROM PREVIEW_RAW_SELLER.RAW_TRAFFIC_BY_ASIN
+				            WHERE REPORT_DATE >= CURRENT_DATE - "&Text.From(#"Lookback History"), null, [EnableFolding=true]),
+				    #"Added Custom" = Table.AddColumn(Source, "ASIN_MARKETPLACE_KEY", each [ASIN]&[MARKETPLACE_KEY])
+				in
+				    #"Added Custom"
+				```
+
+	annotation PBI_ResultType = Table
+

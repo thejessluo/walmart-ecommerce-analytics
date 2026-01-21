@@ -1,0 +1,16 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "42a6b1f27e1ec55b6618",
+  "position": {
+    "x": 1055.0798722044728,
+    "y": 531.62939297124592,
+    "z": 7000,
+    "height": 140.40468583599574,
+    "width": 214.01490947816825,
+    "tabOrder": 19000
+  },
+  "visualGroup": {
+    "displayName": "Image Count Changed",
+    "groupMode": "ScaleMode"
+  }
+}

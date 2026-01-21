@@ -1,0 +1,17 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "6f741f9871b86315caf7",
+  "position": {
+    "x": 142.03478755922427,
+    "y": 17.617199774960763,
+    "z": 3000,
+    "height": 681.06951871657748,
+    "width": 248.69875222816398,
+    "tabOrder": 9000
+  },
+  "visualGroup": {
+    "displayName": "EXPANDED FILTERS",
+    "groupMode": "ScaleMode"
+  },
+  "isHidden": true
+}

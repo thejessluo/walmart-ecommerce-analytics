@@ -1,0 +1,292 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/report/3.0.0/schema.json",
+  "themeCollection": {
+    "baseTheme": {
+      "name": "CY24SU06",
+      "reportVersionAtImport": {
+        "visual": "1.8.92",
+        "report": "2.0.92",
+        "page": "1.3.92"
+      },
+      "type": "SharedResources"
+    },
+    "customTheme": {
+      "name": "Jess_Colors198429584079014.json",
+      "reportVersionAtImport": {
+        "visual": "1.8.93",
+        "report": "2.0.93",
+        "page": "1.3.93"
+      },
+      "type": "RegisteredResources"
+    }
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "Filter7124297b7790d50d94c0",
+        "ordinal": 0,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "DIM_PRODUCTS_1"
+              }
+            },
+            "Property": "CHECK_TRACKED"
+          }
+        },
+        "type": "Categorical",
+        "howCreated": "User"
+      },
+      {
+        "name": "1a7ebfc5509b26d291d4",
+        "ordinal": 1,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "STUDIOZ_MAINSTAYS_LINKS"
+              }
+            },
+            "Property": "STUDIO_Z_ONLY_TEST"
+          }
+        },
+        "type": "Advanced",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "s",
+              "Entity": "STUDIOZ_MAINSTAYS_LINKS",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "Not": {
+                  "Expression": {
+                    "Contains": {
+                      "Left": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Source": "s"
+                            }
+                          },
+                          "Property": "STUDIO_Z_ONLY_TEST"
+                        }
+                      },
+                      "Right": {
+                        "Literal": {
+                          "Value": "'TTRUE'"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "howCreated": "User"
+      },
+      {
+        "name": "b9094d27fd664395d4ce",
+        "ordinal": 2,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "ENCH_DIRECT_ITEMS"
+              }
+            },
+            "Property": "ENCH_DIRECT"
+          }
+        },
+        "type": "Advanced",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "e",
+              "Entity": "ENCH_DIRECT_ITEMS",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "Not": {
+                  "Expression": {
+                    "Comparison": {
+                      "ComparisonKind": 0,
+                      "Left": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Source": "e"
+                            }
+                          },
+                          "Property": "ENCH_DIRECT"
+                        }
+                      },
+                      "Right": {
+                        "Literal": {
+                          "Value": "'Enchante Direct'"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "howCreated": "User"
+      }
+    ],
+    "filterSortOrder": "Custom"
+  },
+  "objects": {
+    "section": [
+      {
+        "properties": {
+          "verticalAlignment": {
+            "expr": {
+              "Literal": {
+                "Value": "'Top'"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "outspacePane": [
+      {
+        "properties": {
+          "expanded": {
+            "expr": {
+              "Literal": {
+                "Value": "false"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "publicCustomVisuals": [
+    "powerKPIMatrixEB2381CC88A8425FBEB1B07FF57784E6",
+    "textFilter25A4896A83E0487089E2B90C9AE57C8A",
+    "WordCloud1447959067750",
+    "multipleAxesChartBC35C88E1D1A49DFA5A9240AFBB4E3BC",
+    "linechart604A0A20A6222F01A39F80FE43FFF4B8",
+    "ratingsvisual001",
+    "Datepicker_1687358625"
+  ],
+  "resourcePackages": [
+    {
+      "name": "SharedResources",
+      "type": "SharedResources",
+      "items": [
+        {
+          "name": "CY24SU06",
+          "path": "BaseThemes/CY24SU06.json",
+          "type": "BaseTheme"
+        }
+      ]
+    },
+    {
+      "name": "RegisteredResources",
+      "type": "RegisteredResources",
+      "items": [
+        {
+          "name": "home-button-white5473323778693024.png",
+          "path": "home-button-white5473323778693024.png",
+          "type": "Image"
+        },
+        {
+          "name": "Picture18860559643893644.png",
+          "path": "Picture18860559643893644.png",
+          "type": "Image"
+        },
+        {
+          "name": "Picture15718738471211706.png",
+          "path": "Picture15718738471211706.png",
+          "type": "Image"
+        },
+        {
+          "name": "Picture19030142758961366.png",
+          "path": "Picture19030142758961366.png",
+          "type": "Image"
+        },
+        {
+          "name": "Picture18314327134985338.png",
+          "path": "Picture18314327134985338.png",
+          "type": "Image"
+        },
+        {
+          "name": "Picture11654589821709589.png",
+          "path": "Picture11654589821709589.png",
+          "type": "Image"
+        },
+        {
+          "name": "Picture18042695056476323.png",
+          "path": "Picture18042695056476323.png",
+          "type": "Image"
+        },
+        {
+          "name": "Picture15243748840958071.png",
+          "path": "Picture15243748840958071.png",
+          "type": "Image"
+        },
+        {
+          "name": "undo-circle-outline-icon_THICK05826972615750026.png",
+          "path": "undo-circle-outline-icon_THICK05826972615750026.png",
+          "type": "Image"
+        },
+        {
+          "name": "Picture18369619208212935.png",
+          "path": "Picture18369619208212935.png",
+          "type": "Image"
+        },
+        {
+          "name": "Jess_Colors198429584079014.json",
+          "path": "Jess_Colors198429584079014.json",
+          "type": "CustomTheme"
+        },
+        {
+          "name": "tzumi_logo_WHITE6453563157014885.png",
+          "path": "tzumi_logo_WHITE6453563157014885.png",
+          "type": "Image"
+        },
+        {
+          "name": "Picture19009157477672449.png",
+          "path": "Picture19009157477672449.png",
+          "type": "Image"
+        },
+        {
+          "name": "Picture15774628747291579.png",
+          "path": "Picture15774628747291579.png",
+          "type": "Image"
+        }
+      ]
+    }
+  ],
+  "settings": {
+    "useStylableVisualContainerHeader": true,
+    "exportDataMode": "AllowSummarized",
+    "defaultDrillFilterOtherVisuals": true,
+    "allowChangeFilterTypes": true,
+    "useEnhancedTooltips": true,
+    "useDefaultAggregateDisplayName": true
+  },
+  "slowDataSourceSettings": {
+    "isCrossHighlightingDisabled": false,
+    "isSlicerSelectionsButtonEnabled": false,
+    "isFilterSelectionsButtonEnabled": false,
+    "isFieldWellButtonEnabled": false,
+    "isApplyAllButtonEnabled": false
+  }
+}

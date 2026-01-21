@@ -1,0 +1,1571 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "0d2489d0e1e337e6759e",
+  "position": {
+    "x": 229.46004319654426,
+    "y": 0,
+    "z": 0,
+    "height": 719.71202303815687,
+    "width": 1050.5399568034557,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "WMT_MARKETPLACE_ORDERS"
+                    }
+                  },
+                  "Property": "ORDER_TIME"
+                }
+              },
+              "queryRef": "WMT_MARKETPLACE_ORDERS.ORDER_TIME",
+              "nativeQueryRef": "ORDER_TIME"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "WMT_MARKETPLACE_ORDERS"
+                    }
+                  },
+                  "Property": "SKU"
+                }
+              },
+              "queryRef": "WMT_MARKETPLACE_ORDERS.SKU",
+              "nativeQueryRef": "SKU"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "WMT_MARKETPLACE_ORDERS"
+                        }
+                      },
+                      "Property": "QUANTITY"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(WMT_MARKETPLACE_ORDERS.QUANTITY)",
+              "nativeQueryRef": "Sum of QUANTITY"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "WMT_MARKETPLACE_ORDERS"
+                        }
+                      },
+                      "Property": "AMOUNT"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(WMT_MARKETPLACE_ORDERS.AMOUNT)",
+              "nativeQueryRef": "Sum of AMOUNT"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "WMT_MARKETPLACE_ORDERS"
+                    }
+                  },
+                  "Property": "CUSTOMER_ORDER_ID"
+                }
+              },
+              "queryRef": "WMT_MARKETPLACE_ORDERS.CUSTOMER_ORDER_ID",
+              "nativeQueryRef": "CUSTOMER_ORDER_ID"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "WMT_MARKETPLACE_ORDERS"
+                    }
+                  },
+                  "Property": "CUSTOMER_EMAIL_ID"
+                }
+              },
+              "queryRef": "WMT_MARKETPLACE_ORDERS.CUSTOMER_EMAIL_ID",
+              "nativeQueryRef": "CUSTOMER_EMAIL_ID"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "WMT_MARKETPLACE_ORDERS"
+                    }
+                  },
+                  "Property": "_SYNC_TIME"
+                }
+              },
+              "queryRef": "WMT_MARKETPLACE_ORDERS._SYNC_TIME",
+              "nativeQueryRef": "_SYNC_TIME"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "WMT_MARKETPLACE_ORDERS"
+                    }
+                  },
+                  "Property": "ACCOUNT_KEY"
+                }
+              },
+              "queryRef": "WMT_MARKETPLACE_ORDERS.ACCOUNT_KEY",
+              "nativeQueryRef": "ACCOUNT_KEY"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "WMT_MARKETPLACE_ORDERS"
+                    }
+                  },
+                  "Property": "ADDRESS_1"
+                }
+              },
+              "queryRef": "WMT_MARKETPLACE_ORDERS.ADDRESS_1",
+              "nativeQueryRef": "ADDRESS_1"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "WMT_MARKETPLACE_ORDERS"
+                    }
+                  },
+                  "Property": "ADDRESS_2"
+                }
+              },
+              "queryRef": "WMT_MARKETPLACE_ORDERS.ADDRESS_2",
+              "nativeQueryRef": "ADDRESS_2"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "WMT_MARKETPLACE_ORDERS"
+                    }
+                  },
+                  "Property": "CANCELLATION_REASON"
+                }
+              },
+              "queryRef": "WMT_MARKETPLACE_ORDERS.CANCELLATION_REASON",
+              "nativeQueryRef": "CANCELLATION_REASON"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "WMT_MARKETPLACE_ORDERS"
+                    }
+                  },
+                  "Property": "CHARGE_NAME"
+                }
+              },
+              "queryRef": "WMT_MARKETPLACE_ORDERS.CHARGE_NAME",
+              "nativeQueryRef": "CHARGE_NAME"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "WMT_MARKETPLACE_ORDERS"
+                    }
+                  },
+                  "Property": "CHARGE_TAX"
+                }
+              },
+              "queryRef": "WMT_MARKETPLACE_ORDERS.CHARGE_TAX",
+              "nativeQueryRef": "CHARGE_TAX"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "WMT_MARKETPLACE_ORDERS"
+                    }
+                  },
+                  "Property": "CHARGE_TYPE"
+                }
+              },
+              "queryRef": "WMT_MARKETPLACE_ORDERS.CHARGE_TYPE",
+              "nativeQueryRef": "CHARGE_TYPE"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "WMT_MARKETPLACE_ORDERS"
+                    }
+                  },
+                  "Property": "CITY"
+                }
+              },
+              "queryRef": "WMT_MARKETPLACE_ORDERS.CITY",
+              "nativeQueryRef": "CITY"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "WMT_MARKETPLACE_ORDERS"
+                    }
+                  },
+                  "Property": "COUNTRY"
+                }
+              },
+              "queryRef": "WMT_MARKETPLACE_ORDERS.COUNTRY",
+              "nativeQueryRef": "COUNTRY"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "WMT_MARKETPLACE_ORDERS"
+                    }
+                  },
+                  "Property": "CURRENCY"
+                }
+              },
+              "queryRef": "WMT_MARKETPLACE_ORDERS.CURRENCY",
+              "nativeQueryRef": "CURRENCY"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "WMT_MARKETPLACE_ORDERS"
+                    }
+                  },
+                  "Property": "ESTIMATED_DELIVERY_TIME"
+                }
+              },
+              "queryRef": "WMT_MARKETPLACE_ORDERS.ESTIMATED_DELIVERY_TIME",
+              "nativeQueryRef": "ESTIMATED_DELIVERY_TIME"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "WMT_MARKETPLACE_ORDERS"
+                    }
+                  },
+                  "Property": "ESTIMATED_SHIP_TIME"
+                }
+              },
+              "queryRef": "WMT_MARKETPLACE_ORDERS.ESTIMATED_SHIP_TIME",
+              "nativeQueryRef": "ESTIMATED_SHIP_TIME"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "WMT_MARKETPLACE_ORDERS"
+                    }
+                  },
+                  "Property": "FULFILLMENT_OPTION"
+                }
+              },
+              "queryRef": "WMT_MARKETPLACE_ORDERS.FULFILLMENT_OPTION",
+              "nativeQueryRef": "FULFILLMENT_OPTION"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "WMT_MARKETPLACE_ORDERS"
+                    }
+                  },
+                  "Property": "GTIN"
+                }
+              },
+              "queryRef": "WMT_MARKETPLACE_ORDERS.GTIN",
+              "nativeQueryRef": "GTIN"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "WMT_MARKETPLACE_ORDERS"
+                    }
+                  },
+                  "Property": "MARKETPLACE_KEY"
+                }
+              },
+              "queryRef": "WMT_MARKETPLACE_ORDERS.MARKETPLACE_KEY",
+              "nativeQueryRef": "MARKETPLACE_KEY"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "WMT_MARKETPLACE_ORDERS"
+                    }
+                  },
+                  "Property": "ORDER_DATE"
+                }
+              },
+              "queryRef": "WMT_MARKETPLACE_ORDERS.ORDER_DATE",
+              "nativeQueryRef": "ORDER_DATE"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "WMT_MARKETPLACE_ORDERS"
+                    }
+                  },
+                  "Property": "ORDER_LOCAL_DATE"
+                }
+              },
+              "queryRef": "WMT_MARKETPLACE_ORDERS.ORDER_LOCAL_DATE",
+              "nativeQueryRef": "ORDER_LOCAL_DATE"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "WMT_MARKETPLACE_ORDERS"
+                    }
+                  },
+                  "Property": "ORDER_LOCAL_TIME"
+                }
+              },
+              "queryRef": "WMT_MARKETPLACE_ORDERS.ORDER_LOCAL_TIME",
+              "nativeQueryRef": "ORDER_LOCAL_TIME"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "WMT_MARKETPLACE_ORDERS"
+                    }
+                  },
+                  "Property": "PICK_UP_DATE_TIME"
+                }
+              },
+              "queryRef": "WMT_MARKETPLACE_ORDERS.PICK_UP_DATE_TIME",
+              "nativeQueryRef": "PICK_UP_DATE_TIME"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "WMT_MARKETPLACE_ORDERS"
+                    }
+                  },
+                  "Property": "PICK_UP_BY"
+                }
+              },
+              "queryRef": "WMT_MARKETPLACE_ORDERS.PICK_UP_BY",
+              "nativeQueryRef": "PICK_UP_BY"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "WMT_MARKETPLACE_ORDERS"
+                    }
+                  },
+                  "Property": "POSTAL_CODE"
+                }
+              },
+              "queryRef": "WMT_MARKETPLACE_ORDERS.POSTAL_CODE",
+              "nativeQueryRef": "POSTAL_CODE"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "WMT_MARKETPLACE_ORDERS"
+                    }
+                  },
+                  "Property": "PRODUCT_KEY"
+                }
+              },
+              "queryRef": "WMT_MARKETPLACE_ORDERS.PRODUCT_KEY",
+              "nativeQueryRef": "PRODUCT_KEY"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "WMT_MARKETPLACE_ORDERS"
+                    }
+                  },
+                  "Property": "PRODUCT_NAME"
+                }
+              },
+              "queryRef": "WMT_MARKETPLACE_ORDERS.PRODUCT_NAME",
+              "nativeQueryRef": "PRODUCT_NAME"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "WMT_MARKETPLACE_ORDERS"
+                    }
+                  },
+                  "Property": "PURCHASE_ORDER_ID"
+                }
+              },
+              "queryRef": "WMT_MARKETPLACE_ORDERS.PURCHASE_ORDER_ID",
+              "nativeQueryRef": "PURCHASE_ORDER_ID"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "WMT_MARKETPLACE_ORDERS"
+                    }
+                  },
+                  "Property": "RETURN_CENTER_ADDRESS"
+                }
+              },
+              "queryRef": "WMT_MARKETPLACE_ORDERS.RETURN_CENTER_ADDRESS",
+              "nativeQueryRef": "RETURN_CENTER_ADDRESS"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "WMT_MARKETPLACE_ORDERS"
+                    }
+                  },
+                  "Property": "SHIP_METHOD"
+                }
+              },
+              "queryRef": "WMT_MARKETPLACE_ORDERS.SHIP_METHOD",
+              "nativeQueryRef": "SHIP_METHOD"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "WMT_MARKETPLACE_ORDERS"
+                    }
+                  },
+                  "Property": "SHIP_NODE_TYPE"
+                }
+              },
+              "queryRef": "WMT_MARKETPLACE_ORDERS.SHIP_NODE_TYPE",
+              "nativeQueryRef": "SHIP_NODE_TYPE"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "WMT_MARKETPLACE_ORDERS"
+                    }
+                  },
+                  "Property": "SHIPPING_METHOD_CODE"
+                }
+              },
+              "queryRef": "WMT_MARKETPLACE_ORDERS.SHIPPING_METHOD_CODE",
+              "nativeQueryRef": "SHIPPING_METHOD_CODE"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "WMT_MARKETPLACE_ORDERS"
+                    }
+                  },
+                  "Property": "SHIPPING_PHONE"
+                }
+              },
+              "queryRef": "WMT_MARKETPLACE_ORDERS.SHIPPING_PHONE",
+              "nativeQueryRef": "SHIPPING_PHONE"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "WMT_MARKETPLACE_ORDERS"
+                    }
+                  },
+                  "Property": "SHIPPING_PROGRAM_TYPE"
+                }
+              },
+              "queryRef": "WMT_MARKETPLACE_ORDERS.SHIPPING_PROGRAM_TYPE",
+              "nativeQueryRef": "SHIPPING_PROGRAM_TYPE"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "WMT_MARKETPLACE_ORDERS"
+                    }
+                  },
+                  "Property": "STATE"
+                }
+              },
+              "queryRef": "WMT_MARKETPLACE_ORDERS.STATE",
+              "nativeQueryRef": "STATE"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "WMT_MARKETPLACE_ORDERS"
+                    }
+                  },
+                  "Property": "STATUS"
+                }
+              },
+              "queryRef": "WMT_MARKETPLACE_ORDERS.STATUS",
+              "nativeQueryRef": "STATUS"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "WMT_MARKETPLACE_ORDERS"
+                        }
+                      },
+                      "Property": "STATUS_QUANTITY"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(WMT_MARKETPLACE_ORDERS.STATUS_QUANTITY)",
+              "nativeQueryRef": "Sum of STATUS_QUANTITY"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "WMT_MARKETPLACE_ORDERS"
+                    }
+                  },
+                  "Property": "STATUS_UNIT_OF_MEASUREMENT"
+                }
+              },
+              "queryRef": "WMT_MARKETPLACE_ORDERS.STATUS_UNIT_OF_MEASUREMENT",
+              "nativeQueryRef": "STATUS_UNIT_OF_MEASUREMENT"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "WMT_MARKETPLACE_ORDERS"
+                    }
+                  },
+                  "Property": "SUB_SELLER_ID"
+                }
+              },
+              "queryRef": "WMT_MARKETPLACE_ORDERS.SUB_SELLER_ID",
+              "nativeQueryRef": "SUB_SELLER_ID"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "WMT_MARKETPLACE_ORDERS"
+                    }
+                  },
+                  "Property": "TRACKING_NUMBER"
+                }
+              },
+              "queryRef": "WMT_MARKETPLACE_ORDERS.TRACKING_NUMBER",
+              "nativeQueryRef": "TRACKING_NUMBER"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "WMT_MARKETPLACE_ORDERS"
+                    }
+                  },
+                  "Property": "TRACKING_URL"
+                }
+              },
+              "queryRef": "WMT_MARKETPLACE_ORDERS.TRACKING_URL",
+              "nativeQueryRef": "TRACKING_URL"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "WMT_MARKETPLACE_ORDERS"
+                    }
+                  },
+                  "Property": "UNIT_OF_MEASUREMENT"
+                }
+              },
+              "queryRef": "WMT_MARKETPLACE_ORDERS.UNIT_OF_MEASUREMENT",
+              "nativeQueryRef": "UNIT_OF_MEASUREMENT"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "WMT_MARKETPLACE_ORDERS"
+                    }
+                  },
+                  "Property": "UPC"
+                }
+              },
+              "queryRef": "WMT_MARKETPLACE_ORDERS.UPC",
+              "nativeQueryRef": "UPC"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "WMT_MARKETPLACE_ORDERS"
+                        }
+                      },
+                      "Property": "WORKSPACE_ID"
+                    }
+                  },
+                  "Function": 5
+                }
+              },
+              "queryRef": "CountNonNull(WMT_MARKETPLACE_ORDERS.WORKSPACE_ID)",
+              "nativeQueryRef": "Count of WORKSPACE_ID"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "WMT_MARKETPLACE_ORDERS"
+                    }
+                  },
+                  "Property": "WPID"
+                }
+              },
+              "queryRef": "WMT_MARKETPLACE_ORDERS.WPID",
+              "nativeQueryRef": "WPID"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "WMT_MARKETPLACE_ORDERS"
+                  }
+                },
+                "Property": "CUSTOMER_ORDER_ID"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "f123c94ccd8c7c57cb39",
+        "ordinal": 0,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "WMT_MARKETPLACE_ORDERS"
+              }
+            },
+            "Property": "Filter_Order_Flag"
+          }
+        },
+        "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "w",
+              "Entity": "WMT_MARKETPLACE_ORDERS",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "In": {
+                  "Expressions": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "w"
+                          }
+                        },
+                        "Property": "Filter_Order_Flag"
+                      }
+                    }
+                  ],
+                  "Values": [
+                    [
+                      {
+                        "Literal": {
+                          "Value": "true"
+                        }
+                      }
+                    ]
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        "howCreated": "User"
+      },
+      {
+        "name": "1a9534c51ed2b6cbecde",
+        "ordinal": 1,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "WMT_MARKETPLACE_ORDERS"
+              }
+            },
+            "Property": "STATUS"
+          }
+        },
+        "type": "Advanced",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "w",
+              "Entity": "WMT_MARKETPLACE_ORDERS",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "Not": {
+                  "Expression": {
+                    "Comparison": {
+                      "ComparisonKind": 0,
+                      "Left": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Source": "w"
+                            }
+                          },
+                          "Property": "STATUS"
+                        }
+                      },
+                      "Right": {
+                        "Literal": {
+                          "Value": "'Cancelled'"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "7fbd8232ab3c7e4b5a3e",
+        "ordinal": 2,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "WMT_MARKETPLACE_ORDERS"
+              }
+            },
+            "Property": "CUSTOMER_ORDER_ID"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "ed903df5a4e1e63402f5",
+        "ordinal": 3,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "WMT_MARKETPLACE_ORDERS"
+              }
+            },
+            "Property": "_SYNC_TIME"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "ce6503c70c8875e93ee4",
+        "ordinal": 4,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "WMT_MARKETPLACE_ORDERS"
+              }
+            },
+            "Property": "ACCOUNT_KEY"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "38f265d30370c6d2d23f",
+        "ordinal": 5,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "WMT_MARKETPLACE_ORDERS"
+              }
+            },
+            "Property": "ADDRESS_1"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "9f6f5f6d53aa24a419d8",
+        "ordinal": 6,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "WMT_MARKETPLACE_ORDERS"
+              }
+            },
+            "Property": "ADDRESS_2"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "fe7fb8fcb6182e147937",
+        "ordinal": 7,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "WMT_MARKETPLACE_ORDERS"
+              }
+            },
+            "Property": "CANCELLATION_REASON"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "f63a18bd8ab3f467f0b3",
+        "ordinal": 8,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "WMT_MARKETPLACE_ORDERS"
+              }
+            },
+            "Property": "CHARGE_NAME"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "a0b28f6ac34146979311",
+        "ordinal": 9,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "WMT_MARKETPLACE_ORDERS"
+              }
+            },
+            "Property": "CHARGE_TAX"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "0600bc6f089dae54589a",
+        "ordinal": 10,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "WMT_MARKETPLACE_ORDERS"
+              }
+            },
+            "Property": "CHARGE_TYPE"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "b2f2de9d1cd7ea9ac20e",
+        "ordinal": 11,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "WMT_MARKETPLACE_ORDERS"
+              }
+            },
+            "Property": "CITY"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "184b979058cceff6493c",
+        "ordinal": 12,
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "WMT_MARKETPLACE_ORDERS"
+                  }
+                },
+                "Property": "WORKSPACE_ID"
+              }
+            },
+            "Function": 5
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "163f321a4d85ee8891f4",
+        "ordinal": 13,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "WMT_MARKETPLACE_ORDERS"
+              }
+            },
+            "Property": "COUNTRY"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "50cc958992900d2dfefd",
+        "ordinal": 14,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "WMT_MARKETPLACE_ORDERS"
+              }
+            },
+            "Property": "CURRENCY"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "0a70b337464c44fece1a",
+        "ordinal": 15,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "WMT_MARKETPLACE_ORDERS"
+              }
+            },
+            "Property": "CUSTOMER_EMAIL_ID"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "887741bac1e6fa8d79f3",
+        "ordinal": 16,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "WMT_MARKETPLACE_ORDERS"
+              }
+            },
+            "Property": "ESTIMATED_DELIVERY_TIME"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "1cb8e1ad61c60d7e153b",
+        "ordinal": 17,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "WMT_MARKETPLACE_ORDERS"
+              }
+            },
+            "Property": "ESTIMATED_SHIP_TIME"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "2c82d90800c1fb283d46",
+        "ordinal": 18,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "WMT_MARKETPLACE_ORDERS"
+              }
+            },
+            "Property": "FULFILLMENT_OPTION"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "f5709957d0a006726f9e",
+        "ordinal": 19,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "WMT_MARKETPLACE_ORDERS"
+              }
+            },
+            "Property": "GTIN"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "b9d58719373653edbbf9",
+        "ordinal": 20,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "WMT_MARKETPLACE_ORDERS"
+              }
+            },
+            "Property": "MARKETPLACE_KEY"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "3b2256ad2a8872f0ed7b",
+        "ordinal": 21,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "WMT_MARKETPLACE_ORDERS"
+              }
+            },
+            "Property": "ORDER_DATE"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "031d84cd4576cae0ecec",
+        "ordinal": 22,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "WMT_MARKETPLACE_ORDERS"
+              }
+            },
+            "Property": "ORDER_LOCAL_DATE"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "da21e8c02562c3b2723c",
+        "ordinal": 23,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "WMT_MARKETPLACE_ORDERS"
+              }
+            },
+            "Property": "ORDER_LOCAL_TIME"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "9ce00a14a6d530ea0fdd",
+        "ordinal": 24,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "WMT_MARKETPLACE_ORDERS"
+              }
+            },
+            "Property": "ORDER_TIME"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "e1f935f6bf1f4819cc96",
+        "ordinal": 25,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "WMT_MARKETPLACE_ORDERS"
+              }
+            },
+            "Property": "PICK_UP_BY"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "d424c1566d395d65305d",
+        "ordinal": 26,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "WMT_MARKETPLACE_ORDERS"
+              }
+            },
+            "Property": "PICK_UP_DATE_TIME"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "b6715181e52c787f21be",
+        "ordinal": 27,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "WMT_MARKETPLACE_ORDERS"
+              }
+            },
+            "Property": "POSTAL_CODE"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "5a5fee20c5a77ed38597",
+        "ordinal": 28,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "WMT_MARKETPLACE_ORDERS"
+              }
+            },
+            "Property": "PRODUCT_KEY"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "a692f9b2cc297ceb7630",
+        "ordinal": 29,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "WMT_MARKETPLACE_ORDERS"
+              }
+            },
+            "Property": "PRODUCT_NAME"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "20ad59884c906c562f48",
+        "ordinal": 30,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "WMT_MARKETPLACE_ORDERS"
+              }
+            },
+            "Property": "PURCHASE_ORDER_ID"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "d6e7f8099acaccae9685",
+        "ordinal": 31,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "WMT_MARKETPLACE_ORDERS"
+              }
+            },
+            "Property": "RETURN_CENTER_ADDRESS"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "dcb8829ffdafecfc4659",
+        "ordinal": 32,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "WMT_MARKETPLACE_ORDERS"
+              }
+            },
+            "Property": "SHIP_METHOD"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "15648564c539e636c052",
+        "ordinal": 33,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "WMT_MARKETPLACE_ORDERS"
+              }
+            },
+            "Property": "SHIP_NODE_TYPE"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "3cfacf8fe334630aa12c",
+        "ordinal": 34,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "WMT_MARKETPLACE_ORDERS"
+              }
+            },
+            "Property": "SHIPPING_METHOD_CODE"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "1c8369b3907540daea00",
+        "ordinal": 35,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "WMT_MARKETPLACE_ORDERS"
+              }
+            },
+            "Property": "SHIPPING_PHONE"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "c7bef73f20bb5d9dcf68",
+        "ordinal": 36,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "WMT_MARKETPLACE_ORDERS"
+              }
+            },
+            "Property": "SHIPPING_PROGRAM_TYPE"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "a275df1888683db6c079",
+        "ordinal": 37,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "WMT_MARKETPLACE_ORDERS"
+              }
+            },
+            "Property": "SKU"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "a8558f879835f3cc82e6",
+        "ordinal": 38,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "WMT_MARKETPLACE_ORDERS"
+              }
+            },
+            "Property": "STATE"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "ca4487428704c6b4789b",
+        "ordinal": 39,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "WMT_MARKETPLACE_ORDERS"
+              }
+            },
+            "Property": "STATUS_UNIT_OF_MEASUREMENT"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "d598022c42c47fbc7f97",
+        "ordinal": 40,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "WMT_MARKETPLACE_ORDERS"
+              }
+            },
+            "Property": "SUB_SELLER_ID"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "7f85b6c265a6e57c8589",
+        "ordinal": 41,
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "WMT_MARKETPLACE_ORDERS"
+                  }
+                },
+                "Property": "AMOUNT"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "6ae26956c9e948eecfec",
+        "ordinal": 42,
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "WMT_MARKETPLACE_ORDERS"
+                  }
+                },
+                "Property": "QUANTITY"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "1bc86b51f5923e7922f2",
+        "ordinal": 43,
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "WMT_MARKETPLACE_ORDERS"
+                  }
+                },
+                "Property": "STATUS_QUANTITY"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "257bbd98b1f6d85980eb",
+        "ordinal": 44,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "WMT_MARKETPLACE_ORDERS"
+              }
+            },
+            "Property": "TRACKING_NUMBER"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "14a60c84e0a8be0da1da",
+        "ordinal": 45,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "WMT_MARKETPLACE_ORDERS"
+              }
+            },
+            "Property": "TRACKING_URL"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "d50968f602b52d5e64d4",
+        "ordinal": 46,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "WMT_MARKETPLACE_ORDERS"
+              }
+            },
+            "Property": "UNIT_OF_MEASUREMENT"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "4ff3f9d12fdc1a2d58d3",
+        "ordinal": 47,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "WMT_MARKETPLACE_ORDERS"
+              }
+            },
+            "Property": "UPC"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "8b8a831503333cfd9eb4",
+        "ordinal": 48,
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "WMT_MARKETPLACE_ORDERS"
+              }
+            },
+            "Property": "WPID"
+          }
+        },
+        "type": "Categorical"
+      }
+    ],
+    "filterSortOrder": "Custom"
+  }
+}

@@ -1,0 +1,38 @@
+table DIM_DATES
+	lineageTag: da9af842-6bc3-44bb-99a9-0c4b9f8fccb7
+
+	column OBSERVATION_DATE
+		dataType: dateTime
+		formatString: mm/dd/yy
+		lineageTag: 5286ace3-5447-4598-876d-2486f0811afd
+		summarizeBy: none
+		sourceColumn: OBSERVATION_DATE
+
+		variation Variation
+			isDefault
+			relationship: ad91bdc1-e957-4f1c-b15f-00b0dcf52c34
+			defaultHierarchy: LocalDateTable_9f708126-b7c2-4fbf-a1d7-43e7696aec9a.'Date Hierarchy'
+
+		changedProperty = FormatString
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	partition DIM_DATES-5e5b73aa-ee7b-431f-9319-193db39f5d19 = m
+		mode: import
+		source =
+				let
+				    Source = #table({"End Date", "Start Date"}, {{DateTime.LocalNow(),Date.AddDays(DateTime.LocalNow(),-Number.From(#"Lookback History"))}}),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"End Date", type date},{"Start Date", type date}}),
+				    #"Added Custom" = Table.AddColumn(#"Changed Type", "OBSERVATION_DATE", each {Number.From([Start Date])..Number.From([End Date])}),
+				    #"Expanded Date" = Table.ExpandListColumn(#"Added Custom", "OBSERVATION_DATE"),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Expanded Date",{{"OBSERVATION_DATE", type date}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type1",{"End Date", "Start Date"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_ResultType = Table
+

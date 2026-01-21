@@ -1,0 +1,16 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "ec0ec22180b553150045",
+  "position": {
+    "x": 1053.716719914803,
+    "y": 391.22470713525024,
+    "z": 6000,
+    "height": 139.04153354632587,
+    "width": 215.37806176783812,
+    "tabOrder": 20000
+  },
+  "visualGroup": {
+    "displayName": "Copy Changed",
+    "groupMode": "ScaleMode"
+  }
+}

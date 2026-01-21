@@ -1,0 +1,38 @@
+table DIM_CONNECTED_SELLER_ACCOUNTS
+	lineageTag: 9f3a9299-35a8-4e49-8805-abddc9fcc8b7
+
+	column ACCOUNT_KEY
+		dataType: string
+		lineageTag: 89e57a8b-bdf6-4b0d-be7b-c38b8beed3cf
+		summarizeBy: none
+		sourceColumn: ACCOUNT_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+	column SELLER_NAME
+		dataType: string
+		lineageTag: 4a94e96f-8950-4bd7-b66b-9724882620fe
+		summarizeBy: none
+		sourceColumn: SELLER_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DIM_CONNECTED_SELLER_ACCOUNTS = m
+		mode: import
+		source = ```
+				let
+				    Source = Value.NativeQuery(
+				        Snowflake.Databases(
+				            Server,
+				            Warehouse
+				            )
+				            {[Name=Database]}[Data], 
+				            "SELECT DISTINCT ACCOUNT_KEY, SELLER_NAME
+				            FROM PREVIEW_RAW_SELLER.RAW_TRAFFIC_BY_ASIN
+				            WHERE REPORT_DATE >= CURRENT_DATE - "&Text.From(#"Lookback History"), null, [EnableFolding=true])
+				in
+				    Source
+				```
+
+	annotation PBI_ResultType = Table
+

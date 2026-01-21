@@ -1,0 +1,130 @@
+table 'Product IDs to SKUs'
+	lineageTag: 9e4b9aa0-5f3d-4cb0-8a5e-d24afe90a888
+
+	column 'Product ID'
+		dataType: string
+		lineageTag: 86b1ebcc-d528-4093-ae49-a181b0016ff4
+		summarizeBy: none
+		sourceColumn: Product ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column SKU
+		dataType: string
+		lineageTag: 18579c17-aedc-4658-8a8d-bc235a0e256b
+		summarizeBy: none
+		sourceColumn: SKU
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Item Title'
+		dataType: string
+		lineageTag: b5f5d50d-fc31-490b-bf0b-acef3b2f420f
+		summarizeBy: none
+		sourceColumn: Item Title
+
+		annotation SummarizationSetBy = Automatic
+
+	column Retailer
+		dataType: string
+		lineageTag: 43ca111c-4333-4685-93cd-9309dc75d6b7
+		summarizeBy: none
+		sourceColumn: Retailer
+
+		annotation SummarizationSetBy = Automatic
+
+	column Link
+		dataType: string
+		lineageTag: 2ca4c97a-0335-44a4-8c59-619b7cacffd1
+		summarizeBy: none
+		sourceColumn: Link
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Mod/Relevant SKU'
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: d003cd29-4953-4508-a0c0-393c45b172bd
+		summarizeBy: none
+		sourceColumn: Mod/Relevant SKU
+
+		annotation SummarizationSetBy = Automatic
+
+	column Variant/Bundle
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: ada47446-e2eb-4345-974c-c611b0cb2a62
+		summarizeBy: none
+		sourceColumn: Variant/Bundle
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Parent SKU'
+		dataType: int64
+		formatString: 0
+		lineageTag: d8dd6075-bb8d-4192-9be8-a40d268da5aa
+		summarizeBy: sum
+		sourceColumn: Parent SKU
+
+		annotation SummarizationSetBy = Automatic
+
+	column 3P
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 8df3617c-92ff-44d9-bb3f-a57f62de685c
+		summarizeBy: none
+		sourceColumn: 3P
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'ATC/Advertising Non-Focus'
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 1c175b69-58ba-4ea3-b056-9ccaedf80d1c
+		summarizeBy: none
+		sourceColumn: ATC/Advertising Non-Focus
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Active Ads'
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 3ae5c018-5cc3-424b-8ac9-ce42795ec761
+		summarizeBy: none
+		sourceColumn: Active Ads
+
+		annotation SummarizationSetBy = Automatic
+
+	column ATC
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: ccc00b01-5826-4aad-96f7-6c72eaf32064
+		summarizeBy: none
+		sourceColumn: ATC
+
+		annotation SummarizationSetBy = Automatic
+
+	column '3P Label' = ```
+			
+			    IF([3P] = TRUE, "3P", "1P")
+			```
+		lineageTag: 4fce0891-09c2-4c42-a400-19f4fb0fc91d
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Product IDs to SKUs' = m
+		mode: import
+		source =
+				let
+				    Source = GoogleSheets.Contents("https://docs.google.com/spreadsheets/d/13yCzRl7AKWLA2ysSc52K5pM72Tzo-8s9o0XKHB39VaA/edit?gid=258186823#gid=258186823"),
+				    #"Product IDs to SKUs_Table" = Source{[name="Product IDs to SKUs",ItemKind="Table"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(#"Product IDs to SKUs_Table", [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Product ID", type text}, {"SKU", type text}, {"Item Title", type text}, {"Retailer", type text}, {"Link", type text}, {"Mod/Relevant SKU", type logical}, {"Variant/Bundle", type logical}, {"Parent SKU", Int64.Type}, {"3P", type logical}, {"ATC/Advertising Non-Focus", type logical}, {"Active Ads", type logical}, {"ATC", type logical}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

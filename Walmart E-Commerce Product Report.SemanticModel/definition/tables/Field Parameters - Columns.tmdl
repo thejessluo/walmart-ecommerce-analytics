@@ -1,0 +1,79 @@
+table 'Field Parameters - Columns'
+	lineageTag: f1297573-4058-47a7-87ba-b4bac367c3f5
+
+	column Parameter
+		lineageTag: fb8c2b29-7a06-49d3-ab11-ba575b643545
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Parameter Order'
+
+		relatedColumnDetails
+			groupByColumn: 'Parameter Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Parameter Fields'
+		isHidden
+		lineageTag: a8914ae2-4ed0-4642-9f11-4d0b16f3655e
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Parameter Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Parameter Order'
+		isHidden
+		formatString: 0
+		lineageTag: 05209854-dae4-4f0c-a3da-6950649a1d2c
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Field Parameters - Columns' = calculated
+		mode: import
+		source =
+				{
+				    ("Variants", NAMEOF([RESULT_COUNT_PRODUCTS]), 1),
+				    ("Brands", NAMEOF([RESULT_COUNT_BRANDS]), 2),
+				    ("Sellers", NAMEOF([RESULT_COUNT_COMPETING_SELLERS]), 3),
+				    ("Sellers (Winners)", NAMEOF([RESULT_COUNT_WINNING_SELLERS]), 4),
+				    ("Seller (Latest)", NAMEOF([RESULT_LATEST_SELLER]), 5),
+				    ("Price (Min)", NAMEOF([RESULT_MIN_PRICE]), 6),
+				    ("Price (Avg)", NAMEOF([RESULT_AVG_PRICE]), 7),
+				    ("Price (Max)", NAMEOF([RESULT_MAX_PRICE]), 8),
+				    ("Price (Distinct)", NAMEOF([RESULT_COUNT_PRICES]), 9),
+				    ("Buy Box % (Active)", NAMEOF([RESULT_BUYBOX_ENABLED_RATE]), 10),
+				    ("Buy Box % (Public)", NAMEOF([RESULT_BUYBOX_SHARE]), 11),
+				    ("Buy Box % (Private)", NAMEOF([RESULT_AVG_OWNED_BUY_BOX_PERCENTAGE]), 12),
+				    ("Delivery Days (Avg)", NAMEOF([RESULT_AVG_LEAD_TIME]), 13),
+				    ("Units/mo (E)(Avg)(Low)", NAMEOF([RESULT_AVG_MONTHLY_UNITS]), 14),
+				    ("Units (E)(Low)", NAMEOF([RESULT_TOTAL_UNITS]), 15),
+				    ("Units (E)(High)", NAMEOF([RESULT_TOTAL_UNITS_HIGH]), 16),
+				    ("Units % (E)", NAMEOF([RESULT_TOTAL_UNITS_SHARE]), 17),
+				    ("Sales/mo (E)(Avg)(Low)", NAMEOF([RESULT_AVG_MONTHLY_SALES]), 18),
+				    ("Sales (E)(Low)", NAMEOF([RESULT_TOTAL_SALES]), 19),
+				    ("Sales (E)(High)", NAMEOF([RESULT_TOTAL_SALES_HIGH]), 20),
+				    ("Sales % (E)", NAMEOF([RESULT_TOTAL_SALES_SHARE]), 21),
+				    ("Categories", NAMEOF([RESULT_COUNT_CATEGORIES]), 23),
+				    ("BSR (Best)", NAMEOF([RESULT_MIN_BSR]), 24),
+				    ("BSR (Avg)", NAMEOF([RESULT_AVG_BSR]), 25),
+				    ("BSR (Worst)", NAMEOF([RESULT_MAX_BSR]), 26),
+				    ("Rating (Avg)", NAMEOF([RESULT_AVG_RATING]), 27),
+				    ("Ratings (Min)", NAMEOF([RESULT_MIN_RATINGS_COUNT]), 28),
+				    ("Ratings (Avg)", NAMEOF([RESULT_AVG_RATINGS_COUNT]), 29),
+				    ("Ratings (Max)", NAMEOF([RESULT_MAX_RATINGS_COUNT]), 30),
+				    ("Images (Avg)", NAMEOF([RESULT_AVG_IMAGES]), 31),
+				    ("Sessions", NAMEOF([RESULT_TOTAL_SESSIONS]), 33),
+				    ("Pageviews", NAMEOF([RESULT_TOTAL_PAGEVIEWS]), 34),
+				    ("Sessions CVR (Avg)", NAMEOF([RESULT_AVG_SESSION_PERCENTAGE]), 35)
+				}
+
+	annotation PBI_Id = 46bf76b5734b412c8f0059cb81cf4715
+

@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Walmart E-Commerce Product Report"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "d9483255-f8e0-4019-8eba-e67b05c08033"
+  }
+}

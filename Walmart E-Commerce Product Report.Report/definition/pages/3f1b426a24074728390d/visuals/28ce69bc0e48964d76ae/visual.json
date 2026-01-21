@@ -1,0 +1,31 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "28ce69bc0e48964d76ae",
+  "position": {
+    "x": 780.63905302559351,
+    "y": 363.41511299781416,
+    "z": 2000,
+    "height": 253.72574449651202,
+    "width": 311.00743251263253,
+    "tabOrder": 11000
+  },
+  "visualGroup": {
+    "displayName": "STOCK PIE CHART",
+    "groupMode": "ScaleMode",
+    "objects": {
+      "background": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

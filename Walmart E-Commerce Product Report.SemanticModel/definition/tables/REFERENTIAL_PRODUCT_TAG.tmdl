@@ -1,0 +1,82 @@
+table REFERENTIAL_PRODUCT_TAG
+	lineageTag: f4a059a7-a6af-478a-a067-2fccd04e82f2
+
+	column MARKETPLACE_KEY
+		dataType: string
+		lineageTag: 6beb4f98-5cdf-4ee4-9049-4587c44d8a1f
+		summarizeBy: none
+		sourceColumn: MARKETPLACE_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+	column PRODUCT_KEY
+		dataType: string
+		lineageTag: e95de75f-7583-4a32-8610-d72e2e334760
+		summarizeBy: none
+		sourceColumn: PRODUCT_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+	column CHANNEL_PRODUCT_ID
+		dataType: string
+		lineageTag: 1feb20e0-a640-456e-ac6b-e322b7957d1c
+		summarizeBy: none
+		sourceColumn: CHANNEL_PRODUCT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column TAG_NAME
+		dataType: string
+		lineageTag: c12805cd-9720-4708-9d1e-5e6381be4119
+		summarizeBy: none
+		sourceColumn: TAG_NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column CREATION_DATE
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 6e50aa9c-0fc5-49ad-ba47-f21a13b7c7c8
+		summarizeBy: none
+		sourceColumn: CREATION_DATE
+
+		variation Variation
+			isDefault
+			relationship: 32c14d2e-008a-45aa-ba1b-d423f0801989
+			defaultHierarchy: LocalDateTable_dffa9543-570b-44d0-bab6-21816d6e4607.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column WORKSPACE_ID
+		dataType: double
+		lineageTag: 41c39113-88ea-4bb4-bbcf-e618ba9e5e36
+		summarizeBy: count
+		sourceColumn: WORKSPACE_ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column IS_TRACKED
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 123f83d2-e38b-48fa-8fbf-03f8b671bc09
+		summarizeBy: none
+		sourceColumn: IS_TRACKED
+
+		annotation SummarizationSetBy = Automatic
+
+	partition REFERENTIAL_PRODUCT_TAG-e1f2cd62-8681-413c-ab1e-51c135168651 = m
+		mode: import
+		queryGroup: Sources
+		source =
+				let
+				    Source = Snowflake.Databases(Server,Warehouse),
+				    Database = Source{[Name=Database,Kind="Database"]}[Data],
+				    REFERENTIAL_Schema = Database{[Name="REFERENTIAL",Kind="Schema"]}[Data],
+				    REFERENTIAL_PRODUCT_TAG_View = REFERENTIAL_Schema{[Name="REFERENTIAL_PRODUCT_TAG",Kind="View"]}[Data]
+				in
+				    REFERENTIAL_PRODUCT_TAG_View
+
+	annotation PBI_ResultType = Table
+

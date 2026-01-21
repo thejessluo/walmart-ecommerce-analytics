@@ -1,0 +1,317 @@
+relationship 8f8062ac-00aa-41a4-8e7f-a1ac3effa68e
+	joinOnDateBehavior: datePartOnly
+	fromColumn: PRODUCT_DETAILED.OBSERVATION_TIME
+	toColumn: LocalDateTable_fa24c9f1-8473-4c23-8697-178ba68a2a63.Date
+
+relationship f450405d-28f3-40a9-871a-85abe079456c
+	joinOnDateBehavior: datePartOnly
+	fromColumn: PRODUCT_DETAILED.SYNC_TIME
+	toColumn: LocalDateTable_e4f12b39-07c1-4435-b49b-2b0efda2ef82.Date
+
+relationship 79900f06-9813-43a7-87d4-2c9e911b0de7
+	joinOnDateBehavior: datePartOnly
+	fromColumn: PRODUCT_IMAGE_LINKS.OBSERVATION_TIME
+	toColumn: LocalDateTable_137ed3c3-a7b9-4cad-854d-67414e56cdee.Date
+
+relationship f2284826-ce63-4889-8a73-c0995dcae3be
+	joinOnDateBehavior: datePartOnly
+	fromColumn: PRODUCT_IMAGE_LINKS.SYNC_TIME
+	toColumn: LocalDateTable_66aa4c7b-237d-4285-8f86-4bc1f1e9f082.Date
+
+relationship ca8c65e5-f12e-4e3b-9946-dca2b8d4f254
+	joinOnDateBehavior: datePartOnly
+	fromColumn: PRODUCT_SALES_RANK.OBSERVATION_TIME
+	toColumn: LocalDateTable_248486e6-f246-4bc3-be1e-c7115f960256.Date
+
+relationship 244c529d-427e-4706-a0e0-a14c20a1dd64
+	joinOnDateBehavior: datePartOnly
+	fromColumn: PRODUCT_SALES_RANK.SYNC_TIME
+	toColumn: LocalDateTable_d26188c5-93e6-4909-8f84-80c5e590f926.Date
+
+relationship 32c14d2e-008a-45aa-ba1b-d423f0801989
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REFERENTIAL_PRODUCT_TAG.CREATION_DATE
+	toColumn: LocalDateTable_dffa9543-570b-44d0-bab6-21816d6e4607.Date
+
+relationship c2881537-05d6-40fe-a830-03ac94e85147
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REFERENTIAL_PRODUCT_TRACKED.PRODUCT_TRACKING_DATE
+	toColumn: LocalDateTable_0efb43d2-ddb0-4f32-b722-fb8fde0bff79.Date
+
+relationship 4fd2a06f-ea40-4045-bdb1-77e717d79b89
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REFERENTIAL_PROJECT_PRODUCTS.CREATION_DATE
+	toColumn: LocalDateTable_77294c82-a507-41f4-b44f-d2a04b457b26.Date
+
+relationship 0e2081d8-9491-4546-9d3c-a93e43954dc7
+	fromColumn: PRODUCT_DETAILED.PRODUCT_KEY
+	toColumn: DIM_PRODUCTS_1.PRODUCT_KEY
+
+relationship 6b9ba6c3-464d-47e7-985f-b10bc91743d9
+	fromColumn: PRODUCT_IMAGE_LINKS.PRODUCT_KEY
+	toColumn: DIM_PRODUCTS_1.PRODUCT_KEY
+
+relationship 41f1364e-9ce1-4f50-9f54-da43281bd672
+	fromColumn: PRODUCT_SALES_RANK.PRODUCT_KEY
+	toColumn: DIM_PRODUCTS_1.PRODUCT_KEY
+
+relationship 0a9cb077-04b0-4847-a540-dbb212f79707
+	crossFilteringBehavior: bothDirections
+	fromColumn: REFERENTIAL_PRODUCT_TAG.PRODUCT_KEY
+	toColumn: DIM_PRODUCTS_1.PRODUCT_KEY
+
+relationship 9ecd9761-5e8d-4576-b239-ee3172f7c3f9
+	crossFilteringBehavior: bothDirections
+	fromColumn: REFERENTIAL_PROJECT_PRODUCTS.PRODUCT_KEY
+	toColumn: DIM_PRODUCTS_1.PRODUCT_KEY
+
+relationship ad91bdc1-e957-4f1c-b15f-00b0dcf52c34
+	joinOnDateBehavior: datePartOnly
+	fromColumn: DIM_DATES.OBSERVATION_DATE
+	toColumn: LocalDateTable_9f708126-b7c2-4fbf-a1d7-43e7696aec9a.Date
+
+relationship e8560b2b-1350-4181-9dcc-d6167300b28a
+	fromColumn: PRODUCT_DETAILED.OBSERVATION_DATE
+	toColumn: DIM_DATES.OBSERVATION_DATE
+
+relationship 9949537d-e736-4393-9316-33181b5670ac
+	fromColumn: PRODUCT_SALES_RANK.OBSERVATION_DATE
+	toColumn: DIM_DATES.OBSERVATION_DATE
+
+relationship c6b4db71-a592-489a-858c-298ac04d802c
+	fromColumn: PRODUCT_IMAGE_LINKS.OBSERVATION_DATE
+	toColumn: DIM_DATES.OBSERVATION_DATE
+
+relationship f18929a8-a3fe-481d-b8be-d7b0b69f5205
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: DIM_PRODUCTS_1.PRODUCT_KEY
+	toColumn: REFERENTIAL_PRODUCT_TRACKED.PRODUCT_KEY
+
+relationship 8240a0f3-d5cf-4b2e-a704-1a38a757f8cc
+	joinOnDateBehavior: datePartOnly
+	fromColumn: PRODUCT_DETAILED.NEAREST_DELIVERY_DATE
+	toColumn: LocalDateTable_53f17dad-dbcf-46a1-91ea-1f0be663c4d6.Date
+
+relationship f4b1621d-a3b8-4b70-9a57-629b09632f74
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REFERENTIAL_PRODUCT_TRACKED.CURRENT_SNAPSHOT_TS
+	toColumn: LocalDateTable_8acc891c-a55f-4b23-a0f6-f90ee0894182.Date
+
+relationship f7562854-55cb-4bc4-9a05-9798306db71b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REFERENTIAL_PRODUCT_TRACKED.CURRENT_RECORD_TS
+	toColumn: LocalDateTable_f58c4aae-d517-4ac3-997f-cd24cd04bcd1.Date
+
+relationship 10fc2c1c-6bfd-4aeb-aba9-ed2bb233e207
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REFERENTIAL_PRODUCT_TRACKED.PREVIOUS_SNAPSHOT_TS
+	toColumn: LocalDateTable_b31ab50e-3aa2-4f1c-b9b1-e1789b19aac6.Date
+
+relationship 00746d05-8b2c-4251-b558-992d7a090318
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REFERENTIAL_PRODUCT_TRACKED.MIN_VERSION_DATE
+	toColumn: LocalDateTable_6d11c975-d694-4a17-bc9c-b8718ac3a0f7.Date
+
+relationship 61b3b6ee-8894-4bf4-a1cd-56006713ad54
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REFERENTIAL_PRODUCT_TRACKED.MAX_VERSION_DATE
+	toColumn: LocalDateTable_fd226758-9776-4961-9543-e995182be22f.Date
+
+relationship 1ecd5f24-0b2b-433c-9165-ce485333171f
+	joinOnDateBehavior: datePartOnly
+	fromColumn: REFERENTIAL_PRODUCT_TRACKED.FIRST_SNAPSHOT_TS
+	toColumn: LocalDateTable_b8378818-8241-4017-8f21-baf621e1e5d9.Date
+
+relationship 80054563-3f55-405c-8197-1521b5aa5315
+	crossFilteringBehavior: bothDirections
+	fromColumn: PRODUCT_SALES_RANK.PRODUCT_KEY
+	toColumn: DIM_PRODUCTS_2.PRODUCT_KEY
+
+relationship b79ec05e-6cda-4adb-8dde-6e2c7e36917b
+	fromColumn: PRODUCT_DETAILED.PRODUCT_KEY
+	toColumn: DIM_PRODUCTS_2.PRODUCT_KEY
+
+relationship 338510e0-b0ff-49c7-a975-ce1bbadc7001
+	crossFilteringBehavior: bothDirections
+	fromColumn: PRODUCT_DETAILED.PRODUCT_KEY
+	toColumn: DIM_PRODUCTS_3.PRODUCT_KEY
+
+relationship 66e0fb4e-4c57-4b52-a9ea-2a45d48c5ffa
+	joinOnDateBehavior: datePartOnly
+	fromColumn: RAW_TRAFFIC_BY_ASIN.SYNC_TIME
+	toColumn: LocalDateTable_d160a3c6-823e-4b98-8f4a-c144e9578fd8.Date
+
+relationship c7adf51f-af56-49af-8044-f35fc1a0de4a
+	fromColumn: RAW_TRAFFIC_BY_ASIN.REPORT_DATE
+	toColumn: DIM_DATES.OBSERVATION_DATE
+
+relationship 5651e0d2-85c1-4641-b083-bd58751d8c7f
+	fromColumn: RAW_TRAFFIC_BY_ASIN.ASIN_MARKETPLACE_KEY
+	toColumn: DIM_PRODUCTS_1.CHANNEL_PRODUCT_ID_MARKETPLACE_KEY
+
+relationship 863b7b96-9c14-4d12-b2d6-8d696aae9c04
+	fromColumn: RAW_TRAFFIC_BY_ASIN.SELLER_NAME
+	toColumn: DIM_CONNECTED_SELLER_ACCOUNTS.SELLER_NAME
+
+relationship c8837f7a-6b83-445d-9561-39734d82b6b0
+	crossFilteringBehavior: bothDirections
+	fromColumn: PRODUCT_DETAILED.BUY_BOX_SELLER_NAME
+	toColumn: DIM_CONNECTED_SELLER_ACCOUNTS.SELLER_NAME
+
+relationship b3714b96-552d-4120-943a-90a60f17f364
+	joinOnDateBehavior: datePartOnly
+	fromColumn: PRODUCT_DETAILED._SYNC_TIME
+	toColumn: LocalDateTable_a7238397-f8fc-4773-be42-ed07d41a1e27.Date
+
+relationship 0aa4b57d-e082-4a26-9ec6-558cc79c2e29
+	joinOnDateBehavior: datePartOnly
+	fromColumn: PRODUCT_IMAGE_LINKS._SYNC_TIME
+	toColumn: LocalDateTable_adf1ee61-4099-4e38-a00c-cad9ea940e9c.Date
+
+relationship 3e9bee04-edac-4eae-a130-ae156136c691
+	joinOnDateBehavior: datePartOnly
+	fromColumn: PRODUCT_SALES_RANK._SYNC_TIME
+	toColumn: LocalDateTable_ba62b0b8-d640-48bf-bed5-f63ff13faa6d.Date
+
+relationship 0044be77-6cfd-48f3-a71e-01ea7f019842
+	joinOnDateBehavior: datePartOnly
+	fromColumn: RAW_TRAFFIC_BY_ASIN._SYNC_TIME
+	toColumn: LocalDateTable_07512fcf-1bdb-415b-9e6a-7ed1d703d63f.Date
+
+relationship d801932e-bbbd-42aa-82f7-35f99186f339
+	joinOnDateBehavior: datePartOnly
+	fromColumn: PRODUCT_DETAILED.CreationDate
+	toColumn: LocalDateTable_cd773011-0e48-414f-a1cc-dc0dca81af35.Date
+
+relationship f1c57e3f-0430-49b5-9ad7-5fe5f51a6aca
+	joinOnDateBehavior: datePartOnly
+	fromColumn: PRODUCT_DETAILED.Jess_CreationDate
+	toColumn: LocalDateTable_b97c96f0-8695-42b7-b902-e629a6689da4.Date
+
+relationship 4281f3cc-fb46-aacf-df0f-6d481e7ce063
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: 'Product IDs to SKUs'.'Product ID'
+	toColumn: DIM_PRODUCTS_1.CHANNEL_PRODUCT_ID
+
+relationship 182a8497-13d5-412c-a774-9727bcdf2072
+	joinOnDateBehavior: datePartOnly
+	fromColumn: ViewTime.EVENT_TIME
+	toColumn: LocalDateTable_d4c562c6-0270-4d0d-b3f1-793f52366006.Date
+
+relationship fb0e6f8e-0623-4496-8d79-b9c05091ce03
+	joinOnDateBehavior: datePartOnly
+	fromColumn: WMT_MARKETPLACE_ITEMS.RECORD_TS
+	toColumn: LocalDateTable_084f870e-96c1-409b-8d53-b9a3e612b14a.Date
+
+relationship d08cb4c4-1f9d-4906-acd3-6c70968e6f14
+	joinOnDateBehavior: datePartOnly
+	fromColumn: WMT_MARKETPLACE_ITEMS._SYNC_TIME
+	toColumn: LocalDateTable_00fc0ba7-94b4-400a-b771-8aae5f0935ed.Date
+
+relationship 45fdd457-7ac7-4f29-8bb7-9b55cf9f7c04
+	joinOnDateBehavior: datePartOnly
+	fromColumn: WMT_MARKETPLACE_ORDERS.ORDER_TIME
+	toColumn: LocalDateTable_e4e918c2-0b4e-4500-88ef-34f93a947bb4.Date
+
+relationship ed87e52c-5228-4c4e-8c38-8b10072ac4c8
+	joinOnDateBehavior: datePartOnly
+	fromColumn: WMT_MARKETPLACE_ORDERS.ORDER_LOCAL_TIME
+	toColumn: LocalDateTable_8301f130-397d-411f-81b4-efb3f3f228ef.Date
+
+relationship cbb1175e-d2b7-48e0-90d2-ab2415f40faa
+	joinOnDateBehavior: datePartOnly
+	fromColumn: WMT_MARKETPLACE_ORDERS.ESTIMATED_DELIVERY_TIME
+	toColumn: LocalDateTable_bb04df67-5a6a-4204-9b07-860c2cc1fda5.Date
+
+relationship 5c96ef18-db29-4937-9009-91fc84756754
+	joinOnDateBehavior: datePartOnly
+	fromColumn: WMT_MARKETPLACE_ORDERS.ESTIMATED_SHIP_TIME
+	toColumn: LocalDateTable_749f5d51-44b7-4af2-b0bc-f2dafbe11a06.Date
+
+relationship 906b2aea-d389-4ca5-973e-7111b317298e
+	joinOnDateBehavior: datePartOnly
+	fromColumn: WMT_MARKETPLACE_ORDERS.PICK_UP_DATE_TIME
+	toColumn: LocalDateTable_e168cd9d-4af9-41c4-bccf-930bef674874.Date
+
+relationship e0eb049c-0146-448c-b578-933b9a43e11e
+	joinOnDateBehavior: datePartOnly
+	fromColumn: WMT_MARKETPLACE_ORDERS._SYNC_TIME
+	toColumn: LocalDateTable_999fa33c-24c0-45e8-9ec5-4c0e4f012e2f.Date
+
+relationship e21bb7c2-3196-560e-512a-231fbb09226b
+	fromColumn: WMT_MARKETPLACE_ORDERS.'SKU - NO SC'
+	toColumn: 'Product IDs to SKUs'.SKU
+
+relationship 7c4b4e3c-3af9-bc5e-f310-c3352b4e592e
+	fromColumn: WMT_MARKETPLACE_ORDERS.ORDER_DATE
+	toColumn: DIM_DATES.OBSERVATION_DATE
+
+relationship 81837dc8-ad94-4b67-b3ea-c8cfa36dd8ed
+	joinOnDateBehavior: datePartOnly
+	fromColumn: PRODUCT_BADGES.OBSERVATION_TIME
+	toColumn: LocalDateTable_9cf0bef3-fd90-4ce3-8fc4-45859d2a037e.Date
+
+relationship 7073a348-6acb-4c2b-9b42-318c2f1bc810
+	joinOnDateBehavior: datePartOnly
+	fromColumn: PRODUCT_BADGES.SYNC_TIME
+	toColumn: LocalDateTable_741c737c-7372-4c6d-b825-ab960e0c5220.Date
+
+relationship 22dbe756-4fad-4fcb-8465-88b94091993f
+	joinOnDateBehavior: datePartOnly
+	fromColumn: PRODUCT_BADGES._SYNC_TIME
+	toColumn: LocalDateTable_e083d038-99b3-441a-8c86-22a15fe7f24f.Date
+
+relationship d7e41dd7-597d-36e9-2676-d2aaccd18eac
+	fromColumn: PRODUCT_BADGES.OBSERVATION_DATE
+	toColumn: DIM_DATES.OBSERVATION_DATE
+
+relationship c4161df5-3dfa-b18a-eeb7-5e06ce717e27
+	fromColumn: PRODUCT_BADGES.CHANNEL_PRODUCT_ID
+	toColumn: DIM_PRODUCTS_1.CHANNEL_PRODUCT_ID
+
+relationship 58d5e4e1-0a56-400b-9a8a-14a6407046a5
+	joinOnDateBehavior: datePartOnly
+	fromColumn: WMT_MARKETPLACE_ORDERS.ORDER_LOCAL_DATE
+	toColumn: LocalDateTable_c3e2fa6f-101f-4abc-89f2-3752eb93e9f6.Date
+
+relationship 237ea39d-13cd-fbd2-fd8f-959271f4cd64
+	fromColumn: TZUMI_FITRX_LINKS.SKU
+	toColumn: 'Product IDs to SKUs'.SKU
+
+relationship 84807162-4f1f-ec7a-dd12-ac51157bc1d8
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: STUDIOZ_MAINSTAYS_LINKS.ITEM_ID
+	toColumn: DIM_PRODUCTS_1.CHANNEL_PRODUCT_ID
+
+relationship 76cdd13a-2174-4865-8035-dc9316bd7378
+	joinOnDateBehavior: datePartOnly
+	fromColumn: WMT_SP_AD_ITEM.DATE_DAY
+	toColumn: LocalDateTable_bec6afe5-6e9c-4431-95e7-6f03aaa1eb1f.Date
+
+relationship 3ae59c27-f004-4b56-b92f-5714baad5c2d
+	joinOnDateBehavior: datePartOnly
+	fromColumn: WMT_SP_AD_ITEM._SYNC_TIME
+	toColumn: LocalDateTable_61c2081a-edb7-421d-8855-23b38127d592.Date
+
+relationship 374278b2-cc78-269d-08ba-8c53eb3b0ca0
+	fromColumn: WMT_SP_AD_ITEM.DATE
+	toColumn: DIM_DATES.OBSERVATION_DATE
+
+relationship 4cef0af3-b03b-3ecc-47cc-283b7e81bfc4
+	fromColumn: WMT_SP_AD_ITEM.ITEM_ID
+	toColumn: DIM_PRODUCTS_1.CHANNEL_PRODUCT_ID
+
+relationship c96fe236-c076-cbe4-7883-482225e02572
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: ENCH_DIRECT_ITEMS.WM_ITEM_NUMBER
+	toColumn: DIM_PRODUCTS_1.CHANNEL_PRODUCT_ID
+
+relationship a59b5d8a-90d7-4595-9a2e-3fc7b15f998c
+	joinOnDateBehavior: datePartOnly
+	fromColumn: WMT_SP_AD_ITEM.EXTRACT_TIME
+	toColumn: LocalDateTable_cb925f50-a8c7-46ed-928d-a3881fb113c8.Date
+

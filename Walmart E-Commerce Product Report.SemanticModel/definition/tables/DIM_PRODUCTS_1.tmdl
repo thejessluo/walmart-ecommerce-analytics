@@ -1,0 +1,136 @@
+table DIM_PRODUCTS_1
+	lineageTag: 0712b030-1344-467e-873d-60e16a2e841b
+
+	measure ABOUT_HOVER_CONTENT = IF(AND([RESULT_COUNT_PRODUCTS]>1,[RESULT_COUNT_BRANDS]=1),FIRSTNONBLANK(DIM_PRODUCTS_1[BRAND_FINAL],DIM_PRODUCTS_1[BRAND_FINAL]<>""),FIRSTNONBLANK(DIM_PRODUCTS_1[NAME],DIM_PRODUCTS_1[NAME]<>""))
+		lineageTag: e979ae5a-537b-493e-987c-e6a7dea1d9ab
+
+	column PRODUCT_KEY
+		dataType: string
+		lineageTag: 231c0fbc-c416-4bee-81d8-ed7dcfb0a641
+		summarizeBy: none
+		sourceColumn: PRODUCT_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+	column CHANNEL_PRODUCT_ID
+		dataType: string
+		lineageTag: e3e45099-d001-4529-93f4-a052b860fcd4
+		summarizeBy: none
+		sourceColumn: CHANNEL_PRODUCT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column GROUP_CHANNEL_PRODUCT_ID
+		dataType: string
+		lineageTag: d9a59fb8-376e-46b4-8cc2-cad0063c6e63
+		summarizeBy: none
+		sourceColumn: GROUP_CHANNEL_PRODUCT_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column NAME
+		dataType: string
+		lineageTag: 8c4361ca-7a6a-4665-8cdc-78fb8e225a49
+		summarizeBy: none
+		sourceColumn: NAME
+
+		annotation SummarizationSetBy = Automatic
+
+	column IMAGE_LARGE_MAIN = MAXX(FILTER(PRODUCT_IMAGE_LINKS,PRODUCT_IMAGE_LINKS[PRODUCT_KEY]=DIM_PRODUCTS_1[PRODUCT_KEY] && PRODUCT_IMAGE_LINKS[IMAGE_NAME]="MAIN"),PRODUCT_IMAGE_LINKS[IMAGE_LINK_LARGE])
+		lineageTag: b7ebcb0d-7668-47ce-a936-23eddd1afd0e
+		dataCategory: ImageUrl
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column IMAGE_LARGE_THUMB = MAXX(FILTER(PRODUCT_IMAGE_LINKS,PRODUCT_IMAGE_LINKS[PRODUCT_KEY]=DIM_PRODUCTS_1[PRODUCT_KEY] && PRODUCT_IMAGE_LINKS[IMAGE_NAME]="THUMB"),PRODUCT_IMAGE_LINKS[IMAGE_LINK_THUMB])
+		lineageTag: f865754b-bde6-4f63-aceb-9d5885e1ee7d
+		dataCategory: ImageUrl
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column PRODUCT_AND_TITLE = DIM_PRODUCTS_1[CHANNEL_PRODUCT_ID] & " | " & LEFT(DIM_PRODUCTS_1[NAME],45) &"..."
+		lineageTag: 34fa6c12-2050-4b6d-a4fc-cd1d0ae891c2
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column GROUP_CHANNEL_PRODUCT_ID_EXTENDED = IF(ISBLANK(DIM_PRODUCTS_1[GROUP_CHANNEL_PRODUCT_ID]),DIM_PRODUCTS_1[CHANNEL_PRODUCT_ID],IF(ISBLANK(DIM_PRODUCTS_1[BRAND_FINAL]),"Pending Brand and Variants Detection",DIM_PRODUCTS_1[GROUP_CHANNEL_PRODUCT_ID]))
+		lineageTag: 8c65f910-5b8b-4bcc-902e-c6b5b9e30605
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column CHECK_TRACKED = ```
+			
+			VAR __TRACKABLE = 
+			LOOKUPVALUE( REFERENTIAL_PRODUCT_TRACKED[TRACKABLE], DIM_PRODUCTS_1[PRODUCT_KEY],RELATED(REFERENTIAL_PRODUCT_TRACKED[PRODUCT_KEY]) )
+			RETURN
+			IF( __TRACKABLE = 1,"Tracked Products","All Products")
+			```
+		lineageTag: 66822437-8f1e-485e-a3f0-6f4da469e655
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column BRAND_FINAL
+		dataType: string
+		lineageTag: dc3fa8a6-8237-454a-9a8b-549291ec5271
+		summarizeBy: none
+		sourceColumn: BRAND_FINAL
+
+		annotation SummarizationSetBy = Automatic
+
+	column MARKETPLACE_KEY
+		dataType: string
+		lineageTag: f6f1e443-784f-4a94-9b93-28e9bcb1b876
+		summarizeBy: none
+		sourceColumn: MARKETPLACE_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+	column CHANNEL_PRODUCT_ID_MARKETPLACE_KEY
+		dataType: string
+		lineageTag: 3bd686d0-d31f-4381-bce2-e39054bca9a2
+		summarizeBy: none
+		sourceColumn: CHANNEL_PRODUCT_ID_MARKETPLACE_KEY
+
+		annotation SummarizationSetBy = Automatic
+
+	column Jess_IMAGE_LARGE_MAIN = MAXX(FILTER(PRODUCT_DETAILED,PRODUCT_DETAILED[PRODUCT_KEY]=DIM_PRODUCTS_1[PRODUCT_KEY]),PRODUCT_DETAILED[PICTURE_URL])
+		lineageTag: 7d9c152c-2362-4bb2-b433-160bdb0776e0
+		dataCategory: ImageUrl
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DIM_PRODUCTS_1-eb0639df-e23f-4781-b1c5-e644a335b6da = m
+		mode: import
+		source = ```
+				let
+				    Source = Value.NativeQuery(
+				        Snowflake.Databases(
+				            Server,
+				            Warehouse
+				        ) {[Name=Database]}[Data], 
+				        "SELECT 
+				            PRODUCT_KEY,
+				            MAX(CHANNEL_PRODUCT_ID) AS CHANNEL_PRODUCT_ID,
+				            MAX(GROUP_CHANNEL_PRODUCT_ID) AS GROUP_CHANNEL_PRODUCT_ID,
+				            MAX(MARKETPLACE_KEY) AS MARKETPLACE_KEY,
+				            MAX(NAME) AS NAME,
+				            MAX(IFNULL(BRAND, BRAND_CATALOG)) AS BRAND_FINAL,
+				            MAX(CONCAT(CHANNEL_PRODUCT_ID, '', MARKETPLACE_KEY)) AS CHANNEL_PRODUCT_ID_MARKETPLACE_KEY
+				        FROM REPORTS.REPORT_PRODUCT_LATEST_VERSION
+				        WHERE OBSERVATION_DATE >= CURRENT_DATE - "& Text.From(#"Lookback History") &"
+				        GROUP BY PRODUCT_KEY"
+				    )
+				in
+				    Source
+				```
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

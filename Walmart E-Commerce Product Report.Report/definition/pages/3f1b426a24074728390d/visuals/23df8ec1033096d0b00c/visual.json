@@ -1,0 +1,16 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "23df8ec1033096d0b00c",
+  "position": {
+    "x": 324.0113875343875,
+    "y": 363.41511299946114,
+    "z": 3000,
+    "height": 260.00574678160194,
+    "width": 330.34155337332243,
+    "tabOrder": 13000
+  },
+  "visualGroup": {
+    "displayName": "MSRP PIE CHART",
+    "groupMode": "ScaleMode"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "68e7faf7b04653e3b710",
+  "position": {
+    "x": 829.36871527627341,
+    "y": 137.19658303475069,
+    "z": 14000,
+    "height": 136.86410429439556,
+    "width": 217.18996301465378,
+    "tabOrder": 8000
+  },
+  "visualGroup": {
+    "displayName": "Stock Changed",
+    "groupMode": "ScaleMode"
+  }
+}

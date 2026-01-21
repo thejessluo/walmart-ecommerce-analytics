@@ -1,0 +1,17 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "e8df2ea4c28c0c300e7d",
+  "position": {
+    "x": 107.21102819083463,
+    "y": 0,
+    "z": 0,
+    "height": 101.82211232345612,
+    "width": 108.09706974613077,
+    "tabOrder": 1000
+  },
+  "visualGroup": {
+    "displayName": "Went OOS",
+    "groupMode": "ScaleMode"
+  },
+  "parentGroupName": "eed4176bb9ee06db99a6"
+}

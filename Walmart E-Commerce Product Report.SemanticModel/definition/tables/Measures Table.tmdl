@@ -1,0 +1,26 @@
+table 'Measures Table'
+	lineageTag: 4adf20fe-9c29-425a-8299-a4ab82ba6412
+
+	measure 'MSRP Deltass' = SUM(TZUMI_FITRX_LINKS[MSRP]) - SUM(PRODUCT_DETAILED[LIST_PRICE])
+		lineageTag: 2698eed5-c17c-43e0-996d-e2790656883a
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Dummy
+		isHidden
+		lineageTag: 60ea9065-80d6-458d-b99a-d2f8bfe33b07
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Dummy]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Measures Table' = calculated
+		mode: import
+		source = ```
+				DATATABLE("Dummy", STRING, { { "" } })
+				
+				```
+
+	annotation PBI_Id = 8ccefcda5189428da2d9ed15cfa8d2ef
+

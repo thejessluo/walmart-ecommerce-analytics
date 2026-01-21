@@ -1,0 +1,16 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "2bb5b4fd7aa6162a9d32",
+  "position": {
+    "x": 158.83558984393869,
+    "y": 137.09722963999198,
+    "z": 19000,
+    "height": 136.19808852987097,
+    "width": 215.45087388864232,
+    "tabOrder": 9000
+  },
+  "visualGroup": {
+    "displayName": "Prices Changed",
+    "groupMode": "ScaleMode"
+  }
+}

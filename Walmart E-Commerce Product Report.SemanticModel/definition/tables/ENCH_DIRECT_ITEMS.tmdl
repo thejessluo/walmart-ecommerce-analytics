@@ -1,0 +1,70 @@
+table ENCH_DIRECT_ITEMS
+	lineageTag: 23a65cb2-ed79-4544-b52a-7cd4cb94df3c
+
+	column ITEM_DESCR
+		dataType: string
+		lineageTag: affe5dcb-b4ec-4c7a-a033-581d0e76e417
+		summarizeBy: none
+		sourceColumn: ITEM_DESCR
+
+		annotation SummarizationSetBy = Automatic
+
+	column WM_ITEM_NUMBER
+		dataType: string
+		lineageTag: 118e42ee-114f-44d2-af6e-a03518a19671
+		summarizeBy: none
+		sourceColumn: WM_ITEM_NUMBER
+
+		annotation SummarizationSetBy = Automatic
+
+	column GTIN
+		dataType: string
+		lineageTag: 83b33353-0503-42de-8ccd-04fe406825b1
+		summarizeBy: none
+		sourceColumn: GTIN
+
+		annotation SummarizationSetBy = Automatic
+
+	column 1P/3P
+		dataType: string
+		lineageTag: db9135bf-8d5f-4438-a180-e1cd81c4ae6c
+		summarizeBy: none
+		sourceColumn: 1P/3P
+
+		annotation SummarizationSetBy = Automatic
+
+	column ENCH_DIRECT
+		dataType: string
+		lineageTag: 93be003a-a535-487c-999b-13c0dfa645c8
+		summarizeBy: none
+		sourceColumn: ENCH_DIRECT
+
+		annotation SummarizationSetBy = Automatic
+
+	column Amazon/Walmart
+		dataType: string
+		lineageTag: b075311e-2f84-4be9-b6bf-6c237e2a59b3
+		summarizeBy: none
+		sourceColumn: Amazon/Walmart
+
+		annotation SummarizationSetBy = Automatic
+
+	column ITEM_LINK
+		dataType: string
+		lineageTag: bec1ddcd-535a-4fc3-b157-ed168000b38b
+		summarizeBy: none
+		sourceColumn: ITEM_LINK
+
+		annotation SummarizationSetBy = Automatic
+
+	partition ENCH_DIRECT_ITEMS = m
+		mode: import
+		source =
+				let
+				    Source = Snowflake.Databases("zo76507.west-europe.azure.snowflakecomputing.com","WH_XSMALL_83818",[Implementation="2.0"]),
+				    DATAHAWK_WRITABLE_83818_Database = Source{[Name="DATAHAWK_WRITABLE_83818",Kind="Database"]}[Data],
+				    MISC_WALMART_DATA_Schema = DATAHAWK_WRITABLE_83818_Database{[Name="MISC_WALMART_DATA",Kind="Schema"]}[Data],
+				    ENCH_DIRECT_ITEMS_Table = MISC_WALMART_DATA_Schema{[Name="ENCH_DIRECT_ITEMS",Kind="Table"]}[Data]
+				in
+				    ENCH_DIRECT_ITEMS_Table
+

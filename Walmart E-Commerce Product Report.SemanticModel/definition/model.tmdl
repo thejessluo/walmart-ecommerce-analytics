@@ -1,0 +1,103 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+queryGroup 'Products Data'
+
+	annotation PBI_QueryGroupOrder = 0
+
+queryGroup Configuration
+
+	annotation PBI_QueryGroupOrder = 2
+
+queryGroup Sources
+
+	annotation PBI_QueryGroupOrder = 1
+
+queryGroup 'Search Data'
+
+	annotation PBI_QueryGroupOrder = 4
+
+/// Errors in queries that were loaded on 5/8/2025 10:42:06 AM.
+queryGroup 'Query Errors - 5/8/2025 10:42:06 AM'
+
+	annotation PBI_QueryGroupOrder = 4
+
+annotation PBI_QueryOrder = ["PRODUCT_DETAILED","PRODUCT_IMAGE_LINKS","PRODUCT_SALES_RANK","REFERENTIAL_PRODUCT_TAG","REFERENTIAL_PRODUCT_TRACKED","REFERENTIAL_PROJECT_PRODUCTS","DIM_DATES","DIM_PRODUCTS_1","DIM_PRODUCTS_2","DIM_PRODUCTS_3","DIM_CONNECTED_SELLER_ACCOUNTS","Database","Warehouse","Server","Lookback History","Server (2)","Warehouse (2)","Database (2)","Lookback History (2)","FUNCTION_TEXT_TO_ASCII","ViewTime","RAW_TRAFFIC_BY_ASIN","REPORT_PRODUCT_LATEST_VERSION","Product IDs to SKUs","WMT_MARKETPLACE_ITEMS","WMT_MARKETPLACE_ORDERS","PRODUCT_BADGES","STUDIOZ_MAINSTAYS_LINKS","TZUMI_FITRX_LINKS","WMT_SP_AD_ITEM","ENCH_DIRECT_ITEMS"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_ProTooling = ["DaxQueryView_Desktop","DevMode"]
+
+ref table DateTableTemplate_b65693cd-1e6c-4fb8-ba9f-75e287b3bbcf
+ref table PRODUCT_DETAILED
+ref table LocalDateTable_fa24c9f1-8473-4c23-8697-178ba68a2a63
+ref table LocalDateTable_e4f12b39-07c1-4435-b49b-2b0efda2ef82
+ref table PRODUCT_IMAGE_LINKS
+ref table LocalDateTable_137ed3c3-a7b9-4cad-854d-67414e56cdee
+ref table LocalDateTable_66aa4c7b-237d-4285-8f86-4bc1f1e9f082
+ref table PRODUCT_SALES_RANK
+ref table LocalDateTable_248486e6-f246-4bc3-be1e-c7115f960256
+ref table LocalDateTable_d26188c5-93e6-4909-8f84-80c5e590f926
+ref table REFERENTIAL_PRODUCT_TAG
+ref table LocalDateTable_dffa9543-570b-44d0-bab6-21816d6e4607
+ref table REFERENTIAL_PRODUCT_TRACKED
+ref table LocalDateTable_0efb43d2-ddb0-4f32-b722-fb8fde0bff79
+ref table REFERENTIAL_PROJECT_PRODUCTS
+ref table LocalDateTable_77294c82-a507-41f4-b44f-d2a04b457b26
+ref table DIM_PRODUCTS_1
+ref table DIM_DATES
+ref table LocalDateTable_9f708126-b7c2-4fbf-a1d7-43e7696aec9a
+ref table LocalDateTable_53f17dad-dbcf-46a1-91ea-1f0be663c4d6
+ref table LocalDateTable_8acc891c-a55f-4b23-a0f6-f90ee0894182
+ref table LocalDateTable_f58c4aae-d517-4ac3-997f-cd24cd04bcd1
+ref table LocalDateTable_b31ab50e-3aa2-4f1c-b9b1-e1789b19aac6
+ref table LocalDateTable_6d11c975-d694-4a17-bc9c-b8718ac3a0f7
+ref table LocalDateTable_fd226758-9776-4961-9543-e995182be22f
+ref table ViewTime
+ref table LocalDateTable_b8378818-8241-4017-8f21-baf621e1e5d9
+ref table 'Field Parameters - Rows'
+ref table 'Field Parameters - Columns'
+ref table DIM_PRODUCTS_2
+ref table DIM_PRODUCTS_3
+ref table RAW_TRAFFIC_BY_ASIN
+ref table LocalDateTable_d160a3c6-823e-4b98-8f4a-c144e9578fd8
+ref table DIM_CONNECTED_SELLER_ACCOUNTS
+ref table LocalDateTable_a7238397-f8fc-4773-be42-ed07d41a1e27
+ref table LocalDateTable_adf1ee61-4099-4e38-a00c-cad9ea940e9c
+ref table LocalDateTable_ba62b0b8-d640-48bf-bed5-f63ff13faa6d
+ref table LocalDateTable_07512fcf-1bdb-415b-9e6a-7ed1d703d63f
+ref table LocalDateTable_cd773011-0e48-414f-a1cc-dc0dca81af35
+ref table LocalDateTable_b97c96f0-8695-42b7-b902-e629a6689da4
+ref table 'Product IDs to SKUs'
+ref table LocalDateTable_d4c562c6-0270-4d0d-b3f1-793f52366006
+ref table WMT_MARKETPLACE_ITEMS
+ref table LocalDateTable_084f870e-96c1-409b-8d53-b9a3e612b14a
+ref table LocalDateTable_00fc0ba7-94b4-400a-b771-8aae5f0935ed
+ref table WMT_MARKETPLACE_ORDERS
+ref table LocalDateTable_e4e918c2-0b4e-4500-88ef-34f93a947bb4
+ref table LocalDateTable_8301f130-397d-411f-81b4-efb3f3f228ef
+ref table LocalDateTable_bb04df67-5a6a-4204-9b07-860c2cc1fda5
+ref table LocalDateTable_749f5d51-44b7-4af2-b0bc-f2dafbe11a06
+ref table LocalDateTable_e168cd9d-4af9-41c4-bccf-930bef674874
+ref table LocalDateTable_999fa33c-24c0-45e8-9ec5-4c0e4f012e2f
+ref table PRODUCT_BADGES
+ref table LocalDateTable_9cf0bef3-fd90-4ce3-8fc4-45859d2a037e
+ref table LocalDateTable_741c737c-7372-4c6d-b825-ab960e0c5220
+ref table LocalDateTable_e083d038-99b3-441a-8c86-22a15fe7f24f
+ref table LocalDateTable_c3e2fa6f-101f-4abc-89f2-3752eb93e9f6
+ref table STUDIOZ_MAINSTAYS_LINKS
+ref table TZUMI_FITRX_LINKS
+ref table WMT_SP_AD_ITEM
+ref table LocalDateTable_bec6afe5-6e9c-4431-95e7-6f03aaa1eb1f
+ref table LocalDateTable_61c2081a-edb7-421d-8855-23b38127d592
+ref table ENCH_DIRECT_ITEMS
+ref table 'Measures Table'
+ref table LocalDateTable_cb925f50-a8c7-46ed-928d-a3881fb113c8
+
+ref cultureInfo en-US
+
