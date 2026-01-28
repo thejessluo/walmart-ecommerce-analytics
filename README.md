@@ -14,7 +14,7 @@ The dashboard currently identifies several critical operational areas:
 * **Buy Box Performance:** Recorded **7 Buy Box losses**, indicating that third-party sellers are successfully out-competing the brand for the primary "Add to Cart" button.
 * **Inventory Alert:** Approximately **20% of the catalog (39 items)** is currently **Out of Stock**, representing immediate revenue loss.
 * **Pricing Volatility:** Tracked **5 Price Changes** and **2 MSRP shifts** within a 24-hour window, highlighting the aggressive price-matching environment.
-* **Brand Health:** Maintains a strong average product rating of **4.5/5 stars**, though individual items like the **FitRx Massager ($190.00)** are closely monitored for sentiment shifts.
+* **Brand Health:** Maintains a strong average product rating of **4.5/5 stars**.
 
 ## Dashboard Features
 
