@@ -28,6 +28,9 @@ Utilizes line graphs to correlate how fluctuations in **MSRP** and **Average Rat
 A detailed table view providing SKU-level transparency into pricing, review counts, and current Buy Box winners for the entire catalog.
 
 ## 📸 Project Gallery
+#### Data Model
+![Star Schema Data Model](Screenshots/DataModel.png)
+
 #### Executive Overview
 ![Walmart Front-End Analytics Dashboard](Screenshots/MainDashboard.png)
 
