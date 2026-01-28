@@ -2458,8 +2458,8 @@ table PRODUCT_DETAILED
 			    )
 			VAR TzumiMSRP = 
 			    LOOKUPVALUE(
-			        'Tzumi com & FitRx Links'[Regular price],
-			        'Tzumi com & FitRx Links'[SKU], 
+			        'TZUMI_FITRX_LINKS'[MSRP],
+			        'TZUMI_FITRX_LINKS'[SKU], 
 			        SKU
 			    )
 			RETURN 
@@ -2478,7 +2478,7 @@ table PRODUCT_DETAILED
 			VAR LatestDate = 
 			    MAX('DIM_DATES'[OBSERVATION_DATE])  -- Find the latest date
 			VAR MinRegularPrice = 
-			    MIN('Tzumi com & FitRx Links'[Regular price])  -- Find the minimum regular price
+			    MIN(TZUMI_FITRX_LINKS[MSRP])  -- Find the minimum MSRP
 			VAR CurrentPrice = 
 			    CALCULATE(
 			        ('PRODUCT_DETAILED'[MEASURE_CURRENT_PRICE]),

@@ -5,26 +5,26 @@
       "ordinal": 0,
       "scrollPosition": {
         "x": 0,
-        "y": 412.30769230769232
+        "y": 0
       },
       "nodes": [
         {
           "location": {
-            "x": 532.14107638360281,
-            "y": 270.16949822771147
+            "x": 932.25641364938974,
+            "y": 133.55897865886027
           },
           "nodeIndex": "PRODUCT_DETAILED",
           "nodeLineageTag": "23cb792b-9c10-444b-8cfe-158edf3e2b88",
           "size": {
-            "height": 320,
-            "width": 372.46153846153845
+            "height": 300,
+            "width": 234
           },
           "zIndex": 20
         },
         {
           "location": {
-            "x": 728.2349106225879,
-            "y": 607.69561559712338
+            "x": 1518.6625602732322,
+            "y": 571.43099014413121
           },
           "nodeIndex": "PRODUCT_IMAGE_LINKS",
           "nodeLineageTag": "44dd6ab4-c149-4702-af2a-8a34236ff708",
@@ -36,8 +36,8 @@
         },
         {
           "location": {
-            "x": 50,
-            "y": 1071.9114701744891
+            "x": 1366.9535687378075,
+            "y": 928.61936684011607
           },
           "nodeIndex": "PRODUCT_SALES_RANK",
           "nodeLineageTag": "c4d3dbc7-0588-429b-becf-2e1ce67fc181",
@@ -49,8 +49,8 @@
         },
         {
           "location": {
-            "x": 1015.2570007951308,
-            "y": 1674.7937770505719
+            "x": 50,
+            "y": 788.24895466834187
           },
           "nodeIndex": "REFERENTIAL_PRODUCT_TAG",
           "nodeLineageTag": "f4a059a7-a6af-478a-a067-2fccd04e82f2",
@@ -62,8 +62,8 @@
         },
         {
           "location": {
-            "x": 127.6557656071588,
-            "y": 1472.2632706403692
+            "x": 354.02726693574482,
+            "y": 322.91663773979076
           },
           "nodeIndex": "REFERENTIAL_PRODUCT_TRACKED",
           "nodeLineageTag": "68964b32-340b-4b56-8c79-6c40614e3279",
@@ -75,8 +75,8 @@
         },
         {
           "location": {
-            "x": 655.19305883559855,
-            "y": 966.68052984323515
+            "x": 1228.8364249287636,
+            "y": 693.63091643190432
           },
           "nodeIndex": "DIM_DATES",
           "nodeLineageTag": "da9af842-6bc3-44bb-99a9-0c4b9f8fccb7",
@@ -88,21 +88,21 @@
         },
         {
           "location": {
-            "x": 1508.4064359106526,
-            "y": 1339.0519793826279
+            "x": 643.05026756963184,
+            "y": 164.74601899611662
           },
           "nodeIndex": "REFERENTIAL_PROJECT_PRODUCTS",
           "nodeLineageTag": "94fc1fba-3e3a-411f-a58d-506da56c37e1",
           "size": {
-            "height": 339.69230769230762,
-            "width": 347.84615384615381
+            "height": 272,
+            "width": 234
           },
           "zIndex": 21
         },
         {
           "location": {
-            "x": 1534.7141282183445,
-            "y": 1100.7468287283671
+            "x": 1907.2208916225861,
+            "y": 753.59520147194962
           },
           "nodeIndex": "ViewTime",
           "nodeLineageTag": "62d8ca96-e281-4d2b-b989-3c8b9e764079",
@@ -114,10 +114,11 @@
         },
         {
           "location": {
-            "x": 1818.7141282183445,
-            "y": 1088.7468287283671
+            "x": 2240.6644732025629,
+            "y": 936.76723402448874
           },
           "nodeIndex": "Field Parameters - Columns",
+          "nodeLineageTag": "f1297573-4058-47a7-87ba-b4bac367c3f5",
           "size": {
             "height": 152,
             "width": 234
@@ -126,8 +127,8 @@
         },
         {
           "location": {
-            "x": 2102.7141282183447,
-            "y": 1088.7468287283671
+            "x": 1985.9896633575554,
+            "y": 939.369527791856
           },
           "nodeIndex": "Field Parameters - Rows",
           "nodeLineageTag": "01aaa7a5-0943-4899-a49e-ace59b6ece38",
@@ -139,8 +140,8 @@
         },
         {
           "location": {
-            "x": 1015.5121332530239,
-            "y": 313.3597945162237
+            "x": 1221.817896008909,
+            "y": 133.58320276424774
           },
           "nodeIndex": "RAW_TRAFFIC_BY_ASIN",
           "nodeLineageTag": "1f871f7f-6475-4731-9a34-3c5a501ef179",
@@ -152,8 +153,8 @@
         },
         {
           "location": {
-            "x": 364.87682337992783,
-            "y": 933.9710447933154
+            "x": 651.729306882699,
+            "y": 531.43743387828181
           },
           "nodeIndex": "DIM_PRODUCTS_1",
           "nodeLineageTag": "0712b030-1344-467e-873d-60e16a2e841b",
@@ -165,34 +166,8 @@
         },
         {
           "location": {
-            "x": 187.73520401655935,
-            "y": 348.89122527008158
-          },
-          "nodeIndex": "DIM_PRODUCTS_2",
-          "nodeLineageTag": "dac2bd8f-e2b9-4cf2-a58a-143888511591",
-          "size": {
-            "height": 248,
-            "width": 234
-          },
-          "zIndex": 10
-        },
-        {
-          "location": {
-            "x": 371.78535031398548,
+            "x": 1104.07603860145,
             "y": -50
-          },
-          "nodeIndex": "DIM_PRODUCTS_3",
-          "nodeLineageTag": "c2031c47-47ab-4801-aa14-3da3301b12aa",
-          "size": {
-            "height": 248,
-            "width": 234
-          },
-          "zIndex": 11
-        },
-        {
-          "location": {
-            "x": 871.59753312743783,
-            "y": 130.21475719559066
           },
           "nodeIndex": "DIM_CONNECTED_SELLER_ACCOUNTS",
           "nodeLineageTag": "9f3a9299-35a8-4e49-8805-abddc9fcc8b7",
@@ -204,8 +179,8 @@
         },
         {
           "location": {
-            "x": 792.81800894064975,
-            "y": 1979.4936574567344
+            "x": 1242.1580863600045,
+            "y": 1285.1904029438988
           },
           "nodeIndex": "Product IDs to SKUs",
           "nodeLineageTag": "9e4b9aa0-5f3d-4cb0-8a5e-d24afe90a888",
@@ -217,34 +192,34 @@
         },
         {
           "location": {
-            "x": 1746.2969511965798,
-            "y": 608.78312901912318
+            "x": 1892.6570670893127,
+            "y": 409.968118502598
           },
           "nodeIndex": "WMT_MARKETPLACE_ITEMS",
           "nodeLineageTag": "198c9d0a-91db-4a3a-9ea5-064f33b6c321",
           "size": {
-            "height": 293.76520019472184,
-            "width": 294
+            "height": 300,
+            "width": 234
           },
           "zIndex": 17
         },
         {
           "location": {
-            "x": 1359.2063009503909,
-            "y": 451.536579651571
+            "x": 1673.2208916225859,
+            "y": 928.73407495209585
           },
           "nodeIndex": "WMT_MARKETPLACE_ORDERS",
           "nodeLineageTag": "c12d985c-9dcf-4c3c-b416-6bd7a1ea769c",
           "size": {
-            "height": 570.17465822872146,
-            "width": 344.1481298932481
+            "height": 300,
+            "width": 234
           },
           "zIndex": 23
         },
         {
           "location": {
-            "x": 11.99742051860602,
-            "y": 660.68571090840237
+            "x": 786.94166804954966,
+            "y": 952.04735972451954
           },
           "nodeIndex": "PRODUCT_BADGES",
           "nodeLineageTag": "b78a2cff-23d7-45f9-93a7-1d38a03fb65b",
@@ -256,8 +231,8 @@
         },
         {
           "location": {
-            "x": 276.25516923820032,
-            "y": 1942.5929825745209
+            "x": 338.321599078444,
+            "y": 981.79586851624163
           },
           "nodeIndex": "STUDIOZ_MAINSTAYS_LINKS",
           "nodeLineageTag": "2700a409-77a5-43db-8370-d872201df909",
@@ -269,58 +244,59 @@
         },
         {
           "location": {
-            "x": 560.25516923820055,
-            "y": 1373.0545210360597
+            "x": 544.20498324498408,
+            "y": 1305.7819747867422
           },
           "nodeIndex": "TZUMI_FITRX_LINKS",
           "nodeLineageTag": "a5493842-c94c-4618-a5c2-323cd90389dd",
           "size": {
-            "height": 248,
+            "height": 152,
             "width": 234
           },
           "zIndex": 14
         },
         {
           "location": {
-            "x": 956.25516923820032,
-            "y": 1103.9775979591366
+            "x": 940.921887662274,
+            "y": 531.42458136005075
           },
           "nodeIndex": "WMT_SP_AD_ITEM",
           "nodeLineageTag": "c3dd3481-8503-4494-bf53-0cb809f56bca",
           "size": {
-            "height": 467.69230769230762,
-            "width": 323.23076923076928
+            "height": 300,
+            "width": 234
           },
           "zIndex": 19
         },
         {
           "location": {
-            "x": 625.48593846896961,
-            "y": 1118.5929825745211
+            "x": 362.09784528150578,
+            "y": 679.63949130291917
           },
           "nodeIndex": "ENCH_DIRECT_ITEMS",
           "nodeLineageTag": "23a65cb2-ed79-4544-b52a-7cd4cb94df3c",
           "size": {
-            "height": 209.23076923076928,
+            "height": 248,
             "width": 234
           },
           "zIndex": 22
         },
         {
           "location": {
-            "x": 2374.7167076997389,
-            "y": 1064.7468287283673
+            "x": 2171.4524795545781,
+            "y": 434.95664966576209
           },
           "nodeIndex": "Measures Table",
+          "nodeLineageTag": "4adf20fe-9c29-425a-8299-a4ab82ba6412",
           "size": {
-            "height": 200,
+            "height": 224,
             "width": 234
           },
           "zIndex": 1
         }
       ],
       "name": "All tables",
-      "zoomValue": 65,
+      "zoomValue": 40,
       "pinKeyFieldsToTop": true,
       "showExtraHeaderInfo": false,
       "hideKeyFieldsWhenCollapsed": false,

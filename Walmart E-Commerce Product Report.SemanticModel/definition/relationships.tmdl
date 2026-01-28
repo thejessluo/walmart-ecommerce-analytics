@@ -123,20 +123,6 @@ relationship 1ecd5f24-0b2b-433c-9165-ce485333171f
 	fromColumn: REFERENTIAL_PRODUCT_TRACKED.FIRST_SNAPSHOT_TS
 	toColumn: LocalDateTable_b8378818-8241-4017-8f21-baf621e1e5d9.Date
 
-relationship 80054563-3f55-405c-8197-1521b5aa5315
-	crossFilteringBehavior: bothDirections
-	fromColumn: PRODUCT_SALES_RANK.PRODUCT_KEY
-	toColumn: DIM_PRODUCTS_2.PRODUCT_KEY
-
-relationship b79ec05e-6cda-4adb-8dde-6e2c7e36917b
-	fromColumn: PRODUCT_DETAILED.PRODUCT_KEY
-	toColumn: DIM_PRODUCTS_2.PRODUCT_KEY
-
-relationship 338510e0-b0ff-49c7-a975-ce1bbadc7001
-	crossFilteringBehavior: bothDirections
-	fromColumn: PRODUCT_DETAILED.PRODUCT_KEY
-	toColumn: DIM_PRODUCTS_3.PRODUCT_KEY
-
 relationship 66e0fb4e-4c57-4b52-a9ea-2a45d48c5ffa
 	joinOnDateBehavior: datePartOnly
 	fromColumn: RAW_TRAFFIC_BY_ASIN.SYNC_TIME
